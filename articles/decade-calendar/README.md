@@ -1,6 +1,6 @@
 # 十进制历
 
-在公历中，一年有12个月，每个月有28天到31天不等，另外，还有1周7天的周期。例如，某一年的第45天，叫做2月14日，这一天是星期天，农历正月初三，也是情人节。
+在公历中，一年有12个月，每个月有28天到31天不等，另外，还有1周7天的周期。例如，某一年的第45天，查询日历推算可得，叫做2月14日，2021年的这一天是星期天，农历辛丑年正月初三，同时也是西方情人节。
 
 现在我要发明一种新的历法，更简单、更直接的历法，符合人类所学最最基础数学知识的历法。这个历法叫做**十进制历**（Decade Calendar）。
 
@@ -16,7 +16,7 @@
 
 那么英文怎么办呢？“拾”在前，“日”在后（无论是英国还是美国）；“拾”译为 Ty（音标 [ti]）；“日”部分采用序数词表示，无后缀，而冠词则放入“拾”的前面；简称的读法即为简称的序数词格式。如4拾5日为 The four ty fifth，简称45日则为 The forty-fifth。
 
-简称中，年份加在最前面，并用斜线（slash `/`）隔开，所有语言和地区都是如此。例如，2020年4拾5日（即人们熟知的2020年2月14日）可以表示为 2020/45。这是为什么呢？因为这样能兼容 URI。如，有人在该示例日时发布了一篇名为 Hello World 的博客，其地址的路径部分可能是 `/blog/2020/45/hello-world`，显得非常协和。而全称中，中文为二零二零年四拾五日，英文为 Four ty fifth twenty twenty（即年份依然可以放在后面）。
+简称中，年份加在最前面，并用斜线（Slash `/`）隔开，所有语言和地区都是如此。例如，2020年4拾5日（即人们熟知的2020年2月14日）可以表示为 2020/45。这是为什么呢？因为这样能兼容 URI。如，有人在该示例日时发布了一篇名为 Hello World 的博客，其地址的路径部分可能是 `/blog/2020/45/hello-world`，显得非常协和。而全称中，中文为二零二零年四拾五日，英文为 Four ty fifth twenty twenty（即年份依然可以放在后面）。
 
 为了方便大家了解，日历奉上，如下，所有平年都是一样的，闰年则在最后的36拾多个6日（即366日）。所以，你也会发现，它是如此的简单粗暴，以至于显得没什么用——这也是一个很棒的好处——无需日历。
 
@@ -64,14 +64,13 @@ function getDayOfYear(date: Date) {
 
 export class DecadeDate {
   #inner: {
-      y: number,
-      d: number
+      y: number;
+      d: number;
   };
 
   constructor(date?: string | number | Date | null | undefined) {
-    if (!date) {
-      date = new Date();
-    } else if (typeof date === 'number') {
+    if (!date) date = new Date();
+    if (typeof date === 'number') {
       #inner = {
         y: Math.floor(date / 1000),
         d: Math.floor(date % 1000)
@@ -85,7 +84,7 @@ export class DecadeDate {
       #inner = {
         y: NaN,
         d: NaN
-      }
+      };
     } else {
       let arr = date.split('/');
       #inner = arr.length > 1 ? {
@@ -94,7 +93,7 @@ export class DecadeDate {
       } : {
         y: NaN,
         d: NaN
-      }
+      };
     }
   }
 
