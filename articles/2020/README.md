@@ -14,4 +14,4 @@ Tech blogs | 技术博客
 
 See also
 
-[Next &gt;](./2021)
+[&lt; Previous](../2010s) \| [Next &gt;](../2021)

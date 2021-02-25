@@ -1,4 +1,6 @@
-# 2021
+# 2010s
+
+2010 - 2019
 
 ## Tech Blogs
 
@@ -14,7 +16,7 @@
 
 ## Blogs
 
-- [Hello world](./0224/hello-world)
+- *空*
 
 ## Novel
 
@@ -22,14 +24,14 @@
 
 ## Else
 
-其它内容
+- *空*
 
 ### Innovation
 
-- [十进制历](./decade-calendar)
+- *空*
 
 ---
 
 See also
 
-[&lt; Previous](../2020) \| [Next &gt;](../2022)
+[Next &gt;](../2020)

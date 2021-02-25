@@ -1,4 +1,4 @@
-# 2021
+# 2022
 
 ## Tech Blogs
 
@@ -32,4 +32,4 @@
 
 See also
 
-[&lt; Previous](./2021)
+[&lt; Previous](../2021) \| [Next &gt;](../2023)
