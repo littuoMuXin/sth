@@ -44,8 +44,8 @@
 
 嗯，现代，如同其它许多常用信息一样，历法，不光需要确保人类能正常使用，还需要在计算机中也能很好的被支持，所以，准备了以下计算机语言版的实现，可供参考。
 
-- [Type Script 版](./decade-calendar/type-script)
-- [C# 版](./decade-calendar/csharp)
+- [Type Script 版实现](./type-script)
+- [C# 版实现](./csharp)
 
 ---
 
