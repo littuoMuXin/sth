@@ -9,3 +9,9 @@ Tech blogs | 技术博客
 ### .NET
 
 - [开发有趣的命令行应用](./rich-cli)
+
+---
+
+See also
+
+[Next &gt;](./2021)

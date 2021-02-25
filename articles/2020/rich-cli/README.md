@@ -230,4 +230,10 @@ Apr 8th, 2020 AD.
 Keywords:
 cli; dotnet.
 
-(CC) Kingcean Tuan, 2020.
+See also
+
+- [Article source](https://weibo.com/ttarticle/p/show?id=2309404491344071491616)
+- [API Reference](https://nuscien.github.io/trivial/console/)
+- [Source code](https://github.com/nuscien/trivial/tree/v3.6/Console)
+
+(cc) Kingcean Tuan, 2020.
