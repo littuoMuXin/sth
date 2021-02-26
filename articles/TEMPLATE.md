@@ -15,7 +15,9 @@ PUBLISH_DATE
 Keywords:
 A; B; C.
 
-See also
+**See also**
 
 - Link A
 - Link B
+
+Other notice

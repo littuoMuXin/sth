@@ -223,17 +223,17 @@ static string ToUnsecureString(SecureString value)
 
 ---
 
-Kingcean Tuan (@kingcean)
+Kingcean Tuan ([@kingcean](https://github.com/kingcean))
 
-Apr 8th, 2020 AD. 
+Apr 8th, [2020 AD](../).
 
 Keywords:
 cli; dotnet.
 
-See also
+**See also**
 
 - [Article source](https://weibo.com/ttarticle/p/show?id=2309404491344071491616)
 - [API Reference](https://nuscien.github.io/trivial/console/)
-- [Source code](https://github.com/nuscien/trivial/tree/v3.6/Console)
+- [Source code of implementation](https://github.com/nuscien/trivial/tree/v3.6/Console)
 
 (cc) Kingcean Tuan, 2020.

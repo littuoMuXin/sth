@@ -29,23 +29,27 @@ A thing that is not known or mentioned by name, or a thing that is thought to be
 
 Sort by alphabet of given name.
 
-- Aaronphy Ma (@Aaronphy)
+- Aaronphy Ma ([@Aaronphy](https://github.com/Aaronphy))
 - Eric Li
-- HotSundway Sun (@sundway)
-- Kingcean Tuan (@kingcean)
-- Winni Ma (@littuoMuXin)
+- HotSundway Sun ([@sundway](https://github.com/sundway))
+- Kingcean Tuan ([@kingcean](https://github.com/kingcean))
+- Winni Ma ([@littuoMuXin](https://github.com/littuoMuXin))
 
 The content of this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
 
-And the site is powered by GitHub Page.
+And the site is powered by GitHub Pages.
 
 ---
 
-Kingcean Tuan (@kingcean)
+Kingcean Tuan ([@kingcean](https://github.com/kingcean))
 
-Feb 24th, 2021 AD. 
+Feb 24th, [2021 AD](../../).
 
 Keywords:
 intro.
+
+**See also**
+
+- [GitHub repo](https://github.com/littuoMuXin/sth)
 
 (cc) Kingcean Tuan, 2021.

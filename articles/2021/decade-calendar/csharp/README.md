@@ -123,4 +123,6 @@ public struct DecadeDate
 }
 ```
 
+&copy; Kingcean Tuan, 2021.
+
 [&lt; Back to article](../)

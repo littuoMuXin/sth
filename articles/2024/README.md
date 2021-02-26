@@ -1,14 +1,12 @@
 # 2024
 
-## Tech Blogs
+## Front-end
 
-技术博客
-
-### Front-end
+Web 前端技术博客
 
 - *空*
 
-### .NET
+## .NET
 
 - *空*
 
@@ -16,15 +14,7 @@
 
 - *空*
 
-## Novel
-
-- *空*
-
-## Else
-
-- *空*
-
-### Innovation
+## Spark
 
 - *空*
 
