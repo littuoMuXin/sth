@@ -14,7 +14,7 @@ You can explore here to find something interested.
 
 ---
 
-sth.
+**sth.**
 
 ['sʌmθɪŋ]
 
@@ -50,6 +50,6 @@ intro.
 
 **See also**
 
-- [GitHub repo](https://github.com/littuoMuXin/sth)
+- [GitHub repository](https://github.com/littuoMuXin/sth)
 
 (cc) Kingcean Tuan, 2021.
