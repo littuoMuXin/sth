@@ -242,7 +242,7 @@ Kingcean Tuan ([@kingcean](https://github.com/kingcean))
 March 1st, [2021 AD](../). 
 
 Keywords:
-js; event; data-flow; task; observable; message.
+js; event; dataflow; task; observable; message.
 
 **See also**
 
