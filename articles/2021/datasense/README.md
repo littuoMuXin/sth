@@ -17,15 +17,8 @@ DataSense 是个管理数据及数据流的一个简单、高效、实用、有�
 
 ---
 
-Kingcean Tuan ([@kingcean](https://github.com/kingcean))
-
-March 1st, [2021 AD](../). 
-
-Keywords:
-js.
-
 **See also**
 
 - [Wiki](https://github.com/compositejs/datasense/wiki)
 
-(cc) Kingcean Tuan, 2021.
+&copy; Kingcean Tuan, 2021.

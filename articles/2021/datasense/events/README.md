@@ -42,8 +42,8 @@ evRegResult.Dispose();
 如果你需要触发其上的某个事件，直接 `fire` 即可，并传入该事件名和对应的参数。
 
 ```typescript
-events.fire("click", {
-  // 包含你想包含的内容。
+events.fire("click", { // ev
+  // 这是一个对象，包含你想包含的内容。
   // 他们将作为前面一段代码中的 ev 参数。
 });
 ```
@@ -80,7 +80,7 @@ events.on("click", (ev, listenerController) => {
 - `source` *(字符串)* 自定义触发源。
 - `additon` *(不限定类型)* 额外的信息。
 
-另外还有几个方法，我们稍后再介绍。以上内容可能有一点多，有一些也比较类似，以及可能大家会疑惑这有什么用呢？我们来举个例子吧：我们希望输出事件触发的具体事件，并限制只能被调用3次。这里可能会用到它里面的一个我还没提及的 `dispose()` 成员方法，这个方法可以销毁（去除）该注册的事件。
+另外还有几个方法，我们稍后再介绍。以上内容可能有一点多，有一些也比较类似，以及可能大家会疑惑这有什么用呢？我们来举个简单一点的例子吧：我们希望输出事件触发的具体时间，并在触发了 3 次后，取消订阅。这里可能会用到它里面的一个我还没提及的 `dispose()` 成员方法，这个方法可以销毁（去除）该注册的事件。
 
 ```typescript
 events.on("click", (ev, listenerController) => {
@@ -97,7 +97,7 @@ events.on("click", (ev, listenerController) => {
 
 ## 回调选项
 
-除了上述回调入参可以增加一些访问能力外，`on` 成员方法本身也支持不只这2个参数，它的完整参数列表如下。
+除了上述回调入参可以增加一些访问能力外，`on` 成员方法本身也支持不只这 2 个参数，它的完整参数列表如下。
 
 0. `key` *(字符串)* 事件名。
 1. `h` *(函数)* 回调。
@@ -184,6 +184,8 @@ events.on("click", (ev, listenerController) => {
 });
 ```
 
+当然，这些内容不会和其它事件进行共享。
+
 ## 触发
 
 以上都是如何注册事件，但注册的事件需要有人触发才会被执行啊，因此我们再来看看事件都是如何触发的。哦，对，前面已经介绍过了，调用 `fire` 成员方法，所以我们这里主要是介绍一些额外的功能。可能你已经想到了，肯定是这个方法除了事件名和事件参数 ev 以外，还有别的参数嘛。对的！具体如下。
@@ -199,6 +201,22 @@ events.on("click", (ev, listenerController) => {
 - `source` *(字符串)* 自定义触发源，可用于表达该事件触发是由哪方面引起的，例如是用户交互事件还是编程事件等等，可自定义具体值，将传递至 `listenerController.source` 以供回调读取。
 - `addition` *(不限定类型)* 额外的信息，用于存放可能需要的更多数据内容，将传递至 `listenerController.addition` 以供回调读取。
 
+如下示例，延迟 0.2s 后触发 click 事件，并包含一些附加信息。
+
+```typescript
+events.fire("click", { // ev
+  // 这是一个对象，包含你想包含的内容。
+  // 他们将作为前面一段代码中的 ev 参数。
+}, {
+  source: "somewhere",
+  message: "Hello!",
+  addition: {
+    name: "abc",
+    value: "defg"
+  }
+}, 200);
+```
+
 ## 监听者模式
 
 有的时候，我们可能希望某些事件的触发是掌握在触发源处，而不希望暴露给需要监听的地方，因为监听者只需监听，这也就意味着，我们不希望将完整的 `EventController` 实例暴露出来。那么，这可怎么办呢？简单！如下。
@@ -207,7 +225,7 @@ events.on("click", (ev, listenerController) => {
 let eventObs = events.createObservable();
 ```
 
-这么一来，`eventObs` 对象只含注册事件能力，而无事件触发能力。
+这么一来，`eventObs` 对象只含注册事件能力，而无事件触发能力（即无 `fire` 等方法）。
 
 甚至不光如此，这样生成的对象，还拥有一项非常有利于模块化管理的好处，那就是：通过调用其 `dispose()` 成员方法，可以随时销毁它，销毁后，通过该对象注册的所有事件也会被一并销毁。而此对象的销毁，并不会导致原始的事件控制器整体无效。此项特性非常有助于，在具有生命周期管理的组件内，对所有依赖注册的事件，进行简单有效的统一管理。
 
@@ -219,11 +237,11 @@ let eventObs = events.createObservable();
 let clickEventObs = events.createSingleObservable("click");
 ```
 
-需要留一点是，其对应的 `on` 方法，没有第一个参数 `key`，因为一定是 `click`（示例）。
+需要留意的是，其对应的 `on` 方法，没有第一个参数 `key`，因为一定是 `click`（示例）。
 
 ## 与 DOM 集成
 
-这些功能，想在 DOM 绑定中使用？没关系，可以使用类似如下的辅助方法搞定！
+这些功能，想在 DOM 事件中使用？没关系，可以使用类似如下的辅助方法搞定！
 
 ```typescript
 let element = document.getByElement("#someone");
@@ -239,7 +257,7 @@ obs.on(ev => {
 
 Kingcean Tuan ([@kingcean](https://github.com/kingcean))
 
-March 1st, [2021 AD](../). 
+March 1st, [2021 AD](../../). 
 
 Keywords:
 js; event; dataflow; task; observable; message.

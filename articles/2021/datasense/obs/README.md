@@ -6,7 +6,7 @@
 
 Kingcean Tuan ([@kingcean](https://github.com/kingcean))
 
-March 10th, [2021 AD](../). 
+March 10th, [2021 AD](../../). 
 
 Keywords:
 js; observable; dataflow; object; prop; subscrption.
