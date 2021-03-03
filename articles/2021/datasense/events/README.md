@@ -237,7 +237,35 @@ let eventObs = events.createObservable();
 let clickEventObs = events.createSingleObservable("click");
 ```
 
-需要留意的是，其对应的 `on` 方法，没有第一个参数 `key`，因为一定是 `click`（示例）。
+需要留意的是，其对应的 `on` 方法，没有第一个参数 `key`，因为一定是 `click`（示例）。如果希望创建的单一事件托管服务，并不只是包含事件注册，也希望包含触发，那么可以调用 `createSingle(key)` 成员方法实现。
+
+## 订阅
+
+另外，如果你熟悉观察者模式里的订阅，也可以采用标准订阅的方式，来获取事件，而不是通过注册。
+
+```typescript
+events.subscribeSingle("click", ev => {
+  // 执行你希望执行的操作。
+});
+```
+
+对于只含事件注册能力的实例，也是支持的。
+
+```typescript
+eventObs.subscribeSingle("click", ev => {
+  // 执行你希望执行的操作。
+});
+```
+
+对于单一事件注册机，也是类似，但方法名和参数列表略有不同。
+
+```typescript
+clickEventObs.subscribe(ev => {
+  // 执行你希望执行的操作。
+});
+```
+
+所有通过订阅返回的对象，都支持通过 `dispose()` 方法，来取消订阅。并且，如同大多数方法，订阅方法后面也支持再增加一个 `thisArg` 参数，来指定回调的 `this` 绑定。
 
 ## 与 DOM 集成
 
@@ -264,6 +292,6 @@ js; event; dataflow; task; observable; message.
 
 **See also**
 
-- [Wiki](https://github.com/compositejs/datasense/wiki/event)
+- [Wiki of the events](https://github.com/compositejs/datasense/wiki/event)
 
 (cc) Kingcean Tuan, 2021.
