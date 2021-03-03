@@ -5,6 +5,7 @@
 Web 前端技术博客
 
 - [高级事件](./datasense/events)
+- [通用双向绑定库](./datasense/obs)
 
 ## .NET
 
