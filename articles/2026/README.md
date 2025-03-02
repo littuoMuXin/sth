@@ -1,4 +1,4 @@
-# 2024
+# 2026
 
 ## Front-end
 
@@ -22,4 +22,4 @@ Web 前端技术博客
 
 See also
 
-[&lt; Previous](../2023) \| [Next &gt;](../2025)
+[&lt; Previous](../2025)
