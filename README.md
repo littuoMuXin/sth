@@ -1,7 +1,3 @@
-# sth
-
-A thing that is thought to be important or worth taking notice of.
-
 - [高级事件](./articles/2021/datasense/events) *(TypeScript)*
 - [通用双向绑定库](./articles/2021/datasense/obs) *(TypeScript)*
 - [十进制历](./articles/2021/decade-calendar)
