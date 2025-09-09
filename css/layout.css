@@ -420,12 +420,26 @@ a.link-long-button > span {
     vertical-align: middle;
     display: inline-block;
 }
-a.link-long-button > span > span, a.link-tile-wide > span > span, section.link-tile-wide > a > span > span {
+a.link-long-button > span > span, a.link-long-button > span > span + span,
+a.link-tile-wide > span > span, a.link-tile-wide > span > span + span,
+section.link-tile-wide > a > span > span, section.link-tile-wide > a > span > span + span {
     color: #888;
     font-size: 16px;
-    transition: 0.4s;
+    transition: 0.2s;
 }
-a.link-long-button:hover > span > span, a.link-tile-wide:hover > span > span {
+ul.link-tile-compact > li > a > span > span, ul.link-tile-compact > li > a > span + span {
+    color: #888;
+    font-size: 14px;
+    transition: 0.2s;
+}
+a.link-long-button > span > span + span, a.link-tile-wide > span > span + span,
+section.link-tile-wide > a > span > span + span, ul.link-tile-compact > li > a > span + span {
+    margin-left: 16px;
+}
+a.link-long-button:hover > span > span, a.link-long-button:hover > span > span + span,
+a.link-tile-wide:hover > span > span, a.link-tile-wide:hover > span > span + span,
+section.link-tile-wide > a:hover > span > span, section.link-tile-wide > a:hover > span > span + span
+ul.link-tile-compact > li > a:hover > span > span, ul.link-tile-compact > li > a:hover > span + span {
     color: #999;
 }
 @media screen and (max-width:1030px) {
@@ -487,9 +501,9 @@ ul.link-tile-compact > li + li.grouping-header {
 }
 ul.link-tile-compact > li > a, ul.link-tile-compact > li > a:visited {
     color: #CCC;
-    line-height: 38px;
+    line-height: 24px;
     background-color: #282828;
-    padding: 0 19px;
+    padding: 7px 19px;
     margin: 0;
     border-width: 1px;
     border-style: solid;
@@ -502,7 +516,7 @@ ul.link-tile-compact > li > a, ul.link-tile-compact > li > a:visited {
 ul.link-tile-compact > li > a:hover {
     color: #9EF;
     background-color: #333;
-    padding: 0 17px;
+    padding: 7px 17px;
     border-color: rgba(128, 128, 128, 0.4);
     text-decoration: none;
     transition: 0.1s;
@@ -511,7 +525,7 @@ ul.link-tile-compact > li > a:hover {
 ul.link-tile-compact > li > a:active {
     color: #8CE;
     background-color: #222;
-    padding: 0 19px;
+    padding: 7px 19px;
     border-color: rgba(128, 128, 128, 0.2) rgba(128, 128, 128, 0.2) rgba(128, 128, 128, 0.3) rgba(128, 128, 128, 0.2);
     text-decoration: none;
     transition: 0.1s;

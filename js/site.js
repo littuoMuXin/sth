@@ -191,6 +191,7 @@ let site = {};
             }
 
             context.refresh();
+            window.scrollTo({ top: 0, behavior: "smooth" });
             return;
         }
 
@@ -211,7 +212,10 @@ let site = {};
                 else
                     r2 = r2.replace(/\(..\//g, "(" + relaPath + item.dir + "/").replace(/\(.\//g, "(" + relaPath + item.dir + "/" + item.file + "/");
             } else {
-                r2 = r2.replace(/\(.\//g, "(" + relaPath + item.dir + "/");
+                if (item.url.endsWith("/README.md"))
+                    r2 = r2.replace(/\(..\//g, "(" + relaPath + item.dir + "/").replace(/\(.\//g, "(" + relaPath + item.dir + "/" + item.id + "/");
+                else
+                    r2 = r2.replace(/\(.\//g, "(" + relaPath + item.dir + "/");
             }
 
             let header1 = "# " + item.name + "\n";
@@ -304,7 +308,10 @@ let site = {};
                         children: [{
                             tagName: "a",
                             props: { href: ele.url },
-                            children: ele.name
+                            children: ele.subtitle ? [
+                                { tagName: "span", children: ele.name },
+                                { tagName: "span", children: ele.subtitle }
+                            ] : ele.name
                         }]
                     }
                 }).filter(function (ele) {
@@ -323,7 +330,7 @@ let site = {};
                 }
             }
 
-            if (relatedContainer.children.length > 0) delete relatedContainer.style;
+            if (!sub && relatedContainer.children.length > 0) delete relatedContainer.style;
             context.refresh();
         }, function (r) {
             clearArray(model);
@@ -333,11 +340,12 @@ let site = {};
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function genMenu() {
+    function genMenu(list, callback) {
         let col = [];
-        if (!info.list) return col;
+        if (!list) list = info.list;
+        if (!list) return col;
         let year = null;
-        info.list.forEach(function (item) {
+        list.forEach(function (item) {
             if (!item || item.invalid) return;
             if (typeof item.date === "string" && item.date.length > 3) {
                 let y = item.date.substring(0, 4);
@@ -349,24 +357,62 @@ let site = {};
                 year = y;
             }
 
+            let link = {
+                tagName: "a",
+                props: { href: "?" + item.id },
+                on: {
+                    click(ev) {
+                        if (ev.preventDefault) ev.preventDefault();
+                        else ev.returnValue = false;
+                        renderArticle(item.id);
+                        history.pushState({ id: item.id }, "", "?" + item.id);
+                    }
+                },
+                children: item.subtitle ? [
+                    { tagName: "span", children: item.name },
+                    { tagName: "span", children: item.subtitle }
+                ] : item.name
+            };
+            if (typeof callback === "function") callback(link);
             col.push({
                 tagName: "li",
-                children: [{
-                    tagName: "a",
-                    props: { href: "?" + item.id },
-                    on: {
-                        click(ev) {
-                            if (ev.preventDefault) ev.preventDefault();
-                            else ev.returnValue = false;
-                            renderArticle(item.id);
-                            history.pushState({ id: item.id }, "", "?" + item.id);
-                        }
-                    },
-                    children: item.name
-                }]
+                children: [link]
             });
         });
         return col;
+    }
+
+    function getMenu(list, linkGenCallback) {
+        list.reverse().forEach(function (item) {
+            if (!item) return;
+            if (!item.url || item.url.length < 12) {
+                item.invalid = true;
+                return;
+            }
+
+            let fileName = item.url.substring(6);
+            let fileDate = item.url.substring(1, 5).replace("/", "").replace("/", "");
+            let fileExtPos = fileName.indexOf(".");
+            let fileExt = fileExtPos >= 0 ? fileName.substring(fileExtPos + 1) : "";
+            fileName = fileExtPos > 0 ? fileName.substring(0, fileExtPos) : "";
+            if (!fileName) {
+                item.invalid = true;
+                return;
+            }
+
+            if (fileName.endsWith("/README")) fileName = fileName.substring(0, fileName.length - 7);
+            item.file = fileName;
+            if (!item.id) item.id = fileName;
+            if (!item.date) item.date = fileDate;
+            if (!item.type) item.type = fileExt;
+            item.dir = item.url.substring(0, 5);
+        });
+        return genMenu(list, linkGenCallback);
+    }
+
+    function configUrl() {
+        let lang = navigator.language || navigator.userLanguage || navigator.browserLanguage || navigator.systemLanguage;
+        return settings.menuPath || (lang.indexOf("zh") === 0 ? "zh-Hans.json" : "en.json");
     }
 
     function render() {
@@ -374,38 +420,13 @@ let site = {};
         let model = rootContext.model();
         if (!model) return;
         let id = site.firstQuery();
-        let lang = navigator.language || navigator.userLanguage || navigator.browserLanguage || navigator.systemLanguage;
-        $.get(settings.menuPath || (lang.indexOf("zh") === 0 ? "zh-Hans.json" : "en.json")).then(function (r) {
+        $.get(configUrl()).then(function (r) {
             if (!r || !r.list || !(r.list instanceof Array)) return;
             setChildChildren("blogTitle", r.name || "Blogs");
-            r.list.reverse().forEach(function (item) {
-                if (!item) return;
-                if (!item.url || item.url.length < 12) {
-                    item.invalid = true;
-                    return;
-                }
-
-                let fileName = item.url.substring(6);
-                let fileDate = item.url.substring(1, 5).replace("/", "").replace("/", "");
-                let fileExtPos = fileName.indexOf(".");
-                let fileExt = fileExtPos >= 0 ? fileName.substring(fileExtPos + 1) : "";
-                fileName = fileExtPos > 0 ? fileName.substring(0, fileExtPos) : "";
-                if (!fileName) {
-                    item.invalid = true;
-                    return;
-                }
-
-                if (fileName.endsWith("/README")) fileName = fileName.substring(0, fileName.length - 7);
-                item.file = fileName;
-                if (!item.id) item.id = fileName;
-                if (!item.date) item.date = fileDate;
-                if (!item.type) item.type = fileExt;
-                item.dir = item.url.substring(0, 5);
-                if (id === fileName) curItem = item;
-            });
+            let menu = getMenu(r.list);
             info.name = r.name;
             info.list = r.list;
-            setChildChildren("articles", genMenu());
+            setChildChildren("articles", menu);
             renderArticle(id);
         }, function (r) {
             genNotification(strings.loadFailed || "Load failed.");
@@ -467,6 +488,14 @@ let site = {};
             + "</ul></section>";
         if (needInsert) document.body.insertBefore(cntEle, document.body.children[0]);
         else document.body.appendChild(cntEle);
+    };
+
+    site.blogMenu = function(url, linkGenCallback) {
+        if (!url) url = configUrl();
+        return $.get(url).then(function (r) {
+            if (!r || !r.list || !(r.list instanceof Array)) return;
+            return getMenu(r.list, linkGenCallback);
+        });
     };
 
     site.blogs = function (options) {

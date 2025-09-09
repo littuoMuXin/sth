@@ -9,6 +9,10 @@
     grid-template-columns: 300px auto;
     gap: 20px;
 }
+#blog_content.x-part-blog-normal {
+    display: block;
+    grid-template-columns: auto;
+}
 #blog_content > article {
     font-size: 16px;
     max-width: 800px;
@@ -28,6 +32,8 @@
     cursor: default;
     user-select: text;
 }
+#blog_content > ul.link-tile-compact,
+#blog_content > ul.link-tile-compact > li,
 #blog_content > article > main > ul.link-tile-compact,
 #blog_content > article > main > ul.link-tile-compact > li,
 #blog_content > article > section > ul.link-tile-compact,
@@ -92,6 +98,20 @@
     padding: 0 0 0 18px;
     margin-left: 0;
     margin-right: 0;
+}
+#blog_content > article > main > table {
+    border-collapse: collapse;
+}
+#blog_content > article > main > table > thead > tr > td,
+#blog_content > article > main > table > thead > tr > th,
+#blog_content > article > main > table > tbody > tr > td,
+#blog_content > article > main > table > tbody > tr > th,
+#blog_content > article > main > table > tfoot > tr > td,
+#blog_content > article > main > table > tfoot > tr > th,
+#blog_content > article > main > table > tr > td,
+#blog_content > article > main > table > tr > th {
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    padding: 3px;
 }
 #blog_content > article > main > pre {
     max-width: 640px;;
