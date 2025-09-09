@@ -304,6 +304,7 @@ valueObs.stopObserving();
 
 可以通过 `isObserving()` 成员方法获取当下是否正在订阅同步中。
 
+<!-- End -->
 ---
 
 Kingcean Tuan ([@kingcean](https://github.com/kingcean))
@@ -316,6 +317,5 @@ js; observable; dataflow; object; prop; subscrption.
 **See also**
 
 - [Wiki of the observable value](https://github.com/compositejs/datasense/wiki/props)
-- [Wiki of the observable props](https://github.com/compositejs/datasense/wiki/props)
 
 (cc) Kingcean Tuan, 2021.

@@ -1,0 +1,85 @@
+{
+    "name": "sth",
+    "list": [
+        {
+            "name": "开发有趣的命令行应用",
+            "subtitle": "C#",
+            "url": "/2020/rich-cli/README.md",
+            "categories": ["cli", "dotnet"],
+            "date": "20200408",
+            "author": { "name": "Kingcean Tuan", "url": "https://kingcean.net" },
+            "end": true,
+            "related": [
+                { "name": "Article source", "url": "https://weibo.com/ttarticle/p/show?id=2309404491344071491616" },
+                { "name": "API Reference", "url": "https://nuscien.github.io/trivial/console/" },
+                { "name": "Source code of implementation", "url": "https://github.com/nuscien/trivial/tree/v3.6/Console" }
+            ],
+            "notes": [
+                "(cc) Kingcean Tuan, 2021."
+            ]
+        },
+        {
+            "id": "datasense-events-v1",
+            "name": "高级事件",
+            "subtitle": "Type Script",
+            "url": "/2021/datasense/events/README.md",
+            "categories": ["js", "event", "dataflow", "task", "observable", "message"],
+            "date": "20210301",
+            "author": { "name": "Kingcean Tuan", "url": "https://kingcean.org" },
+            "end": true,
+            "related": [
+                { "name": "Wiki of the events", "url": "https://github.com/compositejs/datasense/wiki/event" }
+            ],
+            "notes": [
+                "(cc) Kingcean Tuan, 2021."
+            ]
+        },
+        {
+            "id": "datasense-obs-v1",
+            "name": "通用双向绑定库",
+            "subtitle": "Type Script",
+            "url": "/2021/datasense/obs/README.md",
+            "categories": ["js", "observable", "dataflow", "object", "prop", "subscrption"],
+            "date": "20210303",
+            "author": { "name": "Kingcean Tuan", "url": "https://kingcean.org" },
+            "end": true,
+            "related": [
+                { "name": "Wiki of the observable value", "url": "https://github.com/compositejs/datasense/wiki/props" }
+            ],
+            "notes": [
+                "(cc) Kingcean Tuan, 2021."
+            ]
+        },
+        {
+            "name": "十进制历",
+            "url": "/2021/decade-calendar/README.md",
+            "categories": ["calendar", "idea"],
+            "date": "20210224",
+            "author": { "name": "Kingcean Tuan", "url": "https://github.com/kingcean" },
+            "location": "Shanghai",
+            "end": true,
+            "related": [
+                { "name": "Generic decade calendar", "url": "?decade-calendar/calendar" }
+            ],
+            "subs": ["/calendar/README.md", "/csharp/README.md", "/type-script/README.md"],
+            "notes": [
+                "(cc) Kingcean Tuan, 2021."
+            ]
+        },
+        {
+            "name": "后人类时代",
+            "url": "/2025/post-human-era/README.md",
+            "categories": ["future", "ai", "evolution"],
+            "date": "20250302",
+            "author": { "name": "Kingcean Tuan", "url": "https://github.com/kingcean" },
+            "location": "Shanghai",
+            "end": true,
+            "related": [
+                { "name": "未来进化论 （2009年《冰洋世纪》博客原文章）", "url": "https://kingcean.wordpress.com/2009/03/25/%e6%9c%aa%e6%9d%a5%e8%bf%9b%e5%8c%96%e8%ae%ba/" }
+            ],
+            "notes": [
+                "(cc) Kingcean Tuan, 2021."
+            ]
+        }
+    ]
+}
