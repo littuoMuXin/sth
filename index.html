@@ -61,10 +61,7 @@
         </section>
     </footer>
     <script type="text/javascript">
-        site.blogMenu("articles/config.json", function (link) {
-            delete link.on;
-            if (link.props.href) link.props.href = "./articles/?" + link.props.href.substring(1)
-        }).then(function (r) {
+        site.blogMenu("articles/config.json", "articles").then(function (r) {
             Hje.render(document.getElementById("blog_content"), {
                 children: [{
                     tagName: "h1",

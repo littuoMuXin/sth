@@ -346,6 +346,13 @@ let site = {};
         if (!list) list = info.list;
         if (!list) return col;
         let year = null;
+        if (typeof callback == "string") {
+            let path = callback;
+            callback = function (link) {
+                delete link.on;
+                if (link.props.href) link.props.href = "./" + path + "/?" + link.props.href.substring(1)
+            };
+        }
         list.forEach(function (item) {
             if (!item || item.invalid) return;
             if (typeof item.date === "string" && item.date.length > 3) {
