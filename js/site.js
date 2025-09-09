@@ -336,6 +336,7 @@ let site = {};
             clearArray(model);
             genNotification(strings.loadFailed || "Load failed.");
             context.refresh();
+            window.scrollTo({ top: 0, behavior: "smooth" });
         });
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -494,7 +495,11 @@ let site = {};
         if (!url) url = configUrl();
         return $.get(url).then(function (r) {
             if (!r || !r.list || !(r.list instanceof Array)) return;
-            return getMenu(r.list, linkGenCallback);
+            return {
+                tagName: "ul",
+                styleRefs: "link-tile-compact",
+                children: getMenu(r.list, linkGenCallback)
+            };
         });
     };
 
