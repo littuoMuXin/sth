@@ -7,10 +7,6 @@ let site = {};
     let strings = {};
     let settings = {};
 
-    function clearArray(arr) {
-        while (arr.length > 0) arr.pop();
-    }
-
     function genHeadItem(ele, level) {
         return {
             text: ele.innerText,
@@ -389,7 +385,6 @@ let site = {};
             highlightSelected(item.id);
             context.refresh();
         }, function (r) {
-            clearArray(model);
             genNotification(strings.loadFailed || "Load failed.");
             context.refresh();
             window.scrollTo({ top: 0, behavior: "smooth" });
