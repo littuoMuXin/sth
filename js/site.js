@@ -23,7 +23,7 @@ let site = {};
 
     function genHeadModel(item, sub) {
         let text = item.text;
-        if (sub) text = "·　" + text;
+        if (sub) text = "▹ " + text;
         return {
             tagName: "li",
             children: [{
@@ -109,6 +109,39 @@ let site = {};
         return m
     }
 
+    function highlightSelected(id, needRefresh) {
+        let menu = rootContext.childContext("articles");
+        if (!menu) return;
+        let ul = menu.model();
+        if (!ul || !ul.children) return;
+        let diff = false;
+        for (let i = 0; i < ul.children.length; i++) {
+            let li = ul.children[i];
+            if (!li) continue;
+            if (id && li.data === id) {
+                if (!li.styleRefs) {
+                    li.styleRefs = ["state-sel"];
+                    diff = true;
+                }
+            } else {
+                if (!li.styleRefs) continue;
+                if (li.styleRefs === "state-sel") {
+                    delete li.styleRefs;
+                    diff = true;
+                    continue;
+                }
+
+                if (!(li.styleRefs instanceof Array)) continue;
+                let j = li.styleRefs.indexOf("state-sel");
+                if (j < 0) continue;
+                li.styleRefs.splice(j, 1);
+                diff = true;
+            }
+        }
+
+        if (needRefresh) menu.refresh();
+    }
+
     function getSubFile(item, sub) {
         if (!item || !sub || !item.subs) return {};
         if (sub.endsWith(".md")) {
@@ -124,7 +157,7 @@ let site = {};
         if (!(item.subs instanceof Array)) return {};
         let sub1 = sub + ".md";
         let sub2 = sub + "/README.md";
-        for (var i = 0; i < item.subs.length; i++) {
+        for (let i = 0; i < item.subs.length; i++) {
             let subItem = item.subs[i];
             if (!subItem) continue;
             if (subItem.startsWith("/")) subItem = subItem.substring(1);
@@ -141,28 +174,47 @@ let site = {};
         return {};
     }
 
+    function setNextButton(key, id) {
+        let m = getChildModel(key);
+        if (!m) return;
+        m.data = id;
+        if (!m.props) m.props = {};
+        if (id) {
+            m.props.disabled = false;
+            m.props.href = "?" + id;
+        } else {
+            m.props.disabled = true;
+            m.props.href = "javascript:void(0)";
+        }
+    }
+
     function renderArticle(id) {
         let context = rootContext;
         if (!context) return;
+        highlightSelected(undefined);
         resetContentMenu();
         setChildChildren("note", undefined);
-        let relatedContainer = getChildModel("relatedContainer");
+        let relatedContainer = getChildModel("relatedContainer") || {};
         relatedContainer.style = { display: "none" };
         relatedContainer.children = [];
+        setNextButton("previousButton", undefined);
+        setNextButton("nextButton", undefined);
         let item;
-        var sub;
+        let sub;
         if (id) {
-            var subOffset = id.lastIndexOf("/");
+            let subOffset = id.lastIndexOf("/");
             if (subOffset > 0) {
                 sub = id.substring(subOffset + 1);
                 id = id.substring(0, subOffset);
             }
 
             let list = info.list;
-            for (let i in list) {
+            for (let i = 0; i < list.length; i++) {
                 let ele = list[i];
                 if (!ele || ele.id !== id) continue;
                 item = ele;
+                if (i > 0) setNextButton("previousButton", (list[i - 1] || {}).id);
+                if (i < list.length - 1) setNextButton("nextButton", (list[i + 1] || {}).id);
                 break;
             }
 
@@ -177,7 +229,7 @@ let site = {};
                 cnt.styleRefs = "x-part-blog-menu";
                 cnt.children = [];
                 if (settings.banner instanceof Array) {
-                    for (var i = 0; i < settings.banner.length; i++) {
+                    for (let i = 0; i < settings.banner.length; i++) {
                         let banner = settings.banner[i];
                         if (banner) cnt.children.push(banner);
                     }
@@ -203,7 +255,7 @@ let site = {};
             let testRootPath = relaPath + "/";
             if (location.pathname.endsWith(testRootPath)) relaPath = ".";
         } catch (ex) {}
-        var url = relaPath + item.url;
+        let url = relaPath + item.url;
         if (sub) url = relaPath + "/" + item.dir + "/" + item.file + "/" + sub;
         $.get(url).then(function (r2) {
             if (sub) {
@@ -266,7 +318,7 @@ let site = {};
             }
 
             if (item.categories && item.categories instanceof Array && item.categories.length > 0) {
-                for (let i in item.categories) {
+                for (let i = 0; i < item.categories.length; i++) {
                     let category = item.categories[i];
                     if (category) noteEles.push({
                         tagName: "span",
@@ -291,7 +343,7 @@ let site = {};
                         if (!noteLine) continue;
                         relatedContainer.children.push({
                             tagName: "p",
-                            children:　[{
+                            children: [{
                                 tagName: "span",
                                 children: noteLine
                             }]
@@ -331,6 +383,7 @@ let site = {};
             }
 
             if (!sub && relatedContainer.children.length > 0) delete relatedContainer.style;
+            highlightSelected(item.id);
             context.refresh();
         }, function (r) {
             clearArray(model);
@@ -353,11 +406,21 @@ let site = {};
                 if (link.props.href) link.props.href = "./" + path + "/?" + link.props.href.substring(1)
             };
         }
+
         list.forEach(function (item) {
             if (!item || item.invalid) return;
+            if (typeof item === "string") {
+                col.push({
+                    tagName: "li",
+                    styleRefs: "grouping-header",
+                    children: item
+                });
+                return;
+            }
+
             if (typeof item.date === "string" && item.date.length > 3) {
                 let y = item.date.substring(0, 4);
-                if (y !== year) col.push({
+                if (y !== year && y !== "wiki" && y !== "text" && !y.startsWith("doc") && !y.startsWith("v") && !y.startsWith("a")) col.push({
                     tagName: "li",
                     styleRefs: "grouping-header",
                     children: y
@@ -372,50 +435,91 @@ let site = {};
                     click(ev) {
                         if (ev.preventDefault) ev.preventDefault();
                         else ev.returnValue = false;
-                        renderArticle(item.id);
-                        history.pushState({ id: item.id }, "", "?" + item.id);
+                        site.goto(item.id);
                     }
                 },
                 children: item.subtitle ? [
-                    { tagName: "span", children: item.name },
+                    { tagName: "span", children: item.menu || item.name },
                     { tagName: "span", children: item.subtitle }
-                ] : item.name
+                ] : item.menu || item.name
             };
             if (typeof callback === "function") callback(link);
             col.push({
                 tagName: "li",
+                data: item.id,
                 children: [link]
             });
         });
         return col;
     }
 
-    function getMenu(list, linkGenCallback) {
-        list.reverse().forEach(function (item) {
-            if (!item) return;
-            if (!item.url || item.url.length < 12) {
-                item.invalid = true;
-                return;
+    function formatMenuItem(item, prefix) {
+        if (!item) return;
+        if (!item.url || item.url.length < 10 || !item.name) {
+            item.invalid = true;
+            return;
+        }
+
+        let fileName = item.url.substring(6);
+        let fileDate = item.url.substring(1, 5).replace("/", "").replace("/", "");
+        let fileExtPos = fileName.indexOf(".");
+        let fileExt = fileExtPos >= 0 ? fileName.substring(fileExtPos + 1) : "";
+        fileName = fileExtPos > 0 ? fileName.substring(0, fileExtPos) : "";
+        if (!fileName) {
+            item.invalid = true;
+            return;
+        }
+
+        if (fileName.endsWith("/README")) fileName = fileName.substring(0, fileName.length - 7);
+        item.file = fileName;
+        item.menu = prefix ? (prefix + item.name) : item.name;
+        if (!item.id) item.id = fileName;
+        if (!item.date) item.date = fileDate;
+        if (!item.type) item.type = fileExt;
+        item.dir = item.url.substring(0, 5);
+    }
+
+    function pushWiki(col, wiki, indent) {
+        if (!wiki || wiki.length < 1) return;
+        let prefix = "";
+        if (indent > 0) {
+            for (let i = 1; i < indent; i++) {
+                prefix += "　";
             }
 
-            let fileName = item.url.substring(6);
-            let fileDate = item.url.substring(1, 5).replace("/", "").replace("/", "");
-            let fileExtPos = fileName.indexOf(".");
-            let fileExt = fileExtPos >= 0 ? fileName.substring(fileExtPos + 1) : "";
-            fileName = fileExtPos > 0 ? fileName.substring(0, fileExtPos) : "";
-            if (!fileName) {
-                item.invalid = true;
-                return;
+            prefix += "▹ ";
+        }
+
+        indent++;
+        for (let i = 0; i < wiki.length; i++) {
+            let item = wiki[i];
+            if (!item) continue;
+            if (typeof item === "string") {
+                col.push(item);
+                continue;
             }
 
-            if (fileName.endsWith("/README")) fileName = fileName.substring(0, fileName.length - 7);
-            item.file = fileName;
-            if (!item.id) item.id = fileName;
-            if (!item.date) item.date = fileDate;
-            if (!item.type) item.type = fileExt;
-            item.dir = item.url.substring(0, 5);
-        });
-        return genMenu(list, linkGenCallback);
+            formatMenuItem(item, prefix);
+            col.push(item);
+            if (item.children) {
+                pushWiki(col, item.children, indent);
+            }
+        }
+    }
+
+    function getMenu(list, wiki) {
+        let col = [];
+        pushWiki(col, wiki, 0);
+        if (list && list.length > 0) {
+            for (let i = list.length - 1; i >= 0; i--) {
+                let item = list[i];
+                if (!item) continue;
+                formatMenuItem(item);
+                col.push(item);
+            }
+        }
+
+        return col;
     }
 
     function configUrl() {
@@ -427,14 +531,14 @@ let site = {};
         if (!rootContext) return;
         let model = rootContext.model();
         if (!model) return;
+        highlightSelected(undefined);
         let id = site.firstQuery();
         $.get(configUrl()).then(function (r) {
-            if (!r || !r.list || !(r.list instanceof Array)) return;
+            if (!r) return;
             setChildChildren("blogTitle", r.name || "Blogs");
-            let menu = getMenu(r.list);
+            info.list = getMenu(r.list, r.wiki);
             info.name = r.name;
-            info.list = r.list;
-            setChildChildren("articles", menu);
+            setChildChildren("articles", genMenu());
             renderArticle(id);
         }, function (r) {
             genNotification(strings.loadFailed || "Load failed.");
@@ -498,17 +602,26 @@ let site = {};
         else document.body.appendChild(cntEle);
     };
 
-    site.blogMenu = function(url, linkGenCallback) {
-        if (!url) url = configUrl();
-        return $.get(url).then(function (r) {
-            if (!r || !r.list || !(r.list instanceof Array)) return;
+    site.blogMenu = function(url) {
+        if (!url) url = {};
+        else if (typeof url === "string") url = { url: url };
+        if (!url.url) url.url = configUrl();
+        return $.get(url.url).then(function (r) {
+            if (!r) return;
+            let col = getMenu(r.list, r.wiki);
             return {
                 tagName: "ul",
                 styleRefs: "link-tile-compact",
-                children: getMenu(r.list, linkGenCallback)
+                children: genMenu(col, linkGenCallback)
             };
         });
     };
+
+    site.goto = function (id) {
+        renderArticle(id);
+        if (id) history.pushState({ id: id }, "", "?" + id);
+        else history.pushState({}, "", "./");
+    }
 
     site.blogs = function (options) {
         let cntEle = document.getElementById("blog_content");
@@ -526,6 +639,12 @@ let site = {};
         }
 
         let hasInit = rootContext != null;
+        if (hasInit) {
+            render();
+            return;
+        }
+
+        hasInit = true;
         rootContext = Hje.render(cntEle, {
             children: [{
                 tagName: "article",
@@ -560,10 +679,10 @@ let site = {};
                             else continue;
                             if (eleUrl.endsWith("/README.md")) eleUrl = eleUrl.substring(0, eleUrl.length - 10);
                             else if (eleUrl.endsWith("/")) eleUrl = eleUrl.substring(0, eleUrl.length - 1);
-                            var eleUrlArr = eleUrl.split("/");
+                            let eleUrlArr = eleUrl.split("/");
                             if (eleUrlArr.length < 3 || eleUrlArr.length > 4) continue;
-                            var enableSub = eleUrlArr.length == 4 && eleUrlArr[3];
-                            for (var j = 0; j < list.length; j++) {
+                            let enableSub = eleUrlArr.length == 4 && eleUrlArr[3];
+                            for (let j = 0; j < list.length; j++) {
                                 let article = list[j];
                                 if (!article || !article.id) continue;
                                 let subPath = article.id;
@@ -581,8 +700,7 @@ let site = {};
                                 ele.addEventListener("click", function (ev) {
                                     if (ev.preventDefault) ev.preventDefault();
                                     else ev.returnValue = false;
-                                    renderArticle(subPath);
-                                    history.pushState({ id: subPath }, "", "?" + subPath);
+                                    site.goto(subPath);
                                 });
                                 break;
                             }
@@ -633,6 +751,34 @@ let site = {};
                     tagName: "section",
                     style: { display: "none" },
                     children: []
+                }, {
+                    tagName: "section",
+                    styleRefs: "x-part-blog-next",
+                    children: [{
+                        key: "previousButton",
+                        tagName: "a",
+                        props: { disabled: true, href: "javascript:void(0)" },
+                        children: "<",
+                        on: {
+                            click(ev) {
+                                let m = getChildModel("previousButton");
+                                if (!m || !m.data) return;
+                                site.goto(m.data);
+                            }
+                        }
+                    }, {
+                        key: "nextButton",
+                        tagName: "a",
+                        props: { disabled: true, href: "javascript:void(0)" },
+                        children: (strings.next || "Next") + "　>",
+                        on: {
+                            click(ev) {
+                                let m = getChildModel("nextButton");
+                                if (!m || !m.data) return;
+                                site.goto(m.data);
+                            }
+                        }
+                    }]
                 }]
             }, {
                 tagName: "aside",
@@ -654,8 +800,7 @@ let site = {};
                                 click(ev) {
                                     if (ev.preventDefault) ev.preventDefault();
                                     else ev.returnValue = false;
-                                    renderArticle(undefined);
-                                    history.pushState({}, "", "./");
+                                    site.goto(undefined);
                                 }
                             }
                         }]
@@ -669,10 +814,9 @@ let site = {};
             }]
         });
         render();
-        if (hasInit) return;
         window.addEventListener("popstate", function (ev) {
             renderArticle(ev.state ? ev.state.id : undefined);
         });
     };
-    
+
 })(site || (site = {}));

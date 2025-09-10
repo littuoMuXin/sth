@@ -9,10 +9,6 @@
     grid-template-columns: 300px auto;
     gap: 20px;
 }
-#blog_content.x-part-blog-normal {
-    display: block;
-    grid-template-columns: auto;
-}
 #blog_content > article {
     font-size: 16px;
     max-width: 800px;
@@ -68,6 +64,9 @@
 }
 #blog_content > article > section.x-part-blog-related > h2 {
     font-weight: lighter;
+}
+#blog_content > article > section.x-part-blog-related > p {
+    font-size: 14px;
 }
 #blog_content > article > main img {
     width: 100%;
@@ -131,8 +130,60 @@
     max-width: none;
     grid-column: 1 / -1;
 }
-#blog_content > article:has(> main.x-part-blog-menu) + aside {
+#blog_content > article:has(> main.x-part-blog-menu) + aside,
+#blog_content > article:has(> main.x-part-blog-menu) > section.x-part-blog-next {
     display: none;
+}
+#blog_content > article > section.x-part-blog-next {
+    margin-top: 40px;
+}
+#blog_content > article > section.x-part-blog-next > a,
+#blog_content > article > section.x-part-blog-next > a:visited {
+    color: #CCC;
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration: none;
+    background-color: rgba(128, 128, 128, 0.06);
+    padding: 9px 19px;
+    margin: 0 10px 0 0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(128, 128, 128, 0.16) rgba(128, 128, 128, 0.08) rgba(128, 128, 128, 0.08) rgba(128, 128, 128, 0.08);
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.4s;
+}
+#blog_content > article > section.x-part-blog-next > a:hover {
+    color: #EEE;
+    text-decoration: none;
+    background-color: rgba(128, 128, 128, 0.2);
+    border-color: rgba(128, 128, 128, 0.4) rgba(128, 128, 128, 0.3) rgba(128, 128, 128, 0.3) rgba(128, 128, 128, 0.3);
+    box-shadow: #111 1px 1px 4px;
+    transition: 0.1s;
+}
+#blog_content > article > section.x-part-blog-next > a:active {
+    color: #9EF;
+    background-color: rgba(128, 128, 128, 0.08);
+    text-decoration: none;
+    border-color: rgba(128, 128, 128, 0.2) rgba(128, 128, 128, 0.2) rgba(128, 128, 128, 0.3) rgba(128, 128, 128, 0.2);
+    box-shadow: #111 0 0 4px;
+    transition: 0.1s;
+}
+#blog_content > article > section.x-part-blog-next > a:disabled {
+    color: #999;
+    background-color: rgba(128, 128, 128, 0.01);
+    text-decoration: none;
+    border-color: rgba(128, 128, 128, 0.04);
+    transition: 0.4s;
+}
+#blog_content > article > section.x-part-blog-next > a:first-child {
+    width: 60px;
+    text-align: left;
+}
+#blog_content > article > section.x-part-blog-next > a:first-child + a {
+    width: 100px;
+    text-align: right;
 }
 #blog_content > aside {
     margin: 10px 0;
@@ -175,20 +226,27 @@
     margin-bottom: 30px;
 }
 @media screen and not (max-width:960px) {
-    #blog_content > aside > nav > ul > li > a, #blog_content > aside > nav > ul > li > a:visited {
+    #blog_content > aside > nav > ul > li > a, #blog_content > aside > nav > ul > li > a:visited,
+    #blog_content > aside > nav > ul > li.state-sel > a, #blog_content > aside > nav > ul > li.state-sel > a:visited {
         line-height: normal;
         background: transparent;
         padding: 0;
         margin: 0;
         border: 0 none transparent;
     }
-    #blog_content > aside > nav > ul > li > a:hover {
-        text-decoration: underline;
+    #blog_content > aside > nav > ul > li > a, #blog_content > aside > nav > ul > li > a:visited {
+        text-decoration: none;
+    }
+    #blog_content > aside > nav > ul > li.state-sel > a, #blog_content > aside > nav > ul > li.state-sel > a:visited {
+        text-decoration: underline rgba(128, 128, 128, 0.4) dotted;
+    }
+    #blog_content > aside > nav > ul > li > a:hover, #blog_content > aside > nav > ul > li.state-sel > a:hover {
+        text-decoration: underline solid;
         background: transparent;
         box-shadow: none;
     }
-    #blog_content > aside > nav > ul > li > a:active {
-        text-decoration: underline;
+    #blog_content > aside > nav > ul > li > a:active, #blog_content > aside > nav > ul > li.state-sel > a:active {
+        text-decoration: underline solid;
         background: transparent;
         box-shadow: none;
     }
