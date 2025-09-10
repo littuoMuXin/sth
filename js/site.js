@@ -197,6 +197,8 @@ let site = {};
         let relatedContainer = getChildModel("relatedContainer") || {};
         relatedContainer.style = { display: "none" };
         relatedContainer.children = [];
+        let nextContainer = getChildModel("nextSection");
+        if (nextContainer) nextContainer.style = { display: "none" };
         setNextButton("previousButton", undefined);
         setNextButton("nextButton", undefined);
         let item;
@@ -215,6 +217,7 @@ let site = {};
                 item = ele;
                 if (i > 0) setNextButton("previousButton", (list[i - 1] || {}).id);
                 if (i < list.length - 1) setNextButton("nextButton", (list[i + 1] || {}).id);
+                if (nextContainer) delete nextContainer.style;
                 break;
             }
 
@@ -602,7 +605,7 @@ let site = {};
         else document.body.appendChild(cntEle);
     };
 
-    site.blogMenu = function(url) {
+    site.blogMenu = function(url, linkGenCallback) {
         if (!url) url = {};
         else if (typeof url === "string") url = { url: url };
         if (!url.url) url.url = configUrl();
@@ -752,8 +755,10 @@ let site = {};
                     style: { display: "none" },
                     children: []
                 }, {
+                    key: "nextSection",
                     tagName: "section",
                     styleRefs: "x-part-blog-next",
+                    style: { display: "none" },
                     children: [{
                         key: "previousButton",
                         tagName: "a",
