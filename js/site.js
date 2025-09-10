@@ -7,6 +7,10 @@ let site = {};
     let strings = {};
     let settings = {};
 
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
     function genHeadItem(ele, level) {
         return {
             text: ele.innerText,
@@ -213,7 +217,7 @@ let site = {};
                 item = ele;
                 if (i > 0) setNextButton("previousButton", (list[i - 1] || {}).id);
                 if (i < list.length - 1) setNextButton("nextButton", (list[i + 1] || {}).id);
-                if (nextContainer) delete nextContainer.style;
+                if (nextContainer && !settings.disableNext && list.length > 1) delete nextContainer.style;
                 break;
             }
 
@@ -242,7 +246,7 @@ let site = {};
             }
 
             context.refresh();
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            scrollToTop();
             return;
         }
 
@@ -387,9 +391,9 @@ let site = {};
         }, function (r) {
             genNotification(strings.loadFailed || "Load failed.");
             context.refresh();
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            scrollToTop();
         });
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        scrollToTop();
     }
 
     function genMenu(list, callback) {
@@ -418,7 +422,7 @@ let site = {};
 
             if (typeof item.date === "string" && item.date.length > 3) {
                 let y = item.date.substring(0, 4);
-                if (y !== year && y !== "wiki" && y !== "text" && !y.startsWith("doc") && !y.startsWith("v") && !y.startsWith("a")) col.push({
+                if (y !== year) col.push({
                     tagName: "li",
                     styleRefs: "grouping-header",
                     children: y
@@ -458,8 +462,9 @@ let site = {};
             return;
         }
 
-        let fileName = item.url.substring(6);
-        let fileDate = item.url.substring(1, 5).replace("/", "").replace("/", "");
+        let offset = item.url.indexOf("/", 3);
+        if (offset < 0) offset = 5;
+        let fileName = item.url.substring(offset + 1);
         let fileExtPos = fileName.indexOf(".");
         let fileExt = fileExtPos >= 0 ? fileName.substring(fileExtPos + 1) : "";
         fileName = fileExtPos > 0 ? fileName.substring(0, fileExtPos) : "";
@@ -472,9 +477,12 @@ let site = {};
         item.file = fileName;
         item.menu = prefix ? (prefix + item.name) : item.name;
         if (!item.id) item.id = fileName;
-        if (!item.date) item.date = fileDate;
+        if (!item.date && offset === 5) {
+            let fileDate = item.url.substring(1, 5).replace("/", "").replace("/", "");
+            if (!isNaN(parseInt(fileDate))) item.date = fileDate;
+        }
         if (!item.type) item.type = fileExt;
-        item.dir = item.url.substring(0, 5);
+        item.dir = item.url.substring(0, offset);
     }
 
     function pushWiki(col, wiki, indent) {
@@ -593,7 +601,14 @@ let site = {};
     site.head = function (ext, menu, needInsert) {
         let cntEle = document.createElement("header");
         cntEle.id = "page_head";
-        cntEle.innerHTML = "<section><h1><a href=\"https://kingcean." + ext + "\"><strong>Kingcean</strong><span>." + ext + "</span></a></h1><ul>"
+        let i = ext.indexOf(".");
+        let name = "kingcean";
+        if (i > 0) {
+            name = ext.substring(0, i);
+            ext = ext.substring(i + 1);
+        }
+
+        cntEle.innerHTML = "<section><h1><a href=\"https://" + name.toLowerCase() + "." + ext + "\"><strong>" + name + "</strong><span>." + ext + "</span></a></h1><ul>"
             + menu.map(ele => "<li><a href=\"" + ele.url + "\">" + ele.name + "</a></li>").join("")
             + "</ul></section>";
         if (needInsert) document.body.insertBefore(cntEle, document.body.children[0]);
@@ -634,6 +649,8 @@ let site = {};
             settings.rootPath = options.rootPath;
             settings.disableTitle = options.disableTitle;
             settings.menuPath = options.menuPath;
+            settings.disableNext = options.disableNext;
+            settings.disableArticleMenu = options.disableArticleMenu;
         }
 
         let hasInit = rootContext != null;
@@ -705,7 +722,7 @@ let site = {};
                         }
 
                         let contentMenu = getChildModel("cntMenu");
-                        if (!contentMenu) return;
+                        if (settings.disableArticleMenu || !contentMenu) return;
                         let headers = getHeadings(mdEle);
                         let levels = getHeadingLevels(headers);
                         if (!headers || headers.length < 2 || levels.length < 1) {
@@ -722,7 +739,7 @@ let site = {};
                                 props: { href: "javascript:void(0)" },
                                 on: {
                                     click(ev) {
-                                        window.scrollTo({ top: 0, behavior: "smooth" });
+                                        scrollToTop();
                                     }
                                 },
                                 children: "⇮ " + (strings.top || "Top")
