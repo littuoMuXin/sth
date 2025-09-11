@@ -7,6 +7,7 @@ let site = {};
     let strings = {
         en: {
             name: "Name",
+            article: "Article",
             articles: "Articles",
             articleMenu: "In this article",
             architecture: "Architecture",
@@ -17,23 +18,41 @@ let site = {};
             blogs: "Blogs",
             home: "Home",
             about: "About",
+            game: "Game",
             games: "Games",
+            video: "Video",
             videos: "Videos",
+            screenshot: "Screenshot",
             screenshots: "Screenshots",
+            photo: "Photo",
             photos: "Photos",
+            pic: "Picture",
             pics: "Pictures",
+            file: "File",
             files: "Files",
+            lib: "Library",
             libs: "Libraries",
+            package: "Package",
             packages: "Packages",
+            tool: "Tool",
             tools: "Tools",
-            docs: "Docs",
+            book: "Book",
             books: "Books",
+            comment: "Comment",
+            comments: "Comments",
+            docs: "Docs",
             search: "Search",
             settings: "Settings",
             tutorial: "Tutorial",
             learnMore: "Learn more",
             back: "Back",
             goHome: "Back to homepage",
+            recomm: "Recommendation",
+            ok: "OK",
+            cancel: "Cancel",
+            continue: "Continue",
+            open: "Open",
+            close: "Close",
             loading: "Loading…",
             seeAlso: "See also",
             loadFailed: "Load failed.",
@@ -41,16 +60,20 @@ let site = {};
             next: "Next",
             previous: "Previous",
             projects: "Projects",
+            archiveProjects: "Archive projects",
             features: "Features",
             installation: "Installation",
             sourceCode: "Source",
             community: "Community",
+            link: "Link",
             otherLinks: "Other links",
+            relatedLinks: "Related links",
             more: "More…",
             getDetails: "Get details"
         },
         "zh-Hans": {
             name: "名称",
+            article: "文章",
             articles: "文章",
             articleMenu: "文章目录",
             architecture: "架构",
@@ -61,23 +84,41 @@ let site = {};
             blogs: "博客",
             home: "首页",
             about: "关于",
+            game: "游戏",
             games: "游戏",
+            video: "视频",
             videos: "视频",
+            screenshot: "截图",
             screenshots: "截图",
+            photo: "照片",
             photos: "照片",
+            pic: "图片",
             pics: "图片",
+            file: "文件",
             files: "文件",
+            lib: "库",
             libs: "库",
+            package: "包",
             packages: "包",
+            tool: "工具",
             tools: "工具",
-            docs: "文档",
+            book: "书",
             books: "书",
+            comment: "评论",
+            comments: "评论",
+            docs: "文档",
             search: "搜索",
             settings: "设置",
             tutorial: "教程",
             learnMore: "了解详情",
             back: "返回",
             goHome: "返回首页",
+            recomm: "推荐",
+            ok: "确定",
+            cancel: "取消",
+            continue: "继续",
+            open: "打开",
+            close: "关闭",
             loading: "加载中…",
             seeAlso: "参考",
             loadFailed: "加载失败。",
@@ -85,11 +126,14 @@ let site = {};
             next: "下一篇",
             previous: "上一篇",
             projects: "项目",
+            archiveProjects: "归档项目",
             features: "功能",
             installation: "安装",
             sourceCode: "源码",
             community: "社区",
+            link: "链接",
             otherLinks: "更多链接",
+            relatedLinks: "相关链接",
             more: "更多…",
             getDetails: "获取详情"
         },
@@ -509,7 +553,7 @@ let site = {};
             scrollToTop();
         });
         scrollToTop();
-        return sub ? (id + "/" + sub) : id;
+        return id;
     }
 
     function genMenu(list, callback) {
@@ -779,8 +823,7 @@ let site = {};
     };
 
     site.goto = function (id) {
-        let newId = renderArticle(id);
-        if (newId) id = newId;
+        renderArticle(id);
         if (id) history.pushState({ id: id }, "", "?" + id);
         else history.pushState({}, "", "./");
     }
@@ -871,6 +914,7 @@ let site = {};
                         }
 
                         let contentMenu = getChildModel("cntMenu");
+                        if (typeof settings.onRenderArticle === "function") settings.onRenderArticle(mdEle);
                         if (settings.disableArticleMenu || !contentMenu) return;
                         let headers = getHeadings(mdEle);
                         let levels = getHeadingLevels(headers);
