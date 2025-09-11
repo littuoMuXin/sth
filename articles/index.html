@@ -22,10 +22,10 @@
                     <a href="https://littuomuxin.github.io/sth/"><code>sth</code></a>
                 </li>
                 <li>
-                    <a href="https://12dlabs.github.io/games">Games</a>
+                    <a id="topmenu-games" href="https://12dlabs.github.io/games">Games</a>
                 </li>
                 <li>
-                    <a href="https://12dlabs.github.io/about">About</a>
+                    <a id="topmenu-about" href="https://12dlabs.github.io/about">About</a>
                 </li>
             </ul>
         </section>
@@ -35,6 +35,8 @@
             rootPath: "articles",
             menuPath: "config.json"
         });
+        site.getString("about", "topmenu-about");
+        site.getString("games", "topmenu-games");
     </script>
     <footer>
         <section>

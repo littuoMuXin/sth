@@ -26,8 +26,23 @@
         color: rgba(255, 255, 255, 0.6); font-size: 24px;
     }
     </style>
+    <script type="text/javascript">
+    function onInit() {
+        site.getString("about", "topmenu-about");
+        site.getString("games", "topmenu-games");
+
+        site.blogMenu("articles/config.json", "articles").then(function (r) {
+            Hje.render(document.getElementById("blog_content"), {
+                children: [{
+                    tagName: "h1",
+                    children: site.getString("blogs")
+                }, r]
+            });
+        });
+    }
+    </script>
 </head>
-<body>
+<body onload="onInit()">
     <header>
         <section>
             <h1><a href="https://12dlabs.github.io"><strong>12D</strong><span>Labs</span></a></h1>
@@ -36,10 +51,10 @@
                     <a href="https://littuomuxin.github.io/sth/"><code>sth</code></a>
                 </li>
                 <li>
-                    <a href="https://12dlabs.github.io/games">Games</a>
+                    <a id="topmenu-games" href="https://12dlabs.github.io/games">Games</a>
                 </li>
                 <li>
-                    <a href="https://12dlabs.github.io/about">About</a>
+                    <a id="topmenu-about" href="https://12dlabs.github.io/about">About</a>
                 </li>
             </ul>
         </section>
@@ -60,15 +75,5 @@
             </div>
         </section>
     </footer>
-    <script type="text/javascript">
-        site.blogMenu("articles/config.json", "articles").then(function (r) {
-            Hje.render(document.getElementById("blog_content"), {
-                children: [{
-                    tagName: "h1",
-                    children: "Blog"
-                }, r]
-            });
-        });
-    </script>
 </body>
 </html>
