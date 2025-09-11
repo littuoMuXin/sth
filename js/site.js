@@ -6,16 +6,34 @@ let site = {};
     let info = {};
     let strings = {
         en: {
+            name: "Name",
             articles: "Articles",
             articleMenu: "In this article",
+            architecture: "Architecture",
+            website: "Website",
+            officialWebsite: "Official website",
+            log: "Log",
+            blog: "Blog",
             blogs: "Blogs",
             home: "Home",
             about: "About",
             games: "Games",
             videos: "Videos",
+            screenshots: "Screenshots",
+            photos: "Photos",
+            pics: "Pictures",
+            files: "Files",
+            libs: "Libraries",
+            packages: "Packages",
             tools: "Tools",
+            docs: "Docs",
+            books: "Books",
             search: "Search",
+            settings: "Settings",
+            tutorial: "Tutorial",
+            learnMore: "Learn more",
             back: "Back",
+            goHome: "Back to homepage",
             loading: "Loading…",
             seeAlso: "See also",
             loadFailed: "Load failed.",
@@ -32,16 +50,34 @@ let site = {};
             getDetails: "Get details"
         },
         "zh-Hans": {
+            name: "名称",
             articles: "文章",
             articleMenu: "文章目录",
+            architecture: "架构",
+            website: "网站",
+            officialWebsite: "官网",
+            log: "日志",
+            blog: "博客",
             blogs: "博客",
             home: "首页",
             about: "关于",
             games: "游戏",
             videos: "视频",
+            screenshots: "截图",
+            photos: "照片",
+            pics: "图片",
+            files: "文件",
+            libs: "库",
+            packages: "包",
             tools: "工具",
+            docs: "文档",
+            books: "书",
             search: "搜索",
+            settings: "设置",
+            tutorial: "教程",
+            learnMore: "了解详情",
             back: "返回",
+            goHome: "返回首页",
             loading: "加载中…",
             seeAlso: "参考",
             loadFailed: "加载失败。",
@@ -251,7 +287,7 @@ let site = {};
 
     function renderArticle(id) {
         let context = rootContext;
-        if (!context) return;
+        if (!context) return undefined;
         highlightSelected(undefined);
         resetContentMenu();
         setChildChildren("note", undefined);
@@ -282,6 +318,24 @@ let site = {};
                 break;
             }
 
+            if (!item) {
+                let redir = info.redir;
+                let newId;
+                if (redir) newId = redir[id];
+                if (newId) {
+                    id = newId;
+                    for (let i = 0; i < list.length; i++) {
+                        let ele = list[i];
+                        if (!ele || ele.id !== id) continue;
+                        item = ele;
+                        if (i > 0) setNextButton("previousButton", (list[i - 1] || {}).id);
+                        if (i < list.length - 1) setNextButton("nextButton", (list[i + 1] || {}).id);
+                        if (nextContainer && !settings.disableNext && list.length > 1) delete nextContainer.style;
+                        break;
+                    }
+                }
+            }
+
             sub = getSubFile(item, sub).file;
         }
 
@@ -308,7 +362,7 @@ let site = {};
 
             context.refresh();
             scrollToTop();
-            return;
+            return undefined;
         }
 
         setChildChildren("title", item.name);
@@ -455,6 +509,7 @@ let site = {};
             scrollToTop();
         });
         scrollToTop();
+        return sub ? (id + "/" + sub) : id;
     }
 
     function genMenu(list, callback) {
@@ -604,6 +659,7 @@ let site = {};
             if (!r) return;
             setChildChildren("blogTitle", r.name || site.getString("articles"));
             info.list = getMenu(r.list, r.wiki);
+            info.redir = r.redir;
             info.name = r.name;
             setChildChildren("articles", genMenu());
             renderArticle(id);
@@ -723,7 +779,8 @@ let site = {};
     };
 
     site.goto = function (id) {
-        renderArticle(id);
+        let newId = renderArticle(id);
+        if (newId) id = newId;
         if (id) history.pushState({ id: id }, "", "?" + id);
         else history.pushState({}, "", "./");
     }
