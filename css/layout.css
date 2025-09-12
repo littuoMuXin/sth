@@ -422,12 +422,15 @@ a.link-long-button > span {
 }
 a.link-long-button > span > span, a.link-long-button > span > span + span,
 a.link-tile-wide > span > span, a.link-tile-wide > span > span + span,
+a.link-long-button > span > br + span, a.link-tile-wide > span > br + span,
 section.link-tile-wide > a > span > span, section.link-tile-wide > a > span > span + span {
     color: #888;
     font-size: 16px;
     transition: 0.2s;
 }
-ul.link-tile-compact > li > a > span > span, ul.link-tile-compact > li > a > span + span {
+ul.link-tile-compact > li > a > span > span,
+ul.link-tile-compact > li > a > span + span,
+ul.link-tile-compact > li > a > br + span {
     color: #888;
     font-size: 14px;
     transition: 0.2s;

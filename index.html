@@ -30,7 +30,7 @@
         site.getString("about", "topmenu-about");
         site.getString("games", "topmenu-games");
 
-        site.blogMenu("articles/config.json", "articles").then(function (r) {
+        site.blogMenu({ url: "articles/config.json", onItem: "articles" }).then(function (r) {
             Hje.render(document.getElementById("blog_content"), {
                 children: [{
                     tagName: "h1",

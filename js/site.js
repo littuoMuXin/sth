@@ -53,9 +53,17 @@ let site = {};
             continue: "Continue",
             open: "Open",
             close: "Close",
+            new: "New",
+            add: "Add",
+            modify: "Modify",
+            remove: "Remove",
+            delete: "Delete",
+            empty: "Empty",
             loading: "Loading…",
             seeAlso: "See also",
+            error: "Error",
             loadFailed: "Load failed.",
+            renderFailed: "Render failed.",
             top: "Top",
             next: "Next",
             previous: "Previous",
@@ -119,9 +127,17 @@ let site = {};
             continue: "继续",
             open: "打开",
             close: "关闭",
+            new: "新建",
+            add: "添加",
+            modify: "修改",
+            remove: "移除",
+            delete: "删除",
+            emty: "空",
             loading: "加载中…",
             seeAlso: "参考",
+            error: "错误",
             loadFailed: "加载失败。",
+            renderFailed: "渲染失败。",
             top: "返回顶部",
             next: "下一篇",
             previous: "上一篇",
@@ -143,13 +159,39 @@ let site = {};
 
     function initMarket() {
         if (strings.mkt) return strings.mkt;
-        let lang = navigator.language || navigator.userLanguage || navigator.browserLanguage || navigator.systemLanguage;
-        strings.mkt = lang.indexOf("zh") === 0 ? "zh-Hans" : "en";
+        let lang = navigator.language || navigator.userLanguage || navigator.browserLanguage || navigator.systemLanguage || "";
+        strings.mkt = lang.startsWith("zh") === 0 || (lang.endsWith("-CN") && !lang.startsWith("en")) ? "zh-Hans" : "en";
         return strings.mkt;
     }
 
     function scrollToTop() {
         window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function fetchStr(url) {
+        if (typeof fetch === "undefined") {
+            if (typeof $ === "function" && typeof $.get === "function") return $.get(url);
+            return new Promise(function (resolve, reject) {
+                reject("Not implemented");
+            });
+        }
+
+        return fetch(url).then(function (r) {
+            return r.text()
+        });
+    }
+
+    function fetchJson(url) {
+        if (typeof fetch === "undefined") {
+            if (typeof $ === "function" && typeof $.get === "function") return $.get(url);
+            return new Promise(function (resolve, reject) {
+                reject("Not implemented");
+            });
+        }
+
+        return fetch(url).then(function (r) {
+            return r.json()
+        });
     }
 
     function genHeadItem(ele, level) {
@@ -400,7 +442,7 @@ let site = {};
                 cnt.children.push({
                     tagName: "ul",
                     styleRefs: "link-tile-compact",
-                    children: genMenu()
+                    children: genMenu(true)
                 });
             }
 
@@ -419,7 +461,7 @@ let site = {};
         } catch (ex) {}
         let url = relaPath + item.url;
         if (sub) url = relaPath + "/" + item.dir + "/" + item.file + "/" + sub;
-        $.get(url).then(function (r2) {
+        fetchStr(url).then(function (r2) {
             if (sub) {
                 if (sub.indexOf("/") > 0)
                     r2 = r2.replace(/\(..\/..\//g, "(" + relaPath + item.dir + "/").replace(/\(..\//g, "(" + relaPath + item.dir + "/" + item.file + "/");
@@ -492,7 +534,7 @@ let site = {};
             setChildChildren("note", noteEles);
             let cnt = getChildModel("content");
             if (cnt) {
-                cnt.data = { value: r2, sub: sub, id: id };
+                cnt.data = { value: r2, sub: sub, id: id, data: item.data };
                 delete cnt.styleRefs;
                 delete cnt.children;
             }
@@ -556,7 +598,7 @@ let site = {};
         return id;
     }
 
-    function genMenu(list, callback) {
+    function genMenu(showDesc, list, callback) {
         let col = [];
         if (!list) list = info.list;
         if (!list) return col;
@@ -590,6 +632,17 @@ let site = {};
                 year = y;
             }
 
+            let text = item.menu || item.name;
+            if (showDesc && item.desc) text = [
+                { tagName: "span", children: item.menu || item.name || item.subtitle },
+                { tagName: "br" },
+                { tagName: "span", children: item.desc }
+            ];
+            if (!text) text = item.subtitle;
+            else if (typeof text === "string" && item.subtitle) text = [
+                { tagName: "span", children: item.menu || item.name },
+                { tagName: "span", children: item.subtitle }
+            ];
             let link = {
                 tagName: "a",
                 props: { href: "?" + item.id },
@@ -600,10 +653,7 @@ let site = {};
                         site.goto(item.id);
                     }
                 },
-                children: item.subtitle ? [
-                    { tagName: "span", children: item.menu || item.name },
-                    { tagName: "span", children: item.subtitle }
-                ] : item.menu || item.name
+                children: text
             };
             if (typeof callback === "function") callback(link);
             col.push({
@@ -699,7 +749,7 @@ let site = {};
         if (!model) return;
         highlightSelected(undefined);
         let id = site.firstQuery();
-        $.get(configUrl()).then(function (r) {
+        fetchJson(configUrl()).then(function (r) {
             if (!r) return;
             setChildChildren("blogTitle", r.name || site.getString("articles"));
             info.list = getMenu(r.list, r.wiki);
@@ -711,6 +761,21 @@ let site = {};
             genNotification(site.getString("loadFailed"));
             rootContext.refresh();
         });
+    }
+
+    function renderMd(element, md, options) {
+        let done = false;
+        try {
+            if (typeof settings.renderMarkdown === "function")
+                done = settings.renderMarkdown(element, md, options);
+            if (done) return;
+            if (typeof marked === "object" && typeof marked.parse === "function")
+                element.innerHTML = marked.parse(md);
+            else
+                element.innerText = md;
+        } catch (ex) {
+            element.innerText = site.getString("renderFailed");
+        }
     }
 
     site.regStrings = function (map) {
@@ -807,17 +872,17 @@ let site = {};
         else document.body.appendChild(cntEle);
     };
 
-    site.blogMenu = function(url, linkGenCallback) {
+    site.blogMenu = function(url) {
         if (!url) url = {};
         else if (typeof url === "string") url = { url: url };
         if (!url.url) url.url = configUrl();
-        return $.get(url.url).then(function (r) {
+        return fetchJson(url.url).then(function (r) {
             if (!r) return;
             let col = getMenu(r.list, r.wiki);
             return {
                 tagName: "ul",
                 styleRefs: "link-tile-compact",
-                children: genMenu(col, linkGenCallback)
+                children: genMenu(url.desc, col, url.onItem)
             };
         });
     };
@@ -836,15 +901,7 @@ let site = {};
             document.body.appendChild(cntEle);
         }
 
-        if (options) {
-            settings.banner = options.banner;
-            settings.rootPath = options.rootPath;
-            settings.disableTitle = options.disableTitle;
-            settings.menuPath = options.menuPath;
-            settings.disableNext = options.disableNext;
-            settings.disableArticleMenu = options.disableArticleMenu;
-        }
-
+        if (options) settings = options;
         let hasInit = rootContext != null;
         if (hasInit) {
             render();
@@ -874,7 +931,12 @@ let site = {};
                         let mdModel = c.model();
                         if (!mdEle || !mdModel || !mdModel.data || mdModel.data.done) return;
                         mdModel.data.done = true;
-                        mdEle.innerHTML = marked.parse(mdModel.data.value);
+                        options = {
+                            id: mdModel.data.id,
+                            sub: mdModel.data.sub,
+                            data: mdModel.data.data
+                        };
+                        renderMd(mdEle, mdModel.data.value, options);
                         let eles = mdEle.getElementsByTagName("a");
                         let list = info.list;
                         for (let i = 0; i < eles.length; i++) {
@@ -914,7 +976,7 @@ let site = {};
                         }
 
                         let contentMenu = getChildModel("cntMenu");
-                        if (typeof settings.onRenderArticle === "function") settings.onRenderArticle(mdEle);
+                        if (typeof settings.onRenderArticle === "function") settings.onRenderArticle(mdEle, options);
                         if (settings.disableArticleMenu || !contentMenu) return;
                         let headers = getHeadings(mdEle);
                         let levels = getHeadingLevels(headers);
