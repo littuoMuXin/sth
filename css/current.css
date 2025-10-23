@@ -16,6 +16,9 @@
 #blog_content > article > main > table th > code:hover {
     background-color: #111;
 }
+#blog_content > article > main > table {
+    min-width: 80%;
+}
 #blog_content > article > main table th {
     background-color: #1A1A1A;
 }

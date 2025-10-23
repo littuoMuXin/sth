@@ -80,6 +80,30 @@
             "notes": [
                 "(cc) Kingcean Tuan, 2025."
             ]
+        },
+        {
+            "name": "Foundry Local",
+            "subtitle": "AI 框架",
+            "url": "/2025/foundry-local-yulan/README.md",
+            "categories": ["ai"],
+            "date": "20251018",
+            "author": { "name": "Kingcean Tuan", "url": "https://github.com/kingcean" },
+            "end": true,
+            "related": [
+                { "name": "CLI", "subtitle": "命令说明", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-cli" },
+                { "name": "REST API", "subtitle": "接口说明", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-rest" },
+                { "name": "C# SDK", "subtitle": "参考文档", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-csharp" },
+                { "name": "JavaScript SDK", "subtitle": "参考文档", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-rust" },
+                { "name": "Python SDK", "subtitle": "参考文档", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-python" },
+                { "name": "Rust SDK", "subtitle": "参考文档", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-javascript" },
+                { "name": "ONNX 官网", "subtitle": "简体中文版", "url": "https://onnx.org.cn/" },
+                { "name": "AI Dev Gallery", "subtitle": "Microsoft Store 详情页", "url": "https://apps.microsoft.com/detail/9N9PN1MM3BD5" }
+            ],
+            "notes": [
+                "(cc) Kingcean Tuan, 2025.",
+                "本文部分内容来自于微软官方文档，版权归微软公司所有。文中所提及 Foundry Local、Azure、ONNX、Windows、VS Code 为微软旗下产品或服务，版权归微软公司所有；其它各产品和服务，版权归其各自公司或组织所有。",
+                "涉及内容包含了预览版产品的说明介绍，最终版上线后可能与本文描述会有不同。"
+            ]
         }
     ]
 }
