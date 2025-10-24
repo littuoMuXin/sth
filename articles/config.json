@@ -82,6 +82,7 @@
             ]
         },
         {
+            "id": "foundry-local-preview",
             "name": "Foundry Local",
             "subtitle": "AI 框架",
             "url": "/2025/foundry-local-yulan/README.md",
@@ -90,6 +91,7 @@
             "author": { "name": "Kingcean Tuan", "url": "https://github.com/kingcean" },
             "end": true,
             "related": [
+                { "name": "PPT", "url": "/sth/articles/2025/foundry-local-preview/FoundryLocal251018.pptx" },
                 { "name": "CLI", "subtitle": "命令说明", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-cli" },
                 { "name": "REST API", "subtitle": "接口说明", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-rest" },
                 { "name": "C# SDK", "subtitle": "参考文档", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-csharp" },

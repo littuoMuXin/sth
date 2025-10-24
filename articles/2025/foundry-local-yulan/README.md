@@ -26,7 +26,7 @@ Foundry Local 支持多语言多平台。
 
 微软有多套 AI 相关的服务，例如 ONNX，那么它们之间的关系和区别有些什么呢？
 
-![各服务之间的关系](../foundry-local-preview/rela.jpg)
+![各服务之间的关系](./rela.jpg)
 
 - __DirectML__
 
@@ -99,13 +99,23 @@ Foundry Local 支持在 Windows 和 macOS 上运行。
 
 ## 架构
 
-![架构图](../foundry-local-preview/arch.jpg)
+![架构图](./arch.jpg)
+
+### 模块和依赖
 
 Foundry Local 的核心是 Inference Service Agent（即 `Inference.Service.Agent.exe` 程序），以后台进程形式运行，它包括了模型的管理和执行等核心能力。模型存储于本地，在执行时，其底层是依托 ONNX Runtime，并经由具体 EP 运行于适当的硬件加速器（如 CPU、GPU 或 NPU）中。
 
 Foundry CLI（即 `foundry.exe` 程序）可与之进行交互，并管理其状态。该程序已注册至操作系统环境变量中，即可直接在命令行中运行，无需事先指定路径。
 
 上层应用可通过两者访问 Foundry Local 的 AI 具体能力，及控制其服务状态。
+
+### 运行流程
+
+![下载与运行](./workflow.jpg)
+
+Foundry Local 所使用的语言模型均存储于本地，且支持动态管理。具体来说，在云端，Azure AI Foundry 注册表管理着所有可用模型，Foundry Local 可发起下载指令，该指令会先执行查询操作，以获得包括模型名称、版本、类型和配置信息等在内的信息清单，以及一个用于下载的 CDN 地址，随后会执行对模型文件的下载，保存于本地存储空间中指定的缓存目录中。
+
+缓存中的模型会根据需要，被加载与内存中，当诸如对话或其它类型的 AI 请求从 App 发来时，Foundry Local 便会调用 ONNX Runtime 运行指定模型的推理，并返回结果。
 
 ## 接口形式
 
@@ -123,7 +133,7 @@ foundry service status
 
 其会在控制台上输出具体的状态地址，其中包括 `localhost` 上的端口号，可以截取该信息并构成 Endpoint 暂存于内存中，以便后续使用。如下所示，对应的 Endpoint 即 `http://localhost:63309`。
 
-![获取状态命令](../foundry-local-preview/cli-status.jpg)
+![获取状态命令](./cli-status.jpg)
 
 > 🟢 Model management service is running on http://127.0.0.1:63309/openai/status
 
@@ -200,20 +210,20 @@ GET /foundry/list
 
 其返回的是一个 JSON 数组，列举了可下载模型信息。每个模型信息中包含了众多字段，以下几个是最重要的。
 
-- `name` 字符串：模型的唯一标识符（Model ID）。
-- `displayName`：字符串：显示名称。
-- `alias`：字符串：模型简称（Alias）。
-- `version`：字符串：模型的版本号。
-- `uri`：字符串：模型在 Azure AI Foundry 注册表中的资源地址。
-- `publisher`：字符串：发布者名称。
-- `task` 字符串：模型功能类型。以下为常见值。
+- `name` _字符串_：模型的唯一标识符（Model ID）。
+- `displayName` _字符串_：显示名称。
+- `alias` _字符串_：模型简称（Alias）。
+- `version` _字符串_：模型的版本号。
+- `uri` _字符串_：模型在 Azure AI Foundry 注册表中的资源地址。
+- `publisher` _字符串_：发布者名称。
+- `task` _字符串_：模型功能类型。以下为常见值。
   - `"chat-completion"` 对话
   - `"text-generation"` 文本生成
   - `"automatic speech recognition"` 语音识别（ASR）
-- `supportsToolCalling`：布尔值：是否支持工具调用。
-- `runtime` 对象：包括以下字段。
-  - `deviceType` 字符串：适配的硬件加速器类型，常见值包括 `"CPU"`、`"GPU"`、`"NPU"`。
-  - `executionProvider` 字符串：表示 EP，以下为常见值。
+- `supportsToolCalling` _布尔值_：是否支持工具调用。
+- `runtime` _对象_：包括以下字段。
+  - `deviceType` _字符串_：适配的硬件加速器类型，常见值包括 `"CPU"`、`"GPU"`、`"NPU"`。
+  - `executionProvider` _字符串_：表示 EP，以下为常见值。
     - `"CPUExecutionProvider"` - CPU
     - `"CUDAExecutionProvider"` - NVIDIA CUDA GPU
     - `"WebGpuExecutionProvider"`- WebGPU
@@ -221,7 +231,7 @@ GET /foundry/list
     - `"OpenVINOExecutionProvider"`- Intel® OpenVINO™
     - `"NvTensorRTRTXExecutionProvider"`- NVIDIA TensorRT
     - `"VitisAIExecutionProvider"`- AMD Vitis AI
-- `license`：字符串：许可证。
+- `license` _字符串_：许可证。
 
 除此之外，还有 `modelType` 模型格式、`promptTemplate` Prompt 模板、`fileSizeMb` 文件大小等其它字段。
 
@@ -251,7 +261,7 @@ foundry model download <model>
 
 下载完成后，模型即处于可用状态。
 
-![模型的生命周期](../foundry-local-preview/run.jpg)
+![模型的生命周期](./run.jpg)
 
 为了节约内存，模型会按需加载，也可手动预载。经过一段时间（TTL，默认为10分钟）没有使用后，会自动从内存中卸载。
 
