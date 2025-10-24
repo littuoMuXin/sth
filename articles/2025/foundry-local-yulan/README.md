@@ -52,18 +52,18 @@ Foundry Local 支持多语言多平台。
 
 - __Foundry Local__
 
-  在本地设备运行和管理 AI 语言模型，并提供 API 供 app 使用。其底层式 ONNX Runtime。
+  在本地设备运行和管理 AI 语言模型，并提供 API 供 app 使用。其底层是 ONNX Runtime。
 
 - __Windows AI APIs__
 
   一套集成在 WinRT 的 AI 相关 API，包含了当前 Windows 内置和支持使用的 AI 能力。
 
-所以，Foundry Local 是 Windows 上本地 AI 解决方案，主要适用于包括对话、文本生成、翻译等语言模型相关场景。其与 Windows AI APIs 有部分场景类似，但也有以下区别；同时，这二者及其它一些工具，统称为 Windows AI 工场（Windows AI Foundry）。
+所以，Foundry Local 是 Windows 上本地 AI 解决方案，主要适用于包括对话、文本生成、翻译等语言模型相关场景。其与 Windows AI APIs 有部分场景类似，二者及其它一些工具，统称为 Windows AI 工场（Windows AI Foundry）；但同时它们也有以下区别。
 
 - __Windows AI APIs__ 基于当前 Windows 打算提供（例如随预装或系统更新而来）的 AI 相关业务，而对外通过 Windows App SDK 提供相关访问能力；
-- __Foundry Local__ 将支持的能力本身进行包装提供，同时也提供配套的模型管理，也就是说其自定义能力会相对更丰富一些，其可通过 Windows App SDK、Foundry Local Manager（即 SDK）或本地 HTTP 服务等方式访问。
+- __Foundry Local__ 将所有支持的能力本身进行包装提供，同时也提供配套的模型管理，也就是说其自定义能力会相对更丰富一些，其可通过 Windows App SDK、Foundry Local Manager（即 SDK）或本地 HTTP 服务等方式访问。
 
-也就是说，相关 AI 能力的接入，除了云端以外，还有本地，且两者可以按需混合使用。而在本地，一种是直接使用已内置好的 Windows AI APIs，其次是使用在一定层度上经过托管和包装的 Foundry Local，再次是可以利用 ONNX Runtime 直接使用自行部署管理的模型，当然，最后还有 DirectML 或来自其它厂商（如英特尔的 Intel® OpenVINO™）等更底层的 API 来支撑其它场景。
+也就是说，相关 AI 能力的接入，除了云端以外，还有本地，且两者可以按需混合使用。而在本地，一种是直接使用已于系统内置好的 Windows AI APIs，其次是使用在一定层度上经过托管和包装的 Foundry Local，再次是可以利用 ONNX Runtime 直接使用自行部署管理的模型，当然，最后还有 DirectML 或来自其它厂商（如英特尔的 Intel® OpenVINO™）等更底层的 API 来支撑其它场景。
 
 ### 分发和组成
 
@@ -113,9 +113,9 @@ Foundry CLI（即 `foundry.exe` 程序）可与之进行交互，并管理其状
 
 ![下载与运行](./workflow.jpg)
 
-Foundry Local 所使用的语言模型均存储于本地，且支持动态管理。具体来说，在云端，Azure AI Foundry 注册表管理着所有可用模型，Foundry Local 可发起下载指令，该指令会先执行查询操作，以获得包括模型名称、版本、类型和配置信息等在内的信息清单，以及一个用于下载的 CDN 地址，随后会执行对模型文件的下载，保存于本地存储空间中指定的缓存目录中。
+Foundry Local 所使用的语言模型均存储于本地，且支持动态管理。具体来说，在云端，Azure AI Foundry 注册表（Azure AI Foundry Catalog）管理着所有可用模型。Foundry Local 可发起下载指令，说明需要下载的模型唯一标识符（模型 ID）。该指令会先执行查询操作，以获得包括模型名称、版本、类型和配置信息等在内的信息清单，以及一个用于下载的 CDN 地址；随后会执行对模型文件的下载，保存于本地存储空间中指定的缓存目录中。
 
-缓存中的模型会根据需要，被加载与内存中，当诸如对话或其它类型的 AI 请求从 App 发来时，Foundry Local 便会调用 ONNX Runtime 运行指定模型的推理，并返回结果。
+缓存中的模型会根据需要，被加载于内存中，当诸如对话或其它类型的 AI 请求从 App 发来时，Foundry Local 便会调用 ONNX Runtime 运行指定模型的推理，并返回结果。
 
 ## 接口形式
 
@@ -137,7 +137,7 @@ foundry service status
 
 > 🟢 Model management service is running on http://127.0.0.1:63309/openai/status
 
-访问该地址（即 `GET` 请求），也可以看到一些最基本的状态信息，是个 JSON 格式返回的数据，其中包括 `endpoint` 字段，是个字符串数组，内含上述 Endpoint 信息。Foundry Local 对外提供的服务，基本都以此 Host 为基础的 Web API 形式提供。
+访问上述控制台输出的地址（即通过 `GET` 请求），也可以看到一些最基本的状态信息，是个 JSON 格式返回的数据，其中包括 `endpoint` 字段，是个字符串数组，内含上述 Endpoint 信息。Foundry Local 对外提供的服务，基本都以此 Host 为基础的 Web API 形式提供。
 
 ### SDK
 
@@ -168,9 +168,11 @@ foundry service status
    foundry-local-sdk = "0.1"
    ```
 
+SDK 的内部实现，许多也是通过调用 CLI 和本地 HTTP 服务来完成的。
+
 ## 模型管理
 
-Foundry Local 提供能力可以遍历位于云端的可用语言模型（即 Foundry Local 模型），但这些模型并不能被直接使用，需要被实现加载到本地。因此，其还具备本地模型的管理能力，包括下载、存储、使用和删除。
+Foundry Local 提供能力可以遍历位于云端的可用语言模型（即 Foundry Local 模型），但这些模型并不能被直接使用，需要被事先加载到本地。因此，其还具备本地模型的管理能力，包括下载、存储、使用和删除。
 
 ### 本地模型
 
@@ -200,15 +202,17 @@ GET /openai/models
 foundry cache list
 ```
 
+后续对这些模型的访问（即执行推理）时，需要在对应接口中传入需要使用的模型的标识符。所以通常需要通过上述方法事先获取本地已有哪些模型，甚至在需要时事先执行下载操作。
+
 ### 云端可用模型
 
-受支持的所有模型均位于云端，索引于 Azure AI Foundry 注册表（Azure AI Foundry Catalog）中，通过 Endpoint 中以下 Web API 可以拉取可用列表。
+受支持的所有模型均位于云端，索引于 Azure AI Foundry 注册表中，通过 Endpoint 中以下 Web API 可以拉取可用列表。
 
 ```text
 GET /foundry/list
 ```
 
-其返回的是一个 JSON 数组，列举了可下载模型信息。每个模型信息中包含了众多字段，以下几个是最重要的。
+其返回的是一个 JSON 数组（`[…]`），列举了可下载模型信息。每个模型信息中包含了众多字段，以下几个是最重要的。
 
 - `name` _字符串_：模型的唯一标识符（Model ID）。
 - `displayName` _字符串_：显示名称。
@@ -251,7 +255,7 @@ foundry model list
 foundry model download <model>
 ```
 
-其中，`<model>` 为对应的模型的唯一标识符。（下同）
+其中，`<model>` 为对应的模型的唯一标识符（下同），可以通过遍历云端可用模型获得。
 
 也可以通过本地 HTTP 服务（`POST /openai/download`）或 SDK 触发模型的下载。
 
@@ -263,7 +267,7 @@ foundry model download <model>
 
 ![模型的生命周期](./run.jpg)
 
-为了节约内存，模型会按需加载，也可手动预载。经过一段时间（TTL，默认为10分钟）没有使用后，会自动从内存中卸载。
+为了节约内存，模型会按需加载，也可手动预载。经过一段时间（TTL / 默认为10分钟）没有使用后，会自动从内存中卸载。
 
 ### 删除
 
@@ -314,6 +318,10 @@ foundry model run <model>
 > 本文为技术分享，仅供交流学习之用。随着时间推移，可能会出现其中部分内容不再适用。
 >
 > 文中所提及 Foundry Local、Azure、ONNX、Windows、VS Code 为微软旗下产品或服务，版权归微软公司所有；其它各产品和服务，版权归其各自公司或组织所有。
+
+### 文档资料
+
+- [PPT](/sth/articles/2025/foundry-local-preview/FoundryLocal251018.pptx)
 
 ### 相关链接
 

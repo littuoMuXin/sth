@@ -54,7 +54,7 @@ Microsoft has more than one AI-related services, such as ONNX. What are their re
 
 - __Foundry Local__
 
-  Run and manage AI language models on your local device and provide APIs for your app to use. Its underlying ONNX Runtime.
+  Run and manage AI language models on your local device and provide APIs for your app to use. Its underlying is ONNX Runtime.
 
 - __Windows AI APIs__
 
@@ -117,7 +117,7 @@ Upper-layer applications can access Foundry Local's AI-specific capabilities and
 
 The language models used in Foundry Local are stored locally and can be managed dynamically. Specifically, in the cloud, the Azure AI Foundry Catalog contains all models and provides APIs to Foundry Local to list and download. It will first perform a query operation to obtain a list of information including model name, version, type, and configuration information, as well as a CDN address for download; and then perform a download of the model file and save it in the cache directory specified in the local storage space.
 
-Models in the cache are loaded into memory as needed, and when an AI chat operation or other type of AI request comes from the app, Foundry Local calls the ONNX Runtime to execute inference of the specified model and return the results.
+Models in the cache are loaded into memory as needed. And when an AI chat operation or other type of AI request comes from the app, Foundry Local calls the ONNX Runtime to execute inference of the specified model and return the results.
 
 ## APIs
 
@@ -139,7 +139,7 @@ It outputs a specific state address on the console, including the port number on
 
 > 🟢 Model management service is running on http://127.0.0.1:63309/openai/status
 
-Visiting the address (by `GET`) can also see some of the most basic state information, which is the data returned in JSON format, including the field `endpoint`, which is an array of strings containing the above endpoint information. The services provided by Foundry Local are basically provided in the form of Web APIs based on this Host.
+Visiting the above address shown in terminal (by send `GET` request), can also see some of the most basic state information, which is the data returned in JSON format, including the field `endpoint`, which is an array of strings containing the above endpoint information. The services provided by Foundry Local are basically provided in the form of Web APIs based on this Host.
 
 ### SDK
 
@@ -169,6 +169,8 @@ In fact, these accessibility capabilities are also encapsulated in the SDK calle
    [dependencies]
    foundry-local-sdk = "0.1"
    ```
+
+The implementation of most of functions in the SDKs, are also by sending request to HTTP localhost service or by running CLI command.
 
 ## Models management
 
@@ -202,15 +204,17 @@ Or you can use the SDK. In addition, it is also available through CLI with the f
 foundry cache list
 ```
 
+Most of APIs about sub-sequent model accessing (executing inference) requires the model ID, so the above method to get local models is necessary. You may ask to download the available model before running if there is no the expected one.
+
 ### Available in cloud
 
-All supported models are in the cloud, indexed in the Azure AI Foundry Catalog, and the available list can be pulled through the following web APIs in the endpoint.
+All supported models are in the cloud, indexed in the Azure AI Foundry Catalog. The available list can be pulled through the following web APIs in the Endpoint of localhost.
 
 ```text
 GET /foundry/list
 ```
 
-It returns a JSON array that enumerates downloadable model information. Each model information contains a number of fields, the most important of which are the following.
+It returns a JSON array (`[…]`) that enumerates downloadable model information. Each model information contains a number of fields, the most important of which are the following.
 
 - `name` _string_: Model ID (the unique identifier of the model).
 - `displayName` _string_: display name.
@@ -253,7 +257,7 @@ The following command can trigger the download of the cloud model, which is auto
 foundry model download <model>
 ```
 
-P.S.: where `<model>` is the model ID.
+P.S.: where `<model>` is the model ID. It can be got by listing available models in Azure AI Foundry Catalog.
 
 You can access this info by HTTP localhost (`POST /openai/download`) on Endpoint, or by the related functions in SDK.
 
@@ -283,7 +287,7 @@ However, it is important to note that since the port is not constant, it is nece
 
 ### REST
 
-For direct web API requests, simply send an HTTP request to the following address and use the same input structure and output parsing as OpenAI's conversational completion to complete the conversational AI interaction.
+For direct web API requests, simply send an HTTP request to the following address and use the same input structure and output parsing as OpenAI chat completion to complete the chat AI interaction.
 
 ```text
 POST /v1/chat/completions
@@ -316,6 +320,10 @@ In addition, you can also download and install the AI Dev Gallery (currently als
 > This article is for technical sharing and for exchange and learning purposes only. Over time, some of the content may become outdated.
 >
 > The Foundry Local, Azure, ONNX, Windows, and VS Code mentioned in the article are products or services of Microsoft, and the copyright belongs to Microsoft. Other products and services mentioned are copyrighted by their respective companies or organizations.
+
+### Related docs
+
+- [PPT](/sth/articles/2025/foundry-local-preview/FoundryLocal251018.pptx)
 
 ### Resources
 
