@@ -143,25 +143,25 @@ foundry service status
 
 实际上，这些访问能力也封装在 SDK 中，名为 Foundry Local Manager 或 foundry-local-sdk，支持多种语言。
 
-- C# - [Microsoft.AI.Foundry.Local](https://www.nuget.org/packages/Microsoft.AI.Foundry.Local)
+- __C#__ - [Microsoft.AI.Foundry.Local](https://www.nuget.org/packages/Microsoft.AI.Foundry.Local)
 
    ```bash
    dotnet add package Microsoft.AI.Foundry.Local
    ```
 
-- JavaScript (Node.js) - [foundry-local-sdk](https://www.npmjs.com/package/foundry-local-sdk)
+- __JavaScript__ (Node.js) - [foundry-local-sdk](https://www.npmjs.com/package/foundry-local-sdk)
 
    ```bash
    npm install foundry-local-sdk
    ```
 
-- Python - [foundry-local-sdk](https://pypi.org/project/foundry-local-sdk/)
+- __Python__ - [foundry-local-sdk](https://pypi.org/project/foundry-local-sdk/)
 
    ```bash
    pip install foundry-local-sdk
    ```
 
-- Rust
+- __Rust__
 
    ```toml
    [dependencies]
@@ -225,12 +225,12 @@ GET /foundry/list
   - `deviceType` _字符串_：适配的硬件加速器类型，常见值包括 `"CPU"`、`"GPU"`、`"NPU"`。
   - `executionProvider` _字符串_：表示 EP，以下为常见值。
     - `"CPUExecutionProvider"` - CPU
-    - `"CUDAExecutionProvider"` - NVIDIA CUDA GPU
-    - `"WebGpuExecutionProvider"`- WebGPU
-    - `"QNNExecutionProvider"`- 高通神经网络运算
-    - `"OpenVINOExecutionProvider"`- Intel® OpenVINO™
-    - `"NvTensorRTRTXExecutionProvider"`- NVIDIA TensorRT
-    - `"VitisAIExecutionProvider"`- AMD Vitis AI
+    - `"CUDAExecutionProvider"` - NVIDIA® CUDA® GPU
+    - `"WebGpuExecutionProvider"` - WebGPU
+    - `"QNNExecutionProvider"` - 高通神经网络运算
+    - `"OpenVINOExecutionProvider"` - Intel® OpenVINO™
+    - `"NvTensorRTRTXExecutionProvider"`- NVIDIA® TensorRT™
+    - `"VitisAIExecutionProvider"` - AMD Vitis™ AI
 - `license` _字符串_：许可证。
 
 除此之外，还有 `modelType` 模型格式、`promptTemplate` Prompt 模板、`fileSizeMb` 文件大小等其它字段。

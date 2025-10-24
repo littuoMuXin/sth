@@ -145,25 +145,25 @@ Visiting the address (by `GET`) can also see some of the most basic state inform
 
 In fact, these accessibility capabilities are also encapsulated in the SDK called Foundry Local Manager or foundry-local-sdk and support multiple languages.
 
-- C# - [Microsoft.AI.Foundry.Local](https://www.nuget.org/packages/Microsoft.AI.Foundry.Local)
+- __C#__ - [Microsoft.AI.Foundry.Local](https://www.nuget.org/packages/Microsoft.AI.Foundry.Local)
 
    ```bash
    dotnet add package Microsoft.AI.Foundry.Local
    ```
 
-- JavaScript (Node.js) - [foundry-local-sdk](https://www.npmjs.com/package/foundry-local-sdk)
+- __JavaScript__ (Node.js) - [foundry-local-sdk](https://www.npmjs.com/package/foundry-local-sdk)
 
    ```bash
    npm install foundry-local-sdk
    ```
 
-- Python - [foundry-local-sdk](https://pypi.org/project/foundry-local-sdk/)
+- __Python__ - [foundry-local-sdk](https://pypi.org/project/foundry-local-sdk/)
 
    ```bash
    pip install foundry-local-sdk
    ```
 
-- Rust
+- __Rust__
 
    ```toml
    [dependencies]
@@ -227,12 +227,12 @@ It returns a JSON array that enumerates downloadable model information. Each mod
   - `deviceType` _string_: The type of hardware accelerator that is adapted, with common values including `"CPU"`, `"GPU"` and `"NPU"`.
   - `executionProvider` _string_: Represents EP, the following are common values.
     - `"CPUExecutionProvider"` - CPU
-    - `"CUDAExecutionProvider"` - NVIDIA CUDA GPU
+    - `"CUDAExecutionProvider"` - NVIDIA® CUDA® GPU
     - `"WebGpuExecutionProvider"`- WebGPU
-    - `"QNNExecutionProvider"` - High-Pass Neural Network Operations
+    - `"QNNExecutionProvider"` - Qualcomm® Neural Network
     - `"OpenVINOExecutionProvider"` - Intel® OpenVINO™
-    - `"NvTensorRTRTXExecutionProvider"` - NVIDIA TensorRT
-    - `"VitisAIExecutionProvider"` - AMD Vitis AI
+    - `"NvTensorRTRTXExecutionProvider"` - NVIDIA® TensorRT™
+    - `"VitisAIExecutionProvider"` - AMD Vitis™ AI
 - `license` _string_: license.
 
 In addition, there are other fields such as `modelType`, `promptTemplate`, `fileSizeMb`, etc.
