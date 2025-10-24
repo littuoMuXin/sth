@@ -10,7 +10,7 @@ Among these explorations, the application of smaller local models and their hybr
 
 Foundry Local supports mulitple platforms and programming languates.
 
-Currently (Oct, 2025), It is in PREVIEW (latest version is 0.8.94). Features, approaches, and processes can change or have limited capabilities, before General Availability.
+Currently (Oct, 2025) it is in PREVIEW (latest version is 0.8.94). Features, approaches, and processes can change or have limited capabilities, before General Availability (GA).
 
 ### Functions
 
@@ -62,10 +62,10 @@ Microsoft has more than one AI-related services, such as ONNX. What are their re
 
 Therefore, Foundry Local is a native AI solution on Windows, mainly suitable for language model-related scenarios such as dialogue, text generation, and translation. It has some similarities with Windows AI APIs, but also has the following differences; Meanwhile, these two and some other tools are collectively known as Windows AI Foundry.
 
-- __Windows AI APIs__ are based on AI-related services that Windows intends to provide (e.g., with pre-installation or system updates), and provide access to them externally through the Windows App SDK;
-- __Foundry Local__ packages the capabilities themselves, as well as supporting model management, which means that its customization capabilities are relatively richer, and can be accessed through the Windows App SDK, Foundry Local Manager (SDK), or HTTP localhost.
+- __Windows AI APIs__ are based on AI-related services that Windows intends to provide (with pre-installation or system updates, by integrating in operation system or built-in app). It provides access to them externally through the Windows App SDK with same availability, usages and model.
+- __Foundry Local__ packages the capabilities themselves, as well as supporting model management, which means that its customization capabilities are relatively richer. It enables further choices of models. It can be accessed through the Windows App SDK, Foundry Local Manager (SDK), or HTTP localhost.
 
-In other words, the access of relevant AI capabilities is not only in the cloud, but also locally, and the two can be mixed on demand. Locally, one is to directly use the built-in Windows AI APIs, secondly, use Foundry Local, which is hosted and packaged at a certain level, and then use the ONNX Runtime to directly use the self-deployment and management model, and of course, there are lower-level APIs such as DirectML or other vendors (such as Intel's Intel® OpenVINO™) to support other scenarios.
+In other words, the access of relevant AI capabilities is not only in the cloud, but also locally, and the two can be mixed on demand. Locally, one is to directly use the built-in Windows AI APIs, secondly, use Foundry Local, which is hosted and packaged at a certain level, and then use the ONNX Runtime to directly use the self-deployment and management model, and of course, there are lower-level APIs such as DirectML or other vendors (such as Intel® OpenVINO™ or NVIDIA® TensorRT™) to support other scenarios.
 
 ### Distribution and components
 
@@ -89,12 +89,12 @@ The Windows app is deployed by Package mode with following manifest.
 | Key | Value |
 | ---------- | ------------------- |
 | Package ID | `Microsoft.FoundryLocal` |
-| Publisher | `8wekyb3d8bbwe`（微软） |
+| Publisher | `8wekyb3d8bbwe` (Microsoft Corp) |
 | Permissions | `runFullTrust` |
 
-Its main execution appications within it are as follows.
+The main execution appications within it are as follows.
 
-| 程序名 | 说明 |
+| Application name | Description |
 | ---------- | -------------------- |
 | `foundry.exe` | CLI |
 | `Inference.Service.Agent.exe` | Background host |
@@ -105,7 +105,7 @@ Its main execution appications within it are as follows.
 
 ### Modules and dependencies
 
-The main component of Foundry Local is the Inference Service Agent (`Inference.Service.Agent.exe` application), which runs as a background process and includes core capabilities such as model management and execution. The model is stored locally, and when executed, it is underlying the ONNX Runtime and running in the appropriate hardware accelerator (such as CPU, GPU, or NPU) via a specific EP.
+The core part of Foundry Local is the Inference Service Agent (`Inference.Service.Agent.exe` application), which runs as a background process and includes core capabilities such as model management and execution. The model is stored locally, and when executed, it is underlying the ONNX Runtime and running in the appropriate hardware accelerator (such as CPU, GPU, or NPU) via a specific EP.
 
 The Foundry CLI (`foundry.exe` application) can interact with it and manage its state. Once the program is registered in the operating system environment variables, it can be run directly on the command line without specifying the path in advance.
 
@@ -139,11 +139,11 @@ It outputs a specific state address on the console, including the port number on
 
 > 🟢 Model management service is running on http://127.0.0.1:63309/openai/status
 
-Visiting the above address shown in terminal (by send `GET` request), can also see some of the most basic state information, which is the data returned in JSON format, including the field `endpoint`, which is an array of strings containing the above endpoint information. The services provided by Foundry Local are basically provided in the form of Web APIs based on this Host.
+Visiting the above address shown in terminal (by sending `GET` request), can also see some of the most basic state information, which is the data returned in JSON format, including the field `endpoint`, which is an array of strings containing the above endpoint information. The services provided by Foundry Local are basically provided in the form of web APIs based on this Host.
 
 ### SDK
 
-In fact, these accessibility capabilities are also encapsulated in the SDK called Foundry Local Manager or foundry-local-sdk and support multiple languages.
+In fact, these accessibility capabilities are also encapsulated in the SDK called Foundry Local Manager or foundry-local-sdk and support multiple programming languages.
 
 - __C#__ - [Microsoft.AI.Foundry.Local](https://www.nuget.org/packages/Microsoft.AI.Foundry.Local)
 
@@ -163,7 +163,7 @@ In fact, these accessibility capabilities are also encapsulated in the SDK calle
    pip install foundry-local-sdk
    ```
 
-- __Rust__
+- __Rust__ - [foundry-local-sdk](https://crates.io/crates/foundry-local-sdk) （添加到 `Cargo.toml` 文件）
 
    ```toml
    [dependencies]
@@ -192,7 +192,7 @@ This directory contains models and may have one or more layers of folders, one o
 - Glossary files: `merges.txt` files; some may be `vocab.txt` file or `vocab.json` file; and some models will also contain additional file `added_tokens.json`.
 - Other supporting files.
 
-The following Web API in Endpoint can be pulled to all downloaded models, returning an array of strings, each element being the corresponding model ID.
+The following web API in Endpoint can be pulled to all downloaded models, returning an array of strings, each element being the corresponding model ID.
 
 ```text
 GET /openai/models
@@ -239,7 +239,45 @@ It returns a JSON array (`[…]`) that enumerates downloadable model information
     - `"VitisAIExecutionProvider"` - AMD Vitis™ AI
 - `license` _string_: license.
 
-In addition, there are other fields such as `modelType`, `promptTemplate`, `fileSizeMb`, etc.
+In addition, there are other fields such as `modelType`, `promptTemplate`, `fileSizeMb`, etc. Following is a sample.
+
+```json
+[
+  {
+    "name": "Phi-4-generic-gpu:1",
+    "displayName": "Phi-4-generic-gpu",
+    "providerType": "AzureFoundry",
+    "uri": "azureml://registries/azureml/models/Phi-4-generic-gpu/versions/1",
+    "version": "1",
+    "modelType": "ONNX",
+    "promptTemplate": {
+      "system": "<|system|> {Content}<|im_end|>",
+      "user": "<|user|> {Content}<|im_end|>",
+      "assistant": "<|assistant|> {Content}<|im_end|>",
+      "prompt": "<|user|> {Content}<|im_end|> <|assistant|>"
+    },
+    "publisher": "Microsoft",
+    "task": "chat-completion",
+    "testModel": false,
+    "runtime": {
+      "deviceType": "GPU",
+      "executionProvider": "WebGpuExecutionProvider"
+    },
+    "fileSizeMb": 8570,
+    "modelSettings": {
+      "parameters": []
+    },
+    "alias": "phi-4",
+    "supportsToolCalling": false,
+    "license": "MIT",
+    "licenseDescription": "This model is provided under the License Terms available at <https://huggingface.co/microsoft/phi-4/blob/main/LICENSE>.",
+    "parentModelUri": "azureml://registries/azureml/models/Phi-4/versions/7",
+    "maxOutputTokens": 2048,
+    "minFLVersion": null
+    },
+    // … Other model info objects are omitted here.
+]
+```
 
 The above information is also available through SDK-related functions. In addition, it can also be obtained through the following commands in the CLI, but the default display fields for the content returned are deleted.
 
@@ -269,7 +307,7 @@ Once the download is complete, the model is ready for use.
 
 ![Model lifecycle](./run.jpg)
 
-To save memory (RAM), models load on demand or can be preloaded manually. After a period of inactivity (TTL, default is 10 minutes), it is automatically unloaded.
+To save memory (RAM), models load on demand or can be preloaded manually. After a period of inactivity (Time-to-Live, 10 minutes by default), it is automatically unloaded.
 
 ### Delete
 
@@ -285,9 +323,11 @@ Foundry Local is fully compatible with OpenAI's REST API, which means that you c
 
 However, it is important to note that since the port is not constant, it is necessary to determine the latest endpoint before use.
 
+It requires to pass an existed model ID to call this API.
+
 ### REST
 
-For direct web API requests, simply send an HTTP request to the following address and use the same input structure and output parsing as OpenAI chat completion to complete the chat AI interaction.
+For direct web API requests, simply send an HTTP request to the following address and use the same input structure and output parsing as OpenAI Chat Completions API to complete the chat AI interaction.
 
 ```text
 POST /v1/chat/completions
@@ -313,6 +353,8 @@ If the specified model does not exist, the download and installation are automat
 
 In addition, you can also download and install the AI Dev Gallery (currently also in preview) app from the Microsoft Store to experience it.
 
+![AI Dev Gallery Preview](./dev-gallery.jpg)
+
 <!-- End -->
 
 ## References
@@ -329,4 +371,6 @@ In addition, you can also download and install the AI Dev Gallery (currently als
 
 - [Foundry Local](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-local/)
 - [ONNX](https://onnxruntime.ai/)
+- [OpenAI Chat Completions API](https://platform.openai.com/docs/api-reference/chat/create)
+- [WebGPU](https://www.w3.org/TR/webgpu/)
 - [AI Dev Gallery](https://apps.microsoft.com/detail/9N9PN1MM3BD5)

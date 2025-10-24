@@ -98,7 +98,9 @@
                 { "name": "JavaScript SDK", "subtitle": "参考文档", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-rust" },
                 { "name": "Python SDK", "subtitle": "参考文档", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-python" },
                 { "name": "Rust SDK", "subtitle": "参考文档", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-javascript" },
+                { "name": "OpenAI Chat Completions API", "subtitle": "接口说明", "url": "https://platform.openai.com/docs/api-reference/chat/create" },
                 { "name": "ONNX 官网", "subtitle": "简体中文版", "url": "https://onnx.org.cn/" },
+                { "name": "WebGPU", "subtitle": "W3C 标准", "url": "https://www.w3.org/TR/webgpu/" },
                 { "name": "AI Dev Gallery", "subtitle": "Microsoft Store 详情页", "url": "https://apps.microsoft.com/detail/9N9PN1MM3BD5" }
             ],
             "notes": [

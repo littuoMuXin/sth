@@ -8,7 +8,7 @@ Foundry Local 是一套部署于本地的 AI 服务，包含语言模型的管�
 
 Foundry Local 支持多语言多平台。
 
-目前（2025年10月）还处于预览状态（当下最新为 v0.8.94），待后续正式版发布时，可能部分情形会与本文描述不一致。
+目前（2025年10月）还处于__预览状态__（当下最新为 v0.8.94），待后续正式版发布时，可能部分情形会与本文描述不一致，还请留意。
 
 ### 功能
 
@@ -60,10 +60,10 @@ Foundry Local 支持多语言多平台。
 
 所以，Foundry Local 是 Windows 上本地 AI 解决方案，主要适用于包括对话、文本生成、翻译等语言模型相关场景。其与 Windows AI APIs 有部分场景类似，二者及其它一些工具，统称为 Windows AI 工场（Windows AI Foundry）；但同时它们也有以下区别。
 
-- __Windows AI APIs__ 基于当前 Windows 打算提供（例如随预装或系统更新而来）的 AI 相关业务，而对外通过 Windows App SDK 提供相关访问能力；
-- __Foundry Local__ 将所有支持的能力本身进行包装提供，同时也提供配套的模型管理，也就是说其自定义能力会相对更丰富一些，其可通过 Windows App SDK、Foundry Local Manager（即 SDK）或本地 HTTP 服务等方式访问。
+- __Windows AI APIs__ 基于当前 Windows 打算在其自身（包括随预装或系统更新而来）或内置 app 中提供的 AI 相关能力，以相同的开放数量、使用方式、模型，对外通过 Windows App SDK 提供；
+- __Foundry Local__ 将所有支持的 AI 能力本身进行包装提供，只要硬件和其它环境满足即可，而无论这些能力是否在 Windows 系统或内置 app 中露出，同时也提供配套的模型管理，允许使用更多模型，所以其自定义能力会相对更丰富一些，其可通过 Windows App SDK、Foundry Local Manager（即 SDK）或本地 HTTP 服务等方式访问。
 
-也就是说，相关 AI 能力的接入，除了云端以外，还有本地，且两者可以按需混合使用。而在本地，一种是直接使用已于系统内置好的 Windows AI APIs，其次是使用在一定层度上经过托管和包装的 Foundry Local，再次是可以利用 ONNX Runtime 直接使用自行部署管理的模型，当然，最后还有 DirectML 或来自其它厂商（如英特尔的 Intel® OpenVINO™）等更底层的 API 来支撑其它场景。
+也就是说，相关 AI 能力的接入，除了云端以外，还有本地，且两者可以按需混合使用。而在本地，一种是直接使用已于系统内置好的 Windows AI APIs，其次是使用在一定层度上经过托管和包装的 Foundry Local，再次是可以利用 ONNX Runtime 直接使用自行部署管理的模型，当然，最后还有 DirectML 或来自其它厂商（如英特尔的 Intel® OpenVINO™ 或英伟达的 NVIDIA® TensorRT™）等更底层的 API 来支撑其它场景。
 
 ### 分发和组成
 
@@ -141,7 +141,7 @@ foundry service status
 
 ### SDK
 
-实际上，这些访问能力也封装在 SDK 中，名为 Foundry Local Manager 或 foundry-local-sdk，支持多种语言。
+实际上，这些访问能力也封装在 SDK 中，名为 Foundry Local Manager 或 foundry-local-sdk，支持多种常见编程语言。
 
 - __C#__ - [Microsoft.AI.Foundry.Local](https://www.nuget.org/packages/Microsoft.AI.Foundry.Local)
 
@@ -161,7 +161,7 @@ foundry service status
    pip install foundry-local-sdk
    ```
 
-- __Rust__
+- __Rust__ - [foundry-local-sdk](https://crates.io/crates/foundry-local-sdk) (add in `Cargo.toml` file)
 
    ```toml
    [dependencies]
@@ -237,7 +237,45 @@ GET /foundry/list
     - `"VitisAIExecutionProvider"` - AMD Vitis™ AI
 - `license` _字符串_：许可证。
 
-除此之外，还有 `modelType` 模型格式、`promptTemplate` Prompt 模板、`fileSizeMb` 文件大小等其它字段。
+除此之外，还有 `modelType` 模型格式、`promptTemplate` Prompt 模板、`fileSizeMb` 文件大小等其它字段。如下示例。
+
+```json
+[
+  {
+    "name": "Phi-4-generic-gpu:1",
+    "displayName": "Phi-4-generic-gpu",
+    "providerType": "AzureFoundry",
+    "uri": "azureml://registries/azureml/models/Phi-4-generic-gpu/versions/1",
+    "version": "1",
+    "modelType": "ONNX",
+    "promptTemplate": {
+      "system": "<|system|> {Content}<|im_end|>",
+      "user": "<|user|> {Content}<|im_end|>",
+      "assistant": "<|assistant|> {Content}<|im_end|>",
+      "prompt": "<|user|> {Content}<|im_end|> <|assistant|>"
+    },
+    "publisher": "Microsoft",
+    "task": "chat-completion",
+    "testModel": false,
+    "runtime": {
+      "deviceType": "GPU",
+      "executionProvider": "WebGpuExecutionProvider"
+    },
+    "fileSizeMb": 8570,
+    "modelSettings": {
+      "parameters": []
+    },
+    "alias": "phi-4",
+    "supportsToolCalling": false,
+    "license": "MIT",
+    "licenseDescription": "This model is provided under the License Terms available at <https://huggingface.co/microsoft/phi-4/blob/main/LICENSE>.",
+    "parentModelUri": "azureml://registries/azureml/models/Phi-4/versions/7",
+    "maxOutputTokens": 2048,
+    "minFLVersion": null
+    },
+    // … 其它模型信息，此处略。
+]
+```
 
 以上信息也可以通过 SDK 相关函数获取。除此之外，也可通过 CLI 以下命令获取，不过其返回的内容所默认展示字段有所删选。
 
@@ -281,11 +319,11 @@ foundry cache remove <model>
 
 Foundry Local 完全兼容 OpenAI 的 REST API，也就是说，只需将 Endpoint 路径进行修改，就能如同以往常见的方式一样进行访问。
 
-不过需要注意，由于端口不恒定，需在使用前确定最新 Endpoint。
+不过需要注意，由于端口不恒定，需在使用前确定最新 Endpoint。以及在调用本接口时，需要传入一个已存在模型的标识符。
 
 ### REST
 
-对于直接通过 Web API 请求的使用，只需发送 HTTP 请求至以下地址，并采用和 OpenAI 的对话 completion 相同的输入构造和输出解析，即可完成对话式 AI 的交互。
+对于直接通过 Web API 请求的使用，只需发送 HTTP 请求至以下地址，并采用和 OpenAI 的对话 Completions 相同的输入构造和输出解析，即可完成对话式 AI 的交互。
 
 ```text
 POST /v1/chat/completions
@@ -311,6 +349,8 @@ foundry model run <model>
 
 除此之外，还可以从 Microsoft Store 中下载安装 AI Dev Gallery（目前也为预览版）app 来体验。
 
+![AI Dev Gallery Preview](./dev-gallery.jpg)
+
 <!-- End -->
 
 ## 参考
@@ -327,4 +367,6 @@ foundry model run <model>
 
 - [Foundry Local 官网](https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/)
 - [ONNX 简体中文官网](https://onnx.org.cn/)
+- [OpenAI Chat Completions API](https://platform.openai.com/docs/api-reference/chat/create)
+- [WebGPU](https://www.w3.org/TR/webgpu/)
 - [AI Dev Gallery](https://apps.microsoft.com/detail/9N9PN1MM3BD5)
