@@ -12,23 +12,45 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hje@2.2.0/docs/js/site.bundle.js" ></script>
     <style type="text/css" >
     body > header + section > h1:first-child {
-        font-weight: normal;
+        font-weight: normal; position: relative;
     }
-    body > header + section > h1:first-child + section {
-        font-size: 20px; font-weight: lighter; max-width: 1180px; padding-left: 18px; margin-bottom: 40px; border-left: 2px solid rgba(128, 128, 128, 0.4)
+    body > header + section > h1:first-child + section, body > header + section > section:first-child {
+        font-size: 16px; font-weight: lighter; max-width: 1200px; margin-bottom: 40px; cursor: default; user-select: none;
+    }
+    body > header + section > h1:first-child + section > img, body > header + section > section:first-child > img {
+        width: 64px; height: 64px; vertical-align: middle; margin-right: 16px;
+    }
+    body > header + section > h1:first-child + section > span, body > header + section > section:first-child > span {
+        line-height: 64px; vertical-align: middle;
     }
     #blog_content {
-        display: block; min-height: 400px; padding-top: 0; grid-template-columns: auto;
+        display: block; min-height: 300px; padding-top: 0; grid-template-columns: auto; margin-bottom: 20px;
+    }
+    #blog_content + section {
+        margin-bottom: 100px;
+    }
+    section > ul.link-tile-compact, section > ul.link-tile-compact > li {
+        list-style: none;
+    }
+    section > ul.link-tile-compact > li > a > svg, section > ul.link-tile-compact > li > a > span {
+        vertical-align: middle;
+    }
+    section > ul.link-tile-compact > li > a > svg:first-child {
+        fill: #CCC; margin-right: 10px;
     }
     footer > section > div.x-copyright > strong {
         color: rgba(255, 255, 255, 0.6); font-size: 24px;
+    }
+    @media screen and (max-width:800px) {
+        body > header + section > h1:first-child + section > span, body > header + section > section:first-child > span {
+            line-height: 20px; display: block; margin-top: 16px;
+        }
     }
     </style>
     <script type="text/javascript">
     function onInit() {
         site.getString("about", "topmenu-about");
         site.getString("games", "topmenu-games");
-
         site.blogMenu({ url: "articles/config.json", onItem: "articles" }).then(function (r) {
             Hje.render(document.getElementById("blog_content"), {
                 children: [{
@@ -58,10 +80,21 @@
         </section>
     </header>
     <section>
-        <h1><code>sth</code></h1>
-        <section><span>A thing that is thought to be important or worth taking notice of.</span></section>
+        <section><img alt="sth" src="./materials/icon.png" /><span>A thing that is thought to be important or worth taking notice of.</span></section>
     </section>
     <section id="blog_content" ></section>
+    <section>
+        <h2>GitHub</h2>
+        <ul class="link-tile-compact">
+            <li>
+                <a href="https://github.com/littuoMuXin/sth">
+                    <svg width="16" height="16" aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
+                        <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg><span><span>littuoMuXin/</span>sth</span>
+                </a>
+            </li>
+        </section>
+    </section>
     <section style="height: 10px; background: #292929; overflow: hidden; " >
         <div><span>&nbsp;</span></div>
     </section>
