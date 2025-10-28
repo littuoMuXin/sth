@@ -10,6 +10,10 @@ Web 前端技术博客
 
 - *空*
 
+## AI
+
+- [Foundry Local](./foundry-local-yulan)
+
 ## Blogs
 
 - *空*

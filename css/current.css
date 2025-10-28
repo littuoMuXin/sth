@@ -22,3 +22,6 @@
 #blog_content > article > main table th {
     background-color: #1A1A1A;
 }
+footer > section > div.x-copyright > strong > code.x-part-item-name {
+    font-size: 16px;
+}
