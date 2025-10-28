@@ -28,7 +28,7 @@
             "author": { "name": "Kingcean Tuan", "url": "https://kingcean.org" },
             "end": true,
             "related": [
-                { "name": "Wiki of the events", "url": "https://github.com/compositejs/datasense/wiki/event" }
+                { "name": "使用文档", "url": "https://datasense.js.org/articles/?event" }
             ],
             "notes": [
                 "(cc) Kingcean Tuan, 2021."
@@ -44,7 +44,7 @@
             "author": { "name": "Kingcean Tuan", "url": "https://kingcean.org" },
             "end": true,
             "related": [
-                { "name": "Wiki of the observable value", "url": "https://github.com/compositejs/datasense/wiki/props" }
+                { "name": "使用文档", "url": "https://datasense.js.org/articles/?props" }
             ],
             "notes": [
                 "(cc) Kingcean Tuan, 2021."
@@ -91,7 +91,7 @@
             "author": { "name": "Kingcean Tuan", "url": "https://github.com/kingcean" },
             "end": true,
             "related": [
-                { "name": "PPT", "url": "/sth/articles/2025/foundry-local-preview/FoundryLocal251018.pptx" },
+                { "name": "PPT", "url": "https://sth.violty.com/articles/2025/foundry-local-preview/FoundryLocal251018.pptx" },
                 { "name": "CLI", "subtitle": "命令说明", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-cli" },
                 { "name": "REST API", "subtitle": "接口说明", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-rest" },
                 { "name": "C# SDK", "subtitle": "参考文档", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-csharp" },
