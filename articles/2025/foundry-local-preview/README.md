@@ -163,7 +163,7 @@ In fact, these accessibility capabilities are also encapsulated in the SDK calle
    pip install foundry-local-sdk
    ```
 
-- __Rust__ - [foundry-local-sdk](https://crates.io/crates/foundry-local-sdk) （添加到 `Cargo.toml` 文件）
+- __Rust__ - [foundry-local-sdk](https://crates.io/crates/foundry-local-sdk) - by adding into `Cargo.toml` file
 
    ```toml
    [dependencies]
@@ -221,7 +221,7 @@ It returns a JSON array (`[…]`) that enumerates downloadable model information
 - `alias` _string_: model abbreviation (Alias).
 - `version` _string_: The version number of the model.
 - `uri` _string_: The resource address of the model in the Azure AI Foundry Catalog.
-- `publisher` _string_: the publisher name.
+- `publisher` _string_: The name of publisher.
 - `task` _string_: The type of model feature. The following are common values.
   - `"chat-completion"` Chat (with completion API)
   - `"text-generation"` Text generation
@@ -319,7 +319,7 @@ foundry cache remove <model>
 
 ## Chat
 
-Foundry Local is fully compatible with OpenAI's REST API, which means that you can simply modify the endpoint path to access it as usual.
+Foundry Local is fully compatible with REST API of OpenAI, which means that you can simply modify the endpoint path to access it as usual.
 
 However, it is important to note that since the port is not constant, it is necessary to determine the latest endpoint before use.
 
