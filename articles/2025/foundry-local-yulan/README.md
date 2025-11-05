@@ -161,7 +161,7 @@ foundry service status
    pip install foundry-local-sdk
    ```
 
-- __Rust__ - [foundry-local-sdk](https://crates.io/crates/foundry-local-sdk) (add in `Cargo.toml` file)
+- __Rust__ - [foundry-local-sdk](https://crates.io/crates/foundry-local-sdk) （在 `Cargo.toml` 文件中添加）
 
    ```toml
    [dependencies]
@@ -194,6 +194,18 @@ Foundry Local 提供能力可以遍历位于云端的可用语言模型（即 Fo
 
 ```text
 GET /openai/models
+```
+
+以下为返回示例。
+
+```json
+[
+  "deepseek-r1-distill-qwen-14b-cuda-gpu",
+  "Phi-4-cuda-gpu",
+  "Phi-4-mini-instruct-generic-cpu"
+  "Phi-4-mini-instruct-cuda-gpu",
+  "qwen2.5-14b-instruct-cuda-gpu"
+]
 ```
 
 或使用 SDK 也可获取。除此之外，也可通过以下 CLI 命令获取。
@@ -327,6 +339,59 @@ Foundry Local 完全兼容 OpenAI 的 REST API，也就是说，只需将 Endpoi
 
 ```text
 POST /v1/chat/completions
+```
+
+例如，通过以下 Type Script 代码中的 `chat` 函数可以直接进行请求。（示例代码未使用外部 SDK，其用的是 `fetch` 实现，建议改为 SSE，具体实现此处略。）
+
+```typescript
+export const options = {
+  model: "Phi-4-cuda-gpu", // 可通过下面 models() 函数获得完整列表
+  port: 63309,
+  temperature: 0.5
+};
+
+const req = {
+  model: options.model,
+  messages: [] as {
+    role: string;
+    content: string;
+    [property: string]: any;
+  }[],
+  temperature: options.temperature,
+  stream: false
+};
+
+export async function chat(input: string): Promise<string> {
+  req.messages.push({
+    role: "user",
+    content: input
+  });
+  const url = `http://localhost:${options.port}/v1/chat/completions`;
+  const resp = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(req)
+  });
+  const result = await resp.json();
+  const msg = result.choices[0].message;
+  req.messages.push(msg);
+  return msg.content;
+}
+
+export async function models(): Promise<string[]> {
+  // 本函数也可直接使用 SDK 中 FoundryLocalManager 实例的 listCachedModels 成员方法获得。
+  const url = `http://localhost:${options.port}/openai/models`;
+  const resp = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Accept": "application/json"
+    }
+  });
+  return await resp.json();
+}
 ```
 
 ### SDK

@@ -198,6 +198,18 @@ The following web API in Endpoint can be pulled to all downloaded models, return
 GET /openai/models
 ```
 
+Following is a sample of its return.
+
+```json
+[
+  "deepseek-r1-distill-qwen-14b-cuda-gpu",
+  "Phi-4-cuda-gpu",
+  "Phi-4-mini-instruct-generic-cpu"
+  "Phi-4-mini-instruct-cuda-gpu",
+  "qwen2.5-14b-instruct-cuda-gpu"
+]
+```
+
 Or you can use the SDK. In addition, it is also available through CLI with the following command in terminal.
 
 ```bash
@@ -331,6 +343,59 @@ For direct web API requests, simply send an HTTP request to the following addres
 
 ```text
 POST /v1/chat/completions
+```
+
+Following is Type Script sample code to access chat. The function `chat` is used to send the message and get the promise of answer. (SSE is better than following `fetch`-based implementation. It is omitted here.)
+
+```typescript
+export const options = {
+  model: "Phi-4-cuda-gpu", // All available list can be got by models() function below.
+  port: 63309,
+  temperature: 0.5
+};
+
+const req = {
+  model: options.model,
+  messages: [] as {
+    role: string;
+    content: string;
+    [property: string]: any;
+  }[],
+  temperature: options.temperature,
+  stream: false
+};
+
+export async function chat(input: string): Promise<string> {
+  req.messages.push({
+    role: "user",
+    content: input
+  });
+  const url = `http://localhost:${options.port}/v1/chat/completions`;
+  const resp = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(req)
+  });
+  const result = await resp.json();
+  const msg = result.choices[0].message;
+  req.messages.push(msg);
+  return msg.content;
+}
+
+export async function models(): Promise<string[]> {
+  // The member method listCachedModels of FoundryLocalManager instance in SDK is also avaible to use instead of this implementation.
+  const url = `http://localhost:${options.port}/openai/models`;
+  const resp = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Accept": "application/json"
+    }
+  });
+  return await resp.json();
+}
 ```
 
 ### SDK
