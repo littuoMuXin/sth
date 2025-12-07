@@ -421,7 +421,6 @@ In addition, you can also download and install the AI Dev Gallery (currently als
 ![AI Dev Gallery Preview](./dev-gallery.jpg)
 
 <!-- End -->
-
 ## References
 
 > This article is for technical sharing and for exchange and learning purposes only. Over time, some of the content may become outdated.

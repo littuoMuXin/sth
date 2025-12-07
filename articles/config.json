@@ -127,8 +127,8 @@
         {
             "name": "Foundry Local",
             "subtitle": "AI 框架",
-            "dir": "foundry-local-yulan",
-            "dir#en": "foundry-local-preview",
+            "dir": "foundry-bendi",
+            "dir#en": "foundry-local",
             "intro": "目前 AI 及其驱动的以大语言模型为核心的交互形态与能力体现，正在这个世界大放异彩，但不得不说，受计算资源、模型规模、业务集成等限制，这一切直至现今还是起步阶段，但人们仍然一直在各方各面向前探索，时有突破。其中，本地较小模型及其混合形式的应用，也是众多探索前行方向中的一个，以解决诸如时延、服务器和带宽成本、隐私等方面的问题。Foundry Local 便是其中一个标准化框架，用于提供更为简单和统一的接入方式。它是一套部署于本地的 AI 服务，包含语言模型的管理和访问，提供 API 以供 app 使用。",
             "intro#en": "Foundry Local is a local AI service with language model accessing and management capabilities. It exports APIs to app for business usages.",
             "file": true,
@@ -138,21 +138,29 @@
             "end": true,
             "related": [
                 { "name": "PPT", "url": "https://sth.violty.com/articles/2025/foundry-local-preview/FoundryLocal251018.pptx" },
-                { "name": "CLI", "subtitle": "命令说明", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-cli" },
-                { "name": "REST API", "subtitle": "接口说明", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-rest" },
-                { "name": "C# SDK", "subtitle": "参考文档", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-csharp" },
-                { "name": "JavaScript SDK", "subtitle": "参考文档", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-rust" },
-                { "name": "Python SDK", "subtitle": "参考文档", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-python" },
-                { "name": "Rust SDK", "subtitle": "参考文档", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-javascript" },
-                { "name": "OpenAI Chat Completions API", "subtitle": "接口说明", "url": "https://platform.openai.com/docs/api-reference/chat/create" },
-                { "name": "ONNX 官网", "subtitle": "简体中文版", "url": "https://onnx.org.cn/" },
-                { "name": "WebGPU", "subtitle": "W3C 标准", "url": "https://www.w3.org/TR/webgpu/" },
-                { "name": "AI Dev Gallery", "subtitle": "Microsoft Store 详情页", "url": "https://apps.microsoft.com/detail/9N9PN1MM3BD5" }
+                "API references",
+                { "name": "CLI", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-cli" },
+                { "name": "REST API", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-rest" },
+                "SDK references",
+                { "name": "C#", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-csharp" },
+                { "name": "JavaScript", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-rust" },
+                { "name": "Python", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-python" },
+                { "name": "Rust", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-javascript" },
+                "Others",
+                { "name": "OpenAI Chat Completions API Spec", "url": "https://platform.openai.com/docs/api-reference/chat/create" },
+                { "name": "ONNX", "subtitle": "简体中文版官网", "subtitle#en": "Official website", "url": "https://onnx.org.cn/", "url#en": "https://onnx.ai/" },
+                { "name": "WebGPU", "subtitle": "W3C 标准", "subtitle#en": "W3C Standard", "url": "https://www.w3.org/TR/webgpu/" },
+                { "name": "AI Dev Gallery", "subtitle": "Microsoft Store 详情页", "subtitle#en": "PDP in Microsoft Store", "url": "https://apps.microsoft.com/detail/9N9PN1MM3BD5" }
             ],
             "notes": [
                 "(cc) Kingcean Tuan, 2025.",
                 "本文部分内容来自于微软官方文档，版权归微软公司所有。文中所提及 Foundry Local、Azure、ONNX、Windows、VS Code 为微软旗下产品或服务，版权归微软公司所有；其它各产品和服务，版权归其各自公司或组织所有。",
                 "涉及内容包含了预览版产品的说明介绍，最终版上线后可能与本文描述会有不同。"
+            ],
+            "notes#en": [
+                "(cc) Kingcean Tuan, 2025.",
+                "The Foundry Local, Azure, ONNX, Windows, and VS Code mentioned in the article are products or services of Microsoft, and the copyright belongs to Microsoft. Other products and services mentioned are copyrighted by their respective companies or organizations.",
+                "This article introduces a product, service or concept which is in preview so some of the content may become outdated."
             ]
         }
     ],
