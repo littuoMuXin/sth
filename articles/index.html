@@ -11,7 +11,7 @@
     <link rel="icon" href="../materials/icon.png" type="image/png">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked@16.2.1/lib/marked.umd.js" ></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hje@2.2.0/docs/js/site.bundle.js" ></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hje@2.3.1/docs/js/mdblogs.js" ></script>
 </head>
 <body>
     <header>
@@ -30,13 +30,11 @@
             </ul>
         </section>
     </header>
+    <section id="blog_content" ></section>
     <script type="text/javascript">
-        site.blogs({
-            rootPath: "articles",
-            menuPath: "config.json"
-        });
-        site.getString("about", "topmenu-about");
-        site.getString("games", "topmenu-games");
+        const comp = DeepX.MdBlogs.render("blog_content", "./config.json", { title: true });
+        DeepX.MdBlogs.setElementText("topmenu-about", "about");
+        DeepX.MdBlogs.setElementText("topmenu-games", "games");
     </script>
     <footer>
         <section>

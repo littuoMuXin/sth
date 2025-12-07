@@ -2,6 +2,7 @@
 
 ## TypeScript
 
+<!-- Start -->
 ```typescript
 const m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
 function getDayOfYear(date: Date) {
@@ -80,6 +81,7 @@ export class DecadeDate {
 }
 ```
 
+<!-- End -->
 &copy; Kingcean Tuan, 2021.
 
 [&lt; Back to article](../)

@@ -2,6 +2,7 @@
 
 ## C#
 
+<!-- Start -->
 ```csharp
 public struct DecadeDate
 {
@@ -123,6 +124,7 @@ public struct DecadeDate
 }
 ```
 
+<!-- End -->
 &copy; Kingcean Tuan, 2021.
 
 [&lt; Back to article](../)

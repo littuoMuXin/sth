@@ -1,11 +1,12 @@
 {
     "name": "sth",
-    "list": [
+    "blog": [
         {
             "name": "开发有趣的命令行应用",
             "subtitle": "C#",
-            "url": "/2020/rich-cli/README.md",
-            "categories": ["cli", "dotnet"],
+            "dir": "rich-cli",
+            "file": true,
+            "keywords": ["cli", "dotnet"],
             "date": "20200408",
             "author": { "name": "Kingcean Tuan", "url": "https://kingcean.net" },
             "end": true,
@@ -22,13 +23,14 @@
             "id": "datasense-events-v1",
             "name": "高级事件",
             "subtitle": "Type Script",
-            "url": "/2021/datasense/events/README.md",
-            "categories": ["js", "event", "dataflow", "task", "observable", "message"],
+            "dir": "datasense/events",
+            "file": true,
+            "keywords": ["js", "event", "dataflow", "task", "observable", "message"],
             "date": "20210301",
             "author": { "name": "Kingcean Tuan", "url": "https://kingcean.org" },
             "end": true,
             "related": [
-                { "name": "使用文档", "url": "https://datasense.js.org/articles/?event" }
+                { "name": "使用文档", "url": "https://datasense.js.org/articles/?wiki/event" }
             ],
             "notes": [
                 "(cc) Kingcean Tuan, 2021."
@@ -38,13 +40,14 @@
             "id": "datasense-obs-v1",
             "name": "通用双向绑定库",
             "subtitle": "Type Script",
-            "url": "/2021/datasense/obs/README.md",
-            "categories": ["js", "observable", "dataflow", "object", "prop", "subscrption"],
+            "dir": "datasense/obs",
+            "file": true,
+            "keywords": ["js", "observable", "dataflow", "object", "prop", "subscrption"],
             "date": "20210303",
             "author": { "name": "Kingcean Tuan", "url": "https://kingcean.org" },
             "end": true,
             "related": [
-                { "name": "使用文档", "url": "https://datasense.js.org/articles/?props" }
+                { "name": "使用文档", "url": "https://datasense.js.org/articles/?wiki/props" }
             ],
             "notes": [
                 "(cc) Kingcean Tuan, 2021."
@@ -52,26 +55,66 @@
         },
         {
             "name": "十进制历",
-            "url": "/2021/decade-calendar/README.md",
-            "categories": ["calendar", "idea"],
+            "dir": "decade-calendar",
+            "file": true,
+            "intro": "一年有12个月，每个月有28到31天不等，为什么要这么设计，如果大开脑洞，是否有别的方案？",
+            "keywords": ["calendar", "idea"],
             "date": "20210224",
-            "author": { "name": "Kingcean Tuan", "url": "https://github.com/kingcean" },
+            "author": "Kingcean Tuan",
             "location": "Shanghai",
-            "end": true,
+            "end": {
+                "end": true,
+                "urls": [
+                    { "old": "./type-script/", "by": "?2021/decade-calendar/type-script" },
+                    { "old": "./csharp/", "by": "?2021/decade-calendar/csharp" }
+                ]
+            },
             "related": [
-                { "name": "Generic decade calendar", "url": "?decade-calendar/calendar" }
+                {
+                    "name": "Generic decade calendar",
+                    "name#zh": "通用十进制历",
+                    "url": "?2021/decade-calendar/calendar"
+                }
             ],
             "subs": ["/calendar/README.md", "/csharp/README.md", "/type-script/README.md"],
             "notes": [
                 "(cc) Kingcean Tuan, 2021."
+            ],
+            "children": [
+                {
+                    "name": "Generic decade calendar",
+                    "name#zh": "通用十进制历",
+                    "dir": "decade-calendar/calendar",
+                    "file": true,
+                    "date": "20210224",
+                    "end": { "start": true, "end": true }
+                },
+                {
+                    "name": "Type Script implementation",
+                    "name#zh": "Type Script 版实现",
+                    "dir": "decade-calendar/type-script",
+                    "file": true,
+                    "date": "20210224",
+                    "end": { "start": true, "end": true }
+                },
+                {
+                    "name": "C# implementation",
+                    "name#zh": "C# 版实现",
+                    "dir": "decade-calendar/csharp",
+                    "file": true,
+                    "date": "20210224",
+                    "end": { "start": true, "end": true }
+                }
             ]
         },
         {
             "name": "后人类时代",
-            "url": "/2025/post-human-era/README.md",
-            "categories": ["future", "ai", "evolution"],
+            "dir": "post-human-era",
+            "file": true,
+            "intro": "自生命起源，经亿万年演化，人类在地球上的出现并不久远，然而随着文明的发展推进，如今 AI 当道，十字路口何去何从？",
+            "keywords": ["future", "ai", "evolution"],
             "date": "20250302",
-            "author": { "name": "Kingcean Tuan", "url": "https://github.com/kingcean" },
+            "author": "Kingcean Tuan",
             "location": "Shanghai",
             "end": true,
             "related": [
@@ -82,13 +125,16 @@
             ]
         },
         {
-            "id": "foundry-local-preview",
             "name": "Foundry Local",
             "subtitle": "AI 框架",
-            "url": "/2025/foundry-local-yulan/README.md",
-            "categories": ["ai"],
+            "dir": "foundry-local-yulan",
+            "dir#en": "foundry-local-preview",
+            "intro": "目前 AI 及其驱动的以大语言模型为核心的交互形态与能力体现，正在这个世界大放异彩，但不得不说，受计算资源、模型规模、业务集成等限制，这一切直至现今还是起步阶段，但人们仍然一直在各方各面向前探索，时有突破。其中，本地较小模型及其混合形式的应用，也是众多探索前行方向中的一个，以解决诸如时延、服务器和带宽成本、隐私等方面的问题。Foundry Local 便是其中一个标准化框架，用于提供更为简单和统一的接入方式。它是一套部署于本地的 AI 服务，包含语言模型的管理和访问，提供 API 以供 app 使用。",
+            "intro#en": "Foundry Local is a local AI service with language model accessing and management capabilities. It exports APIs to app for business usages.",
+            "file": true,
+            "keywords": ["ai"],
             "date": "20251018",
-            "author": { "name": "Kingcean Tuan", "url": "https://github.com/kingcean" },
+            "author": "Kingcean Tuan",
             "end": true,
             "related": [
                 { "name": "PPT", "url": "https://sth.violty.com/articles/2025/foundry-local-preview/FoundryLocal251018.pptx" },
@@ -109,5 +155,8 @@
                 "涉及内容包含了预览版产品的说明介绍，最终版上线后可能与本文描述会有不同。"
             ]
         }
+    ],
+    "authors": [
+        { "name": "Kingcean Tuan", "url": "https://github.com/kingcean" }
     ]
 }
