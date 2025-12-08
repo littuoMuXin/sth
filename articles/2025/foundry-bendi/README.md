@@ -139,6 +139,24 @@ foundry service status
 
 访问上述控制台输出的地址（即通过 `GET` 请求），也可以看到一些最基本的状态信息，是个 JSON 格式返回的数据，其中包括 `endpoint` 字段，是个字符串数组，内含上述 Endpoint 信息。Foundry Local 对外提供的服务，基本都以此 Host 为基础的 Web API 形式提供。
 
+```json
+{
+  "endpoints": [
+    "http://127.0.0.1:63309"
+  ],
+  "modelDirPath": "C:\\Users\\Kingcean\\.foundry\\cache\\models",
+  "pipeName": null,
+  "isAutoRegistrationResolved": true,
+  "autoRegistrationStatus": "Successfully downloaded and registered the following EPs: OpenVINOExecutionProvider.\r\nValid EPs: CPUExecutionProvider, WebGpuExecutionProvider, OpenVINOExecutionProvider, CUDAExecutionProvider"
+}
+```
+
+另，如果服务未启动，可以运行以下命令先启动，启动后，也会输出服务端口号。
+
+```bash
+foundry service start
+```
+
 ### SDK
 
 实际上，这些访问能力也封装在 SDK 中，名为 Foundry Local Manager 或 foundry-local-sdk，支持多种常见编程语言。
@@ -230,7 +248,7 @@ GET /foundry/list
 - `displayName` _字符串_：显示名称。
 - `alias` _字符串_：模型简称（Alias）。
 - `version` _字符串_：模型的版本号。
-- `uri` _字符串_：模型在 Azure AI Foundry 注册表中的资源地址。
+- `uri` _字符串_：模型在 Azure AI Foundry 注册表中的资源地址。其中，地址格式 `azureml://registries/<registry-name>/models/<model-name>/versions/<version>` 表示机器学习注册表中的模型资产。
 - `publisher` _字符串_：发布者名称。
 - `task` _字符串_：模型功能类型。以下为常见值。
   - `"chat-completion"` 对话
@@ -396,7 +414,38 @@ export async function models(): Promise<string[]> {
 
 ### SDK
 
-使用 OpenAI 现有 SDK，将路径配置为 Endpoint 下 `/v1/chat/completions`，身份验证信息留空，即可访问。
+其中一些 SDK 集成了对话功能。除此之外，也可以使用 OpenAI 现有 SDK，将路径配置为 Endpoint 下 `/v1/chat/completions`，身份验证信息留空，即可直接访问。
+
+例如，以下是一段 C# 示例。
+
+```csharp
+using Microsoft.AI.Foundry.Local;
+using Microsoft.Extensions.AI;
+
+// 初始化 Foundry Local Manager 实例，可缓存。
+var config = new Configuration
+{
+  AppName = "test_app"
+};
+await FoundryLocalManager.CreateAsync(config);
+var manager = FoundryLocalManager.Instance;
+
+// 下载指定模型。如果本地已存在，则下载会被跳过。
+const string MODEL_NAME = "Phi-4-cuda-gpu";
+var catalog = await manager.GetCatalogAsync();
+var model = await catalog.GetModelAsync(MODEL_NAME);
+await model.DownloadAsync();
+
+// 创建对话实例。
+var client = model.GetChatClientAsync();
+
+// 对话。
+var completion = client.CompleteStreamingAsync("Hi, what's your name?");
+async foreach (var update in completion)
+{
+  // 读取 update 中的内容，此处略。
+}
+```
 
 ### AI 工具包
 

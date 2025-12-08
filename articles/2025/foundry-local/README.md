@@ -232,7 +232,7 @@ It returns a JSON array (`[…]`) that enumerates downloadable model information
 - `displayName` _string_: display name.
 - `alias` _string_: model abbreviation (Alias).
 - `version` _string_: The version number of the model.
-- `uri` _string_: The resource address of the model in the Azure AI Foundry Catalog.
+- `uri` _string_: The resource address of the model in the Azure AI Foundry Catalog. The address in format `azureml://registries/<registry-name>/models/<model-name>/versions/<version>` is about the model asset in a Machine Learning registry of Azure.
 - `publisher` _string_: The name of publisher.
 - `task` _string_: The type of model feature. The following are common values.
   - `"chat-completion"` Chat (with completion API)
@@ -400,7 +400,38 @@ export async function models(): Promise<string[]> {
 
 ### SDK
 
-Using the existing OpenAI SDK, configure the path `/v1/chat/completions` to Endpoint and leave the authentication information blank. Then you can access it.
+Some SDKs integrates with the completions API exports. Otherwise, using the existing OpenAI SDK, configure the path `/v1/chat/completions` to Endpoint and leave the authentication information blank. Then you can access it.
+
+Following is a sample writen by C#.
+
+```csharp
+using Microsoft.AI.Foundry.Local;
+using Microsoft.Extensions.AI;
+
+// Initializes a new instance of Foundry Local Manager. The instance can be set as a singleton.
+var config = new Configuration
+{
+  AppName = "test_app"
+};
+await FoundryLocalManager.CreateAsync(config);
+var manager = FoundryLocalManager.Instance;
+
+// Download the specific model (the method skips download if alread cached).
+const string MODEL_NAME = "Phi-4-cuda-gpu";
+var catalog = await manager.GetCatalogAsync();
+var model = await catalog.GetModelAsync(MODEL_NAME);
+await model.DownloadAsync();
+
+// Creates a chat client instance.
+var client = model.GetChatClientAsync();
+
+// Completions.
+var completion = client.CompleteStreamingAsync("Hi, what's your name?");
+async foreach (var update in completion)
+{
+  // Read content from update. The code is omitted here.
+}
+```
 
 ### AI toolkit
 
