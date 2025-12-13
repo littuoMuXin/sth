@@ -128,11 +128,11 @@
         {
             "name": "Foundry Local",
             "subtitle": "AI 框架",
-            "dir": "foundry-bendi",
-            "dir#en": "foundry-local",
+            "dir": "foundry-local",
             "intro": "目前 AI 及其驱动的以大语言模型为核心的交互形态与能力体现，正在这个世界大放异彩，但不得不说，受计算资源、模型规模、业务集成等限制，这一切直至现今还是起步阶段，但人们仍然一直在各方各面向前探索，时有突破。其中，本地较小模型及其混合形式的应用，也是众多探索前行方向中的一个，以解决诸如时延、服务器和带宽成本、隐私等方面的问题。Foundry Local 便是其中一个标准化框架，用于提供更为简单和统一的接入方式。它是一套部署于本地的 AI 服务，包含语言模型的管理和访问，提供 API 以供 app 使用。",
             "intro#en": "Foundry Local is a local AI service with language model accessing and management capabilities. It exports APIs to app for business usages.",
             "file": true,
+            "file#zh": "chs.md",
             "keywords": ["ai"],
             "date": "20251018",
             "author": "Kingcean Tuan",
