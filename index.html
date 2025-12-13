@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:image" content="./images/bg/poster.jpg">
     <title>sth</title>
-    <link href="https://cdn.jsdelivr.net/npm/hje@2.3.2/docs/css/site.org.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/hje@2.4.0/docs/css/site.org.css" rel="stylesheet" />
     <link href="./css/current.css" rel="stylesheet" />
     <link rel="icon" href="./materials/icon.png" type="image/png">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked@16.2.1/lib/marked.umd.js" ></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hje@2.3.2/docs/js/mdblogs.js" ></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hje@2.4.0/docs/js/mdblogs.js" ></script>
     <style type="text/css" >
     body > header + section > h1:first-child {
         font-weight: normal; position: relative;
@@ -25,6 +25,9 @@
     }
     #blog_content {
         display: block; min-height: 300px; padding-top: 0; grid-template-columns: auto; margin-bottom: 20px;
+    }
+    #blog_content > ul.link-tile-compact > li > a {
+        max-height: 106px; overflow: hidden;
     }
     section > ul.link-tile-compact, section > ul.link-tile-compact > li {
         list-style: none;
@@ -57,17 +60,15 @@
                 children: DeepX.MdBlogs.getLocaleString("loading")
             }]
         });
-
-        DeepX.MdBlogs.fetchArticles("./articles/config.json").then(function (r) {
-            const ul = DeepX.MdBlogs.generateMenu(r.blogs(), {
-                styleRefs: "link-tile-compact",
-                deep: false,
-                path: "./articles/"
-            });
+        DeepX.MdBlogs.generateMenuPromise("./articles/config.json", "blogs", {
+            styleRefs: "link-tile-compact",
+            deep: -1,
+            path: "./articles/"
+        }).then(function (r) {
             context.model().children = [{
                 tagName: "h1",
                 children: DeepX.MdBlogs.getLocaleString("blogs")
-            }, ul];
+            }, r];
             context.refresh();
         }, function (r) {
             context.model().children = [{

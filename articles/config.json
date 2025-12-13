@@ -1,4 +1,5 @@
 {
+    "$schema": "https://cdn.jsdelivr.net/npm/hje@2.4.0/dist/mdblogs.schema.json",
     "name": "sth",
     "blog": [
         {
@@ -8,7 +9,7 @@
             "file": true,
             "keywords": ["cli", "dotnet"],
             "date": "20200408",
-            "author": { "name": "Kingcean Tuan", "url": "https://kingcean.net" },
+            "author": [{ "name": "Kingcean Tuan", "url": "https://kingcean.net" }],
             "end": true,
             "related": [
                 { "name": "Article source", "url": "https://weibo.com/ttarticle/p/show?id=2309404491344071491616" },
@@ -27,7 +28,7 @@
             "file": true,
             "keywords": ["js", "event", "dataflow", "task", "observable", "message"],
             "date": "20210301",
-            "author": { "name": "Kingcean Tuan", "url": "https://kingcean.org" },
+            "author": [{ "name": "Kingcean Tuan", "url": "https://kingcean.org" }],
             "end": true,
             "related": [
                 { "name": "使用文档", "url": "https://datasense.js.org/articles/?wiki/event" }
@@ -44,7 +45,7 @@
             "file": true,
             "keywords": ["js", "observable", "dataflow", "object", "prop", "subscrption"],
             "date": "20210303",
-            "author": { "name": "Kingcean Tuan", "url": "https://kingcean.org" },
+            "author": [{ "name": "Kingcean Tuan", "url": "https://kingcean.org" }],
             "end": true,
             "related": [
                 { "name": "使用文档", "url": "https://datasense.js.org/articles/?wiki/props" }
@@ -138,18 +139,19 @@
             "end": true,
             "related": [
                 { "name": "PPT", "url": "https://sth.violty.com/articles/2025/foundry-local-preview/FoundryLocal251018.pptx" },
-                "API references",
+                { "name": "API references", "name#zh": "API 文档", "disable": "label" },
                 { "name": "CLI", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-cli" },
                 { "name": "REST API", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-rest" },
-                "SDK references",
+                { "name": "OpenAI Chat Completions API", "subtitle": "Spec", "url": "https://platform.openai.com/docs/api-reference/chat/create" },
+                { "name": "SDK references", "name#zh": "SDK 文档", "disable": "label" },
                 { "name": "C#", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-csharp" },
                 { "name": "JavaScript", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-rust" },
                 { "name": "Python", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-python" },
                 { "name": "Rust", "url": "https://learn.microsoft.com/zh-cn/azure/ai-foundry/foundry-local/reference/reference-sdk?pivots=programming-language-javascript" },
-                "Others",
-                { "name": "OpenAI Chat Completions API Spec", "url": "https://platform.openai.com/docs/api-reference/chat/create" },
+                { "name": "Official websites", "name#zh": "官方站点", "disable": "label" },
                 { "name": "ONNX", "subtitle": "简体中文版官网", "subtitle#en": "Official website", "url": "https://onnx.org.cn/", "url#en": "https://onnx.ai/" },
                 { "name": "WebGPU", "subtitle": "W3C 标准", "subtitle#en": "W3C Standard", "url": "https://www.w3.org/TR/webgpu/" },
+                { "name": "Other", "name#zh": "其它", "disable": "label" },
                 { "name": "AI Dev Gallery", "subtitle": "Microsoft Store 详情页", "subtitle#en": "PDP in Microsoft Store", "url": "https://apps.microsoft.com/detail/9N9PN1MM3BD5" }
             ],
             "notes": [
@@ -164,7 +166,20 @@
             ]
         }
     ],
-    "authors": [
-        { "name": "Kingcean Tuan", "url": "https://github.com/kingcean" }
-    ]
+    "$defs": {
+        "contributors": [
+            { "name": "Kingcean Tuan", "url": "https://github.com/kingcean" }
+        ],
+        "keywords": [
+            { "name": "AI", "value": "ai" },
+            { "name": "CLI", "value": "cli" },
+            { "name": "Idea", "name#zh": "创意", "value": "idea" },
+            { "name": "Future", "name#zh": "未来", "value": "future" },
+            { "name": "JS", "value": "js" },
+            { "name": ".NET", "value": "dotnet" },
+            { "name": "Installation", "name#zh": "安装", "value": "install" },
+            { "name": "Prepare", "name#zh": "准备", "value": "prepare" },
+            { "name": "NPM", "value": "npm" }
+        ]
+    }
 }
