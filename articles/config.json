@@ -87,6 +87,7 @@
                     "name#zh": "通用十进制历",
                     "dir": "decade-calendar/calendar",
                     "file": true,
+                    "author": "Kingcean Tuan",
                     "date": "20210224",
                     "end": { "start": true, "end": true }
                 },
@@ -95,6 +96,7 @@
                     "name#zh": "Type Script 版实现",
                     "dir": "decade-calendar/type-script",
                     "file": true,
+                    "author": [{ "name": "Kingcean Tuan", "url": "https://kingcean.org" }],
                     "date": "20210224",
                     "end": { "start": true, "end": true }
                 },
@@ -103,6 +105,7 @@
                     "name#zh": "C# 版实现",
                     "dir": "decade-calendar/csharp",
                     "file": true,
+                    "author": [{ "name": "Kingcean Tuan", "url": "https://kingcean.net" }],
                     "date": "20210224",
                     "end": { "start": true, "end": true }
                 }
