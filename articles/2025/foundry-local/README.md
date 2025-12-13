@@ -28,7 +28,7 @@ It is an AI service run on local machine to enable the functionalities powered b
 
 Microsoft has more than one AI-related services, such as ONNX. What are their relationships and differences?
 
-![The relationship amoung each products and services](./rela.jpg)
+![The relationship amoung each products and services](./en/rela.jpg)
 
 - __DirectML__
 
@@ -101,7 +101,7 @@ The main execution appications within it are as follows.
 
 ## Architecture
 
-![Architecture](./arch.jpg)
+![Architecture](./en/arch.jpg)
 
 ### Modules and dependencies
 
@@ -113,7 +113,7 @@ Upper-layer applications can access Foundry Local's AI-specific capabilities and
 
 ### Workflow
 
-![Workflow](./workflow.jpg)
+![Workflow](./en/workflow.jpg)
 
 The language models used in Foundry Local are stored locally and can be managed dynamically. Specifically, in the cloud, the Azure AI Foundry Catalog contains all models and provides APIs to Foundry Local to list and download. It will first perform a query operation to obtain a list of information including model name, version, type, and configuration information, as well as a CDN address for download; and then perform a download of the model file and save it in the cache directory specified in the local storage space.
 
@@ -135,7 +135,7 @@ foundry service status
 
 It outputs a specific state address on the console, including the port number on , which can be captured and staged in memory by the Endpoint for future use. As shown below, the corresponding endpoint is `http://localhost:63309`.
 
-![Get status](./cli-status.jpg)
+![Get status](./en/cli-status.jpg)
 
 > 🟢 Model management service is running on http://127.0.0.1:63309/openai/status
 
@@ -317,7 +317,7 @@ Common models include Microsoft Phi Silica series, as well as Qwen (by Alibaba C
 
 Once the download is complete, the model is ready for use.
 
-![Model lifecycle](./run.jpg)
+![Model lifecycle](./en/run.jpg)
 
 To save memory (RAM), models load on demand or can be preloaded manually. After a period of inactivity (Time-to-Live, 10 minutes by default), it is automatically unloaded.
 
@@ -449,7 +449,7 @@ If the specified model does not exist, the download and installation are automat
 
 In addition, you can also download and install the AI Dev Gallery (currently also in preview) app from the Microsoft Store to experience it.
 
-![AI Dev Gallery Preview](./dev-gallery.jpg)
+![AI Dev Gallery Preview](./en/dev-gallery.jpg)
 
 <!-- End -->
 ## References
