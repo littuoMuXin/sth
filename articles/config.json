@@ -57,6 +57,7 @@
             "name#en": "Decade Calendar",
             "dir": "decade-calendar",
             "file": true,
+            "file#en": "en.md",
             "intro": "一年有12个月，每个月有28到31天不等，为什么要这么设计，如果大开脑洞，是否有别的方案？",
             "keywords": ["calendar", "idea"],
             "date": "20210224",
