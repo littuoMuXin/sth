@@ -71,6 +71,10 @@ export class DecadeDate {
     return new Date(#inner.y, 0, #inner.d);
   }
 
+  public valueOf() {
+    return this.toDate().valueOf();
+  }
+
   public toString() {
     if (isNaN(#inner.y) || isNaN(#inner.d))
       return "Invalid Date";

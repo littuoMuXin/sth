@@ -21,6 +21,7 @@ You can explore here to find something interested.
 *pron.*
 
 Short for something.
+
 A thing that is not known or mentioned by name, or a thing that is thought to be important or worth taking notice of.
 
 ---
@@ -39,6 +40,7 @@ The content of this site is licensed under the Creative Commons Attribution-Shar
 
 And the site is powered by GitHub Pages.
 
+<!-- End -->
 ---
 
 Kingcean Tuan ([@kingcean](https://github.com/kingcean))
