@@ -1,5 +1,5 @@
 {
-    "$schema": "https://cdn.jsdelivr.net/npm/hje@2.4.0/dist/mdblogs.schema.json",
+    "$schema": "https://cdn.jsdelivr.net/npm/hje@2.4.1/dist/mdblogs.schema.json",
     "name": "sth",
     "blog": [
         {
@@ -21,7 +21,6 @@
             ]
         },
         {
-            "id": "datasense-events-v1",
             "name": "高级事件",
             "subtitle": "Type Script",
             "dir": "datasense/events",
@@ -38,7 +37,6 @@
             ]
         },
         {
-            "id": "datasense-obs-v1",
             "name": "通用双向绑定库",
             "subtitle": "Type Script",
             "dir": "datasense/obs",
