@@ -12,9 +12,9 @@
             "author": [{ "name": "Kingcean Tuan", "url": "https://kingcean.net" }],
             "end": true,
             "related": [
-                { "name": "Article source", "url": "https://weibo.com/ttarticle/p/show?id=2309404491344071491616" },
-                { "name": "API Reference", "url": "https://nuscien.github.io/trivial/console/" },
-                { "name": "Source code of implementation", "url": "https://github.com/nuscien/trivial/tree/v3.6/Console" }
+                { "name": "Original source", "name#zh": "引用原文", "url": "https://weibo.com/ttarticle/p/show?id=2309404491344071491616" },
+                { "name": "API Reference", "name#zh": "API 参考文档", "url": "https://nuscien.github.io/trivial/console/" },
+                { "name": "Source code of implementation", "name#zh": "源码实现", "url": "https://github.com/nuscien/trivial/tree/v3.6/Console" }
             ],
             "notes": [
                 "(cc) Kingcean Tuan, 2020."
@@ -30,7 +30,7 @@
             "author": [{ "name": "Kingcean Tuan", "url": "https://kingcean.org" }],
             "end": true,
             "related": [
-                { "name": "使用文档", "url": "https://datasense.js.org/articles/?wiki/event" }
+                { "name": "Spec", "name#zh": "使用文档", "url": "https://datasense.js.org/articles/?event" }
             ],
             "notes": [
                 "(cc) Kingcean Tuan, 2021."
@@ -46,7 +46,7 @@
             "author": [{ "name": "Kingcean Tuan", "url": "https://kingcean.org" }],
             "end": true,
             "related": [
-                { "name": "使用文档", "url": "https://datasense.js.org/articles/?wiki/props" }
+                { "name": "Spec", "name#zh": "使用文档", "url": "https://datasense.js.org/articles/?props" }
             ],
             "notes": [
                 "(cc) Kingcean Tuan, 2021."
@@ -70,6 +70,9 @@
                     { "old": "./csharp/", "by": "?2021/decade-calendar/csharp" }
                 ]
             },
+            "data": {
+                "append": "calendar-decade"
+            },
             "related": [
                 {
                     "name": "Generic decade calendar",
@@ -89,7 +92,10 @@
                     "file": true,
                     "author": "Kingcean Tuan",
                     "date": "20210224",
-                    "end": { "start": true, "end": true }
+                    "end": { "start": true, "end": true },
+                    "data": {
+                        "append": "calendar-decade"
+                    }
                 },
                 {
                     "name": "Type Script implementation",
@@ -113,6 +119,7 @@
         },
         {
             "name": "后人类时代",
+            "name#en": "Post Human Era",
             "dir": "post-human-era",
             "file": true,
             "intro": "自生命起源，经亿万年演化，人类在地球上的出现并不久远，然而随着文明的发展推进，如今 AI 当道，十字路口何去何从？",

@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:image" content="./images/bg/poster.jpg">
     <title>sth</title>
-    <link href="https://cdn.jsdelivr.net/npm/hje@2.4.1/docs/css/site.org.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/hje@2.4.2/docs/css/site.org.css" rel="stylesheet" />
     <link href="./css/current.css" rel="stylesheet" />
     <link rel="icon" href="./materials/icon.png" type="image/png">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked@16.2.1/lib/marked.umd.js" ></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hje@2.4.1/docs/js/mdblogs.js" ></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hje@2.4.2/docs/js/mdblogs.js" ></script>
+    <script type="text/javascript" src="./js/current.js" ></script>
     <style type="text/css" >
     body > header + section > h1:first-child {
         font-weight: normal; position: relative;
@@ -50,37 +51,8 @@
         }
     }
     </style>
-    <script type="text/javascript">
-    function onInit() {
-        DeepX.MdBlogs.setElementText("topmenu-about", "about");
-        DeepX.MdBlogs.setElementText("topmenu-games", "games");
-        const context = Hje.render(document.getElementById("blog_content"), {
-            children: [{
-                tagName: "div",
-                children: DeepX.MdBlogs.getLocaleString("loading")
-            }]
-        });
-        DeepX.MdBlogs.generateMenuPromise("./articles/config.json", "blogs", {
-            styleRefs: "link-tile-compact",
-            deep: -1,
-            path: "./articles/"
-        }).then(function (r) {
-            context.model().children = [{
-                tagName: "h1",
-                children: DeepX.MdBlogs.getLocaleString("blogs")
-            }, r];
-            context.refresh();
-        }, function (r) {
-            context.model().children = [{
-                tagName: "div",
-                children: DeepX.MdBlogs.getLocaleString("loadFailed")
-            }];
-            context.refresh();
-        });
-    }
-    </script>
 </head>
-<body onload="onInit()">
+<body onload="initHome()">
     <header>
         <section>
             <h1><a href="https://12dlabs.github.io"><strong>12D</strong><span>Labs</span></a></h1>

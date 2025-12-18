@@ -8,7 +8,7 @@ const m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
 function getDayOfYear(date: Date) {
   let day = date.getDate() + m[date.getMonth()];
   if (m > 1) {
-    let y = date.getFullYear();
+    const y = date.getFullYear();
     if (y % 4 === 0 && y % 100 !== 0 || y % 400 === 0)
       day++;
   }
@@ -40,7 +40,7 @@ export class DecadeDate {
         d: NaN
       };
     } else {
-      let arr = date.split('/');
+      const arr = date.split('/');
       #inner = arr.length > 1 ? {
         y: parseInt(arr[0]),
         d: parseInt(arr[1])
