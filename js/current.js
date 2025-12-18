@@ -33,19 +33,13 @@ function initBlog() {
             if (!ev) return;
             const article = ev.article;
             const model = ev.children;
-            if (!article || !article.data || !model) return;
+            if (!article || !model) return;
             let insertion = 0;
             for (let i = 0; i < model.length; i++) {
                 insertion++;
                 if (model[i] && model[i].tagName === "main") break;
             }
-            if (article.data.append && typeof article.data.append === "string") {
-                switch (article.data.append) {
-                    case "calendar-decade":
-                        appendDecadeCalendar(model, article, insertion);
-                        break;
-                }
-            }
+            if (article.isKind("calendar-decade")) appendDecadeCalendar(model, article, insertion);
         }
     });
     DeepX.MdBlogs.setElementText("topmenu-about", "about");

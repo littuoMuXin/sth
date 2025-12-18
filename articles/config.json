@@ -1,5 +1,5 @@
 {
-    "$schema": "https://cdn.jsdelivr.net/npm/hje@2.4.1/dist/mdblogs.schema.json",
+    "$schema": "https://cdn.jsdelivr.net/npm/hje@2.4.2/dist/mdblogs.schema.json",
     "name": "sth",
     "blog": [
         {
@@ -70,8 +70,8 @@
                     { "old": "./csharp/", "by": "?2021/decade-calendar/csharp" }
                 ]
             },
-            "data": {
-                "append": "calendar-decade"
+            "options": {
+                "kind": ["calendar-decade"]
             },
             "related": [
                 {
@@ -93,8 +93,8 @@
                     "author": "Kingcean Tuan",
                     "date": "20210224",
                     "end": { "start": true, "end": true },
-                    "data": {
-                        "append": "calendar-decade"
+                    "options": {
+                        "kind": ["calendar-decade"]
                     }
                 },
                 {
