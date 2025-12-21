@@ -11,8 +11,12 @@
             "date": "20200408",
             "author": [{ "name": "Kingcean Tuan", "url": "https://kingcean.net" }],
             "end": true,
+            "thumb": {
+                "common": "https://sth.violty.com/articles/2020/rich-cli/thumb-tile.webp",
+                "wide": "https://sth.violty.com/articles/2020/rich-cli/thumb-wide.webp"
+            },
             "related": [
-                { "name": "Original source", "name#zh": "引用原文", "url": "https://weibo.com/ttarticle/p/show?id=2309404491344071491616" },
+                { "name": "Original article", "name#zh": "原文", "subtitle": "Weibo", "subtitle#zh": "微博", "url": "https://weibo.com/ttarticle/p/show?id=2309404491344071491616" },
                 { "name": "API Reference", "name#zh": "API 参考文档", "url": "https://nuscien.github.io/trivial/console/" },
                 { "name": "Source code of implementation", "name#zh": "源码实现", "url": "https://github.com/nuscien/trivial/tree/v3.6/Console" }
             ],
@@ -29,6 +33,10 @@
             "date": "20210301",
             "author": [{ "name": "Kingcean Tuan", "url": "https://kingcean.org" }],
             "end": true,
+            "thumb": {
+                "common": "https://sth.violty.com/articles/2021/datasense/images/thumb-event-tile.webp",
+                "wide": "https://sth.violty.com/articles/2021/datasense/images/thumb-event-wide.webp"
+            },
             "related": [
                 { "name": "Spec", "name#zh": "使用文档", "url": "https://datasense.js.org/articles/?event" }
             ],
@@ -45,6 +53,10 @@
             "date": "20210303",
             "author": [{ "name": "Kingcean Tuan", "url": "https://kingcean.org" }],
             "end": true,
+            "thumb": {
+                "common": "https://sth.violty.com/articles/2021/datasense/images/thumb-obs-tile.webp",
+                "wide": "https://sth.violty.com/articles/2021/datasense/images/thumb-obs-wide.webp"
+            },
             "related": [
                 { "name": "Spec", "name#zh": "使用文档", "url": "https://datasense.js.org/articles/?props" }
             ],
@@ -69,6 +81,10 @@
                     { "old": "./type-script/", "by": "?2021/decade-calendar/type-script" },
                     { "old": "./csharp/", "by": "?2021/decade-calendar/csharp" }
                 ]
+            },
+            "thumb": {
+                "common": "https://sth.violty.com/articles/2021/decade-calendar/images/tile.webp",
+                "wide": "https://sth.violty.com/articles/2021/decade-calendar/images/wide.webp"
             },
             "options": {
                 "kind": ["calendar-decade"]
@@ -128,6 +144,10 @@
             "author": "Kingcean Tuan",
             "location": "Shanghai",
             "end": true,
+            "thumb": {
+                "common": "https://sth.violty.com/articles/202/post-human-era/images/thumb-tile.webp",
+                "wide": "https://sth.violty.com/articles/202/post-human-era/images/thumb-wide.webp"
+            },
             "related": [
                 { "name": "未来进化论", "subtitle": "2009年《冰洋世纪》博客原文章", "url": "https://kingcean.wordpress.com/2009/03/25/%e6%9c%aa%e6%9d%a5%e8%bf%9b%e5%8c%96%e8%ae%ba/" }
             ],
@@ -147,6 +167,10 @@
             "date": "20251018",
             "author": "Kingcean Tuan",
             "end": true,
+            "thumb": {
+                "common": "https://sth.violty.com/articles/2025/foundry-local/thumbs/tile.webp",
+                "wide": "https://sth.violty.com/articles/2025/foundry-local/thumbs/wide.webp"
+            },
             "related": [
                 { "name": "PPT", "url": "https://sth.violty.com/articles/2025/foundry-local-preview/FoundryLocal251018.pptx" },
                 { "name": "API references", "name#zh": "API 文档", "disable": "label" },
