@@ -8,20 +8,52 @@ function initHome() {
         }]
     });
     DeepX.MdBlogs.generateMenuPromise("./articles/config.json", "blogs", {
-        styleRefs: "link-tile-compact",
+        styleRefs: "x-list-blogs",
         deep: -1,
         path: "./articles/",
         render(model, article, options) {
-            if (!model.children || model.children.length !== 1 || !model.children[0].children || !article) return;
+            if (!model.children || model.children.length !== 1 || !article) return;
+            const localOptions = { mkt: options.mkt };
+            const title = article.getName(localOptions);
+            const firstLine = {
+                tagName: "div",
+                children: [{
+                    tagName: "strong",
+                    children: title
+                }, {
+                    tagName: "span",
+                    children: article.getSubtitle(localOptions)
+                }]
+            };
+            const publishDate = article.dateObj;
+            const secondLine = {
+                tagName: "div",
+                children: [{
+                    tagName: "time",
+                    props: {
+                        datetime: `${publishDate.year.toString(10)}-${publishDate.month.toString(10)}-${publishDate.date.toString(10)}`
+                    },
+                    children: article.dateString
+                }]
+            };
             const thumb = article.getThumb("wide");
-            if (!thumb) return;
-            model.children[0].children.push({
+            if (thumb) secondLine.children.push({
                 tagName: "img",
                 props: {
-                    alt: article.name,
+                    alt: title,
                     src: thumb
                 }
             });
+            model.children[0].children = [firstLine, secondLine];
+            const desc = article.getIntro(localOptions);
+            if (desc) model.children[0].children.push({
+                tagName: "div",
+                children: [{
+                    tagName: "span",
+                    children: article.getIntro(localOptions)
+                }]
+            });
+            if (model.children[0].props) delete model.children[0].props.title;
         }
     }).then(function (r) {
         context.model().children = [{
