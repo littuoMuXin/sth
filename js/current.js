@@ -10,7 +10,19 @@ function initHome() {
     DeepX.MdBlogs.generateMenuPromise("./articles/config.json", "blogs", {
         styleRefs: "link-tile-compact",
         deep: -1,
-        path: "./articles/"
+        path: "./articles/",
+        render(model, article, options) {
+            if (!model.children || model.children.length !== 1 || !model.children[0].children || !article) return;
+            const thumb = article.getThumb("wide");
+            if (!thumb) return;
+            model.children[0].children.push({
+                tagName: "img",
+                props: {
+                    alt: article.name,
+                    src: thumb
+                }
+            });
+        }
     }).then(function (r) {
         context.model().children = [{
             tagName: "h1",

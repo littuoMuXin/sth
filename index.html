@@ -28,7 +28,10 @@
         display: block; min-height: 300px; padding-top: 0; grid-template-columns: auto; margin-bottom: 20px;
     }
     #blog_content > ul.link-tile-compact > li > a {
-        max-height: 106px; overflow: hidden;
+        max-height: 106px; overflow: hidden; position: relative;
+    }
+    #blog_content > ul.link-tile-compact > li > a > span + img {
+        width: 80px; height: 45px; border: 1px solid rgba(128, 128, 128, 0.1); border-radius: 4px; object-fit: cover; position: absolute; top: 8px; right: 8px;
     }
     section > ul.link-tile-compact, section > ul.link-tile-compact > li {
         list-style: none;
