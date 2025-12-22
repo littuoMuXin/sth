@@ -1,12 +1,17 @@
 footer > section > div.x-copyright > strong > code.x-part-item-name {
     font-size: 16px;
 }
-article > div.x-part-title {
+section.x-part-g-banner {
     font-size: 16px; font-weight: lighter; max-width: 1200px; padding-bottom: 19px; margin-bottom: 20px; border-bottom: 1px dashed #333; cursor: default; user-select: none;
 }
-article > div.x-part-title > img {
+section.x-part-g-banner > img {
     width: 64px; height: 64px; vertical-align: middle; margin-right: 16px;
 }
-article > div.x-part-title > span {
+section.x-part-g-banner > span {
     line-height: 64px; vertical-align: middle;
+}
+@media screen and (max-width:800px) {
+    section.x-part-g-banner > span {
+        line-height: 20px; display: block; margin-top: 16px;
+    }
 }

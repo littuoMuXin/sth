@@ -15,17 +15,26 @@
     body > header + section > h1:first-child {
         font-weight: normal; position: relative;
     }
-    body > header + section > h1:first-child + section, body > header + section > section:first-child {
-        font-size: 16px; font-weight: lighter; max-width: 1200px; padding-bottom: 19px; border-bottom: 1px dashed #333; cursor: default; user-select: none;
-    }
-    body > header + section > h1:first-child + section > img, body > header + section > section:first-child > img {
-        width: 64px; height: 64px; vertical-align: middle; margin-right: 16px;
-    }
-    body > header + section > h1:first-child + section > span, body > header + section > section:first-child > span {
-        line-height: 64px; vertical-align: middle;
-    }
     #blog_content {
         display: block; min-height: 300px; padding-top: 0; grid-template-columns: auto; margin-bottom: 20px;
+    }
+    #blog_content > h1:first-child > a, #blog_content > h1:first-child > a:visited {
+        color: #D3D3D3; text-decoration: none;
+    }
+    #blog_content > h1:first-child > a:hover {
+        color: #9EF; text-decoration: none;
+    }
+    #blog_content > h1:first-child > a:active {
+        color: #8CE; text-decoration: none;
+    }
+    #blog_content > h1:first-child > a:last-child::after {
+        content: ">"; color: #888; margin-left: 10px; transition: 0.2s;
+    }
+    #blog_content > h1:first-child:hover > a:last-child::after {
+        margin-left: 12px;
+    }
+    #blog_content > h1:first-child:active > a:last-child::after {
+        margin-left: 11px;
     }
     section > ul.link-tile-compact, section > ul.link-tile-compact > li {
         list-style: none;
@@ -41,11 +50,6 @@
     }
     footer > section > div.x-copyright > strong {
         color: rgba(255, 255, 255, 0.6); font-size: 24px;
-    }
-    @media screen and (max-width:800px) {
-        body > header + section > h1:first-child + section > span, body > header + section > section:first-child > span {
-            line-height: 20px; display: block; margin-top: 16px;
-        }
     }
     </style>
 </head>
@@ -67,7 +71,7 @@
         </section>
     </header>
     <section>
-        <section><img alt="sth" src="./materials/icon.png" /><span>A thing that is thought to be important or worth taking notice of.</span></section>
+        <section class="x-part-g-banner"><img alt="sth" src="./materials/icon.png" /><span>A thing that is thought to be important or worth taking notice of.</span></section>
     </section>
     <section id="blog_content" ></section>
     <section>

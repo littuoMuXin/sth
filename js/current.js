@@ -1,8 +1,18 @@
 function initHome() {
     DeepX.MdBlogs.setElementText("topmenu-about", "about");
     DeepX.MdBlogs.setElementText("topmenu-games", "games");
-    const context = Hje.render(document.getElementById("blog_content"), {
+    const title = {
+        tagName: "h1",
         children: [{
+            tagName: "a",
+            props: {
+                href: "./articles/"
+            },
+            children: DeepX.MdBlogs.getLocaleString("blogs")
+        }]
+    };
+    const context = Hje.render(document.getElementById("blog_content"), {
+        children: [title, {
             tagName: "div",
             children: DeepX.MdBlogs.getLocaleString("loading")
         }]
@@ -56,13 +66,10 @@ function initHome() {
             if (model.children[0].props) delete model.children[0].props.title;
         }
     }).then(function (r) {
-        context.model().children = [{
-            tagName: "h1",
-            children: DeepX.MdBlogs.getLocaleString("blogs")
-        }, r];
+        context.model().children = [title, r];
         context.refresh();
     }, function (r) {
-        context.model().children = [{
+        context.model().children = [title, {
             tagName: "div",
             children: DeepX.MdBlogs.getLocaleString("loadFailed")
         }];
@@ -74,8 +81,8 @@ function initBlog() {
     DeepX.MdBlogs.render("blog_content", "./config.json", {
         title: true,
         banner: {
-            tagName: "div",
-            styleRefs: "x-part-title",
+            tagName: "section",
+            styleRefs: "x-part-g-banner",
             children: [{
                 tagName: "img",
                 props: {
