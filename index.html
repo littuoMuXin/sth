@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:image" content="./images/bg/poster.jpg">
     <title>sth</title>
-    <link href="https://cdn.jsdelivr.net/npm/hje@2.4.2/docs/css/site.org.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/hje@2.4.3/docs/css/site.org.css" rel="stylesheet" />
     <link href="./css/current.css" rel="stylesheet" />
     <link rel="icon" href="./materials/icon.png" type="image/png">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked@16.2.1/lib/marked.umd.js" ></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hje@2.4.2/docs/js/mdblogs.js" ></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hje@2.4.3/docs/js/mdblogs.js" ></script>
     <script type="text/javascript" src="./js/current.js" ></script>
     <style type="text/css" >
     body > header + section > h1:first-child {
@@ -26,84 +26,6 @@
     }
     #blog_content {
         display: block; min-height: 300px; padding-top: 0; grid-template-columns: auto; margin-bottom: 20px;
-    }
-    #blog_content > ul.x-list-blogs {
-        padding: 0; margin: 0; list-style: none;
-    }
-    #blog_content > ul.x-list-blogs > li {
-        padding: 0; margin: 0 0 8px 0; list-style: none;
-    }
-    #blog_content > ul.x-list-blogs > li > a {
-        padding: 0; margin: 0 0 10px 0; display: block; border-radius: 8px; overflow: hidden; position: relative;
-    }
-    #blog_content > ul.x-list-blogs > li > a, #blog_content > ul.x-list-blogs > li > a:visited, #blog_content > ul.x-list-blogs > li > a:hover, #blog_content > ul.x-list-blogs > li > a:active {
-        text-decoration: none;
-    }
-    #blog_content > ul.x-list-blogs > li > a:link, #blog_content > ul.x-list-blogs > li > a:visited {
-        color: #888; transition: 0.6s;
-    }
-    #blog_content > ul.x-list-blogs > li > a:hover {
-        color: #AAA; transition: 0.1s; box-shadow: #111 1px 1px 4px;
-    }
-    #blog_content > ul.x-list-blogs > li > a:active {
-        color: #999; transition: 0.1s; box-shadow: #111 0 0 4px;
-    }
-    #blog_content > ul.x-list-blogs > li > a > div {
-        padding-top: 0; padding-bottom: 0; transition: 0.4s;
-    }
-    #blog_content > ul.x-list-blogs > li > a > div, #blog_content > ul.x-list-blogs > li > a:visited > div {
-        padding-left: 20px; padding-right: 20px; 
-    }
-    #blog_content > ul.x-list-blogs > li > a:hover > div {
-        padding-left: 18px; padding-right: 22px;
-    }
-    #blog_content > ul.x-list-blogs > li > a:active > div {
-        padding-left: 20px; padding-right: 20px;
-    }
-    #blog_content > ul.x-list-blogs > li > a > div > strong, #blog_content > ul.x-list-blogs > li > a > div > span {
-        vertical-align: baseline;
-    }
-    #blog_content > ul.x-list-blogs > li > a > div:first-child, #blog_content > ul.x-list-blogs > li > a > div:first-child + div {
-        background-color: rgba(128, 128, 128, 0.12);
-    }
-    #blog_content > ul.x-list-blogs > li > a > div:first-child {
-        padding-top: 8px; padding-right: 110px; border-top-left-radius: 8px; border-top-right-radius: 8px; line-height: 26px;
-    }
-    #blog_content > ul.x-list-blogs > li > a > div:first-child > strong:first-child {
-        font-weight: normal; font-size: 18px;
-    }
-    #blog_content > ul.x-list-blogs > li > a > div:first-child > strong:first-child, #blog_content > ul.x-list-blogs > li > a:active > div:first-child > strong:first-child {
-        color: #CCC; transition: 0.6s;
-    }
-    #blog_content > ul.x-list-blogs > li > a:hover > div:first-child > strong:first-child {
-        color: #9EF; transition: 0.1s;
-    }
-    #blog_content > ul.x-list-blogs > li > a:active > div:first-child > strong:first-child {
-        color: #8CE; transition: 0.1s;
-    }
-    #blog_content > ul.x-list-blogs > li > a > div:first-child > span {
-        font-weight: normal; font-size: 14px;
-    }
-    #blog_content > ul.x-list-blogs > li > a > div:first-child > strong + span {
-        margin-left: 20px;
-    }
-    #blog_content > ul.x-list-blogs > li > a > div:first-child + div > img {
-        width: 80px; height: 45px; border: 1px solid rgba(128, 128, 128, 0.1); border-radius: 4px; object-fit: cover; position: absolute; top: 8px; right: 16px;
-    }
-    #blog_content > ul.x-list-blogs > li > a > div:first-child + div {
-        font-size: 12px; padding-bottom: 8px; line-height: 20px;
-    }
-    #blog_content > ul.x-list-blogs > li > a > div + div + div {
-        background-color: rgba(128, 128, 128, 0.09); max-height: 72px; line-height: 24px; overflow: hidden;
-    }
-    #blog_content > ul.x-list-blogs > li > a > div:first-child + div + div > span:first-child {
-        display: inline-block; max-height: 72px; line-height: 24px; overflow: hidden; text-overflow: ellipsis;
-    }
-    #blog_content > ul.x-list-blogs > li > a > div:first-child + div + div {
-        padding-top: 7px; border-top: 1px solid rgba(128, 128, 128, 0.1);
-    }
-    #blog_content > ul.x-list-blogs > li > a > div:last-child {
-        padding-bottom: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;
     }
     section > ul.link-tile-compact, section > ul.link-tile-compact > li {
         list-style: none;

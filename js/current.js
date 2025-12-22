@@ -8,8 +8,8 @@ function initHome() {
         }]
     });
     DeepX.MdBlogs.generateMenuPromise("./articles/config.json", "blogs", {
-        styleRefs: "x-list-blogs",
-        deep: -1,
+        styleRefs: "link-item-blog",
+        deep: -2,
         path: "./articles/",
         render(model, article, options) {
             if (!model.children || model.children.length !== 1 || !article) return;
