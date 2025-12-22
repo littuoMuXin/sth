@@ -201,6 +201,9 @@
             ]
         }
     ],
+    "options": {
+        "disableName": true
+    },
     "$defs": {
         "contributors": [
             { "name": "Kingcean Tuan", "url": "https://github.com/kingcean" }

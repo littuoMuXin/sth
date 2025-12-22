@@ -71,8 +71,22 @@ function initHome() {
 }
 
 function initBlog() {
-    const comp = DeepX.MdBlogs.render("blog_content", "./config.json", {
+    DeepX.MdBlogs.render("blog_content", "./config.json", {
         title: true,
+        banner: {
+            tagName: "div",
+            styleRefs: "x-part-title",
+            children: [{
+                tagName: "img",
+                props: {
+                    alt: "Sth",
+                    src: "../materials/icon.png"
+                }
+            }, {
+                tagName: "span",
+                children: "A thing that is thought to be important or worth taking notice of."
+            }]
+        },
         onselect(ev) {
             if (!ev) return;
             const article = ev.article;
