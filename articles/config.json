@@ -152,7 +152,7 @@
                 "wide": "https://sth.violty.com/articles/2025/post-human-era/images/thumb-wide.webp"
             },
             "related": [
-                { "name": "未来进化论", "subtitle": "2009年《冰洋世纪》博客原文章", "url": "https://kingcean.wordpress.com/2009/03/25/%e6%9c%aa%e6%9d%a5%e8%bf%9b%e5%8c%96%e8%ae%ba/" }
+                { "name": "未来进化论", "name#en": "Future Evolution (未来进化论)", "subtitle": "2009年《冰洋世纪》博客原文章", "subtitle#en": "originally posted on Royal Kingcean Space in 2009", "url": "https://kingcean.wordpress.com/2009/03/25/%e6%9c%aa%e6%9d%a5%e8%bf%9b%e5%8c%96%e8%ae%ba/" }
             ],
             "notes": [
                 "(cc) Kingcean Tuan, 2025."
