@@ -27,12 +27,11 @@
     - README.md &nbsp; &nbsp; # 正文
     - type-script &nbsp; &nbsp; # 子内容
       - README.md &nbsp; &nbsp; # 子内容正文
-  - 0224 &nbsp; &nbsp; # 2月5日发表的所有博文
-    - hello-world &nbsp; &nbsp; 某一博文
-      - README.md &nbsp; &nbsp; # 正文
-      - greetings.jpg &nbsp; &nbsp; # 配图
-    - another &nbsp; &nbsp; 另一篇博文
-      - README.md &nbsp; &nbsp; # 正文
+  - hello-world &nbsp; &nbsp; 某一博文
+    - README.md &nbsp; &nbsp; # 正文
+    - greetings.jpg &nbsp; &nbsp; # 配图
+  - another &nbsp; &nbsp; 另一篇博文
+    - README.md &nbsp; &nbsp; # 正文
 
 ## Template
 
