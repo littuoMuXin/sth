@@ -136,10 +136,12 @@
         },
         {
             "name": "后人类时代",
-            "name#en": "Post Human Era",
+            "name#en": "Post-Human Era",
             "dir": "post-human-era",
             "file": true,
+            "file#en": "en.md",
             "intro": "自生命起源，经亿万年演化，人类在地球上的出现并不久远，然而随着文明的发展推进，如今 AI 当道，十字路口何去何从？",
+            "intro#en": "Since the origin of life and after hundreds of millions of years of evolution, humans have not been on Earth for very long. However, with the advancement of civilization, today AI dominates. At this crossroads, which direction should we take?",
             "keywords": ["future", "ai", "evolution"],
             "date": "20250302",
             "author": "Kingcean Tuan",
