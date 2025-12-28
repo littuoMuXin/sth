@@ -1,0 +1,2390 @@
+{
+    "industries": [{
+        "key": "cn-software",
+        "name": "Software",
+        "name#zh": "软件",
+        "source": "MIIT",
+        "country": "China",
+        "mode": "accumulative",
+        "period": {
+            "top": "year",
+            "base": "month",
+            "start": 2
+        }
+    }, {
+        "key": "cn-internet",
+        "name": "Internet",
+        "name#zh": "互联网",
+        "source": "MIIT",
+        "country": "China",
+        "mode": "accumulative",
+        "period": {
+            "top": "year",
+            "base": "month",
+            "start": 2
+        }
+    }],
+    "cn-software": [{
+        "year": 2018,
+        "total": {
+            "revenue": {
+                "total": 63061,
+                "fields": {
+                    "software": 19353,
+                    "its": 34756,
+                    "embed": 8952,
+                    "export": 554.5
+                }
+            },
+            "profit": {
+                "total": 8079
+            }
+        }
+    }, {
+        "year": 2019,
+        "total": {
+            "revenue": {
+                "total": 71768,
+                "fields": {
+                    "software": 20066.8,
+                    "its": 42574,
+                    "security": 1307.7,
+                    "embed": 7819.5,
+                    "export": 505.3
+                }
+            },
+            "profit": {
+                "total": 9362.2
+            }
+        }
+    }, {
+        "year": 2020,
+        "items": [
+            {
+                "revenue": {
+                    "total": 8008,
+                    "fields": {
+                        "software": 2189,
+                        "its": 4824,
+                        "security": 133,
+                        "embed": 862,
+                        "export": 57
+                    },
+                    "yoy": -0.116
+                },
+                "profit": {
+                    "total": 981,
+                    "yoy": -0.118
+                }
+            },
+            {
+                "revenue": {
+                    "total": 14087,
+                    "fields": {
+                        "software": 3915,
+                        "its": 8536,
+                        "security": 173,
+                        "embed": 1464,
+                        "export": 96
+                    },
+                    "yoy": -0.062
+                },
+                "profit": {
+                    "total": 1667,
+                    "yoy": -0.131
+                }
+            },
+            {
+                "revenue": {
+                    "total": 20830,
+                    "fields": {
+                        "software": 5529,
+                        "its": 12615,
+                        "security": 264,
+                        "embed": 2421,
+                        "export": 124
+                    },
+                    "yoy": -0.001
+                },
+                "profit": {
+                    "total": 2398,
+                    "yoy": -0.023
+                }
+            },
+            {
+                "revenue": {
+                    "total": 27999,
+                    "fields": {
+                        "software": 7546,
+                        "its": 16990,
+                        "security": 384,
+                        "embed": 3079,
+                        "export": 166
+                    },
+                    "yoy": 0.042
+                },
+                "profit": {
+                    "total": 3219,
+                    "yoy": -0.011
+                }
+            },
+            {
+                "revenue": {
+                    "total": 35609,
+                    "fields": {
+                        "software": 9615,
+                        "its": 21583,
+                        "security": 520,
+                        "embed": 3892,
+                        "export": 223
+                    },
+                    "yoy": 0.067
+                },
+                "profit": {
+                    "total": 4241,
+                    "yoy": 0.013
+                }
+            },
+            {
+                "revenue": {
+                    "total": 42448,
+                    "fields": {
+                        "software": 11623,
+                        "its": 25503,
+                        "security": 667,
+                        "embed": 4655,
+                        "export": 268
+                    },
+                    "yoy": 0.086
+                },
+                "profit": {
+                    "total": 5121,
+                    "yoy": 0.054
+                }
+            },
+            {
+                "revenue": {
+                    "total": 49984,
+                    "fields": {
+                        "software": 13699,
+                        "its": 30095,
+                        "security": 772,
+                        "embed": 5418,
+                        "export": 297
+                    },
+                    "yoy": 0.1
+                },
+                "profit": {
+                    "total": 6020,
+                    "yoy": 0.059
+                }
+            },
+            {
+                "revenue": {
+                    "total": 58387,
+                    "fields": {
+                        "software": 15901,
+                        "its": 35162,
+                        "security": 959,
+                        "embed": 6365,
+                        "export": 336
+                    },
+                    "yoy": 0.113
+                },
+                "profit": {
+                    "total": 7066,
+                    "yoy": 0.07
+                }
+            },
+            {
+                "revenue": {
+                    "total": 65542,
+                    "fields": {
+                        "software": 18068,
+                        "its": 39449,
+                        "security": 1168,
+                        "embed": 6856,
+                        "export": 374
+                    },
+                    "yoy": 0.117
+                },
+                "profit": {
+                    "total": 8026,
+                    "yoy": 0.073
+                }
+            },
+            {
+                "revenue": {
+                    "total": 73142,
+                    "fields": {
+                        "software": 19749,
+                        "its": 44572,
+                        "security": 1341,
+                        "embed": 7479,
+                        "export": 417
+                    },
+                    "yoy": 0.125
+                },
+                "profit": {
+                    "total": 9009,
+                    "yoy": 0.071
+                }
+            },
+            {
+                "revenue": {
+                    "total": 81616,
+                    "fields": {
+                        "software": 22758,
+                        "its": 49868,
+                        "security": 1498,
+                        "embed": 7492,
+                        "export": 479
+                    },
+                    "yoy": 0.133
+                },
+                "profit": {
+                    "total": 10676,
+                    "yoy": 0.078
+                }
+            }
+        ]
+    }, {
+        "year": 2021,
+        "items": [
+            {
+                "revenue": {
+                    "total": 10063,
+                    "fields": {
+                        "software": 2590,
+                        "its": 6242,
+                        "security": 191,
+                        "embed": 1040,
+                        "export": 70
+                    },
+                    "yoy": 0.213
+                },
+                "profit": {
+                    "total": 1260,
+                    "yoy": 0.23
+                }
+            },
+            {
+                "revenue": {
+                    "total": 19030,
+                    "fields": {
+                        "software": 5456,
+                        "its": 11375,
+                        "security": 264,
+                        "embed": 1934,
+                        "export": 111
+                    },
+                    "yoy": 0.265
+                },
+                "profit": {
+                    "total": 2371,
+                    "yoy": 0.259
+                }
+            },
+            {
+                "revenue": {
+                    "total": 25719,
+                    "fields": {
+                        "software": 6823,
+                        "its": 16222,
+                        "security": 384,
+                        "embed": 2289,
+                        "export": 149
+                    },
+                    "yoy": 0.25
+                },
+                "profit": {
+                    "total": 2885,
+                    "yoy": 0.205
+                }
+            },
+            {
+                "revenue": {
+                    "total": 33893,
+                    "fields": {
+                        "software": 9142,
+                        "its": 21314,
+                        "security": 515,
+                        "embed": 2921,
+                        "export": 191
+                    },
+                    "yoy": 0.226
+                },
+                "profit": {
+                    "total": 3836,
+                    "yoy": 0.183
+                }
+            },
+            {
+                "revenue": {
+                    "total": 44198,
+                    "fields": {
+                        "software": 11451,
+                        "its": 28319,
+                        "security": 732,
+                        "embed": 3936,
+                        "export": 240
+                    },
+                    "yoy": 0.232
+                },
+                "profit": {
+                    "total": 4999,
+                    "yoy": 0.136
+                }
+            },
+            {
+                "revenue": {
+                    "total": 51441,
+                    "fields": {
+                        "software": 13402,
+                        "its": 32744,
+                        "security": 883,
+                        "embed": 4413,
+                        "export": 290
+                    },
+                    "yoy": 0.214
+                },
+                "profit": {
+                    "total": 5838,
+                    "yoy": 0.123
+                }
+            },
+            {
+                "revenue": {
+                    "total": 59710,
+                    "fields": {
+                        "software": 15582,
+                        "its": 37951,
+                        "security": 1035,
+                        "embed": 5142,
+                        "export": 332
+                    },
+                    "yoy": 0.208
+                },
+                "profit": {
+                    "total": 6666,
+                    "yoy": 0.093
+                }
+            },
+            {
+                "revenue": {
+                    "total": 69007,
+                    "fields": {
+                        "software": 17951,
+                        "its": 43980,
+                        "security": 1227,
+                        "embed": 5850,
+                        "export": 379
+                    },
+                    "yoy": 0.205
+                },
+                "profit": {
+                    "total": 7937,
+                    "yoy": 0.107
+                }
+            },
+            {
+                "revenue": {
+                    "total": 76814,
+                    "fields": {
+                        "software": 19825,
+                        "its": 48860,
+                        "security": 1487,
+                        "embed": 6642,
+                        "export": 417
+                    },
+                    "yoy": 0.192
+                },
+                "profit": {
+                    "total": 9218,
+                    "yoy": 0.091
+                }
+            },
+            {
+                "revenue": {
+                    "total": 85371,
+                    "fields": {
+                        "software": 21765,
+                        "its": 54582,
+                        "security": 1648,
+                        "embed": 7377,
+                        "export": 462
+                    },
+                    "yoy": 0.183
+                },
+                "profit": {
+                    "total": 10153,
+                    "yoy": 0.082
+                }
+            },
+            {
+                "revenue": {
+                    "total": 94994,
+                    "fields": {
+                        "software": 24433,
+                        "its": 60312,
+                        "security": 1825,
+                        "embed": 8425,
+                        "export": 521
+                    },
+                    "yoy": 0.177
+                },
+                "profit": {
+                    "total": 11875,
+                    "yoy": 0.076
+                }
+            }
+        ]
+    }, {
+        "year": 2022,
+        "items": [
+            {
+                "revenue": {
+                    "total": 11792,
+                    "fields": {
+                        "software": 2714,
+                        "its": 7703,
+                        "security": 257,
+                        "embed": 1118,
+                        "export": 78
+                    },
+                    "yoy": 0.116
+                },
+                "profit": {
+                    "total": 1332,
+                    "yoy": -0.076
+                }
+            },
+            {
+                "revenue": {
+                    "total": 20060,
+                    "fields": {
+                        "software": 5097,
+                        "its": 13102,
+                        "security": 338,
+                        "embed": 1522,
+                        "export": 116
+                    },
+                    "yoy": 0.116
+                },
+                "profit": {
+                    "total": 2031,
+                    "yoy": -0.039
+                }
+            },
+            {
+                "revenue": {
+                    "total": 27735,
+                    "fields": {
+                        "software": 7094,
+                        "its": 17999,
+                        "security": 442,
+                        "embed": 2200,
+                        "export": 160
+                    },
+                    "yoy": 0.108
+                },
+                "profit": {
+                    "total": 2785,
+                    "yoy": -0.014
+                }
+            },
+            {
+                "revenue": {
+                    "total": 36184,
+                    "fields": {
+                        "software": 9190,
+                        "its": 23457,
+                        "security": 568,
+                        "embed": 2968,
+                        "export": 204
+                    },
+                    "yoy": 0.106
+                },
+                "profit": {
+                    "total": 3747,
+                    "yoy": 0.019
+                }
+            },
+            {
+                "revenue": {
+                    "total": 46266,
+                    "fields": {
+                        "software": 11427,
+                        "its": 30296,
+                        "security": 755,
+                        "embed": 3788,
+                        "export": 256
+                    },
+                    "yoy": 0.109
+                },
+                "profit": {
+                    "total": 4891,
+                    "yoy": 0.073
+                }
+            },
+            {
+                "revenue": {
+                    "total": 54560,
+                    "fields": {
+                        "software": 13315,
+                        "its": 35760,
+                        "security": 942,
+                        "embed": 4544,
+                        "export": 298
+                    },
+                    "yoy": 0.103
+                },
+                "profit": {
+                    "total": 5698,
+                    "yoy": 0.066
+                }
+            },
+            {
+                "revenue": {
+                    "total": 64368,
+                    "fields": {
+                        "software": 15836,
+                        "its": 42103,
+                        "security": 1101,
+                        "embed": 5328,
+                        "export": 344
+                    },
+                    "yoy": 0.098
+                },
+                "profit": {
+                    "total": 6952,
+                    "yoy": 0.036
+                }
+            },
+            {
+                "revenue": {
+                    "total": 74763,
+                    "fields": {
+                        "software": 18313,
+                        "its": 48681,
+                        "security": 1269,
+                        "embed": 6500,
+                        "export": 391
+                    },
+                    "yoy": 0.098
+                },
+                "profit": {
+                    "total": 7930,
+                    "yoy": 0.027
+                }
+            },
+            {
+                "revenue": {
+                    "total": 84214,
+                    "fields": {
+                        "software": 20737,
+                        "its": 54583,
+                        "security": 1549,
+                        "embed": 7344,
+                        "export": 427
+                    },
+                    "yoy": 0.1
+                },
+                "profit": {
+                    "total": 10047,
+                    "yoy": 0.045
+                }
+            },
+            {
+                "revenue": {
+                    "total": 94672,
+                    "fields": {
+                        "software": 22923,
+                        "its": 61535,
+                        "security": 1745,
+                        "embed": 8469,
+                        "export": 472
+                    },
+                    "yoy": 0.104
+                },
+                "profit": {
+                    "total": 11140,
+                    "yoy": 0.069
+                }
+            },
+            {
+                "revenue": {
+                    "total": 108126,
+                    "fields": {
+                        "software": 26583,
+                        "its": 70128,
+                        "security": 2038,
+                        "embed": 9376,
+                        "export": 524
+                    },
+                    "yoy": 0.112
+                },
+                "profit": {
+                    "total": 12648,
+                    "yoy": 0.057
+                }
+            }
+        ]
+    }, {
+        "year": 2023,
+        "items": [
+            {
+                "revenue": {
+                    "total": 14461,
+                    "fields": {
+                        "software": 3379,
+                        "its": 9434,
+                        "security": 301,
+                        "embed": 1347,
+                        "export": 78
+                    },
+                    "yoy": 0.11
+                },
+                "profit": {
+                    "total": 1769,
+                    "yoy": 0.122
+                }
+            },
+            {
+                "revenue": {
+                    "total": 24415,
+                    "fields": {
+                        "software": 6058,
+                        "its": 15845,
+                        "security": 367,
+                        "embed": 2145,
+                        "export": 115
+                    },
+                    "yoy": 0.135
+                },
+                "profit": {
+                    "total": 2660,
+                    "yoy": 0.151
+                }
+            },
+            {
+                "revenue": {
+                    "total": 33166,
+                    "fields": {
+                        "software": 8183,
+                        "its": 21586,
+                        "security": 491,
+                        "embed": 2906,
+                        "export": 150
+                    },
+                    "yoy": 0.128
+                },
+                "profit": {
+                    "total": 3674,
+                    "yoy": 0.138
+                }
+            },
+            {
+                "revenue": {
+                    "total": 43238,
+                    "fields": {
+                        "software": 10410,
+                        "its": 28456,
+                        "security": 635,
+                        "embed": 3738,
+                        "export": 189
+                    },
+                    "yoy": 0.133
+                },
+                "profit": {
+                    "total": 4922,
+                    "yoy": 0.122
+                }
+            },
+            {
+                "revenue": {
+                    "total": 55170,
+                    "fields": {
+                        "software": 12959,
+                        "its": 36687,
+                        "security": 856,
+                        "embed": 4667,
+                        "export": 242
+                    },
+                    "yoy": 0.142
+                },
+                "profit": {
+                    "total": 6170,
+                    "yoy": 0.104
+                }
+            },
+            {
+                "revenue": {
+                    "total": 64570,
+                    "fields": {
+                        "software": 14956,
+                        "its": 43022,
+                        "security": 1043,
+                        "embed": 5549,
+                        "export": 281
+                    },
+                    "yoy": 0.136
+                },
+                "profit": {
+                    "total": 7374,
+                    "yoy": 0.134
+                }
+            },
+            {
+                "revenue": {
+                    "total": 75178,
+                    "fields": {
+                        "software": 17437,
+                        "its": 50116,
+                        "security": 1211,
+                        "embed": 6413,
+                        "export": 319
+                    },
+                    "yoy": 0.135
+                },
+                "profit": {
+                    "total": 8628,
+                    "yoy": 0.139
+                }
+            },
+            {
+                "revenue": {
+                    "total": 87610,
+                    "fields": {
+                        "software": 20465,
+                        "its": 58335,
+                        "security": 1421,
+                        "embed": 7389,
+                        "export": 364
+                    },
+                    "yoy": 0.135
+                },
+                "profit": {
+                    "total": 10090,
+                    "yoy": 0.183
+                }
+            },
+            {
+                "revenue": {
+                    "total": 98191,
+                    "fields": {
+                        "software": 23177,
+                        "its": 64955,
+                        "security": 1630,
+                        "embed": 8428,
+                        "export": 405
+                    },
+                    "yoy": 0.137
+                },
+                "profit": {
+                    "total": 11426,
+                    "yoy": 0.138
+                }
+            },
+            {
+                "revenue": {
+                    "total": 110447,
+                    "fields": {
+                        "software": 25862,
+                        "its": 73243,
+                        "security": 1910,
+                        "embed": 9432,
+                        "export": 450
+                    },
+                    "yoy": 0.139
+                },
+                "profit": {
+                    "total": 13033,
+                    "yoy": 0.129
+                }
+            },
+            {
+                "revenue": {
+                    "total": 123258,
+                    "fields": {
+                        "software": 29030,
+                        "its": 81226,
+                        "security": 2232,
+                        "embed": 10770,
+                        "export": 514
+                    },
+                    "yoy": 0.134
+                },
+                "profit": {
+                    "total": 14591,
+                    "yoy": 0.136
+                }
+            }
+        ]
+    }, {
+        "year": 2024,
+        "items": [
+            {
+                "revenue": {
+                    "total": 17050,
+                    "fields": {
+                        "software": 3944,
+                        "its": 11247,
+                        "security": 352,
+                        "embed": 1507,
+                        "export": 77.3
+                    },
+                    "yoy": 0.119
+                },
+                "profit": {
+                    "total": 2064,
+                    "yoy": 0.115
+                }
+            },
+            {
+                "revenue": {
+                    "total": 28020,
+                    "fields": {
+                        "software": 6833,
+                        "its": 18412,
+                        "security": 415,
+                        "embed": 2359,
+                        "export": 115.6
+                    },
+                    "yoy": 0.119
+                },
+                "profit": {
+                    "total": 3188,
+                    "yoy": 0.138
+                }
+            },
+            {
+                "revenue": {
+                    "total": 38000,
+                    "fields": {
+                        "software": 9127,
+                        "its": 24983,
+                        "security": 520,
+                        "embed": 3275,
+                        "export": 154.9
+                    },
+                    "yoy": 0.116
+                },
+                "profit": {
+                    "total": 4314,
+                    "yoy": 0.143
+                }
+            },
+            {
+                "revenue": {
+                    "total": 49317,
+                    "fields": {
+                        "software": 11334,
+                        "its": 33312,
+                        "security": 680,
+                        "embed": 3991,
+                        "export": 205.2
+                    },
+                    "yoy": 0.116
+                },
+                "profit": {
+                    "total": 5756,
+                    "yoy": 0.163
+                }
+            },
+            {
+                "revenue": {
+                    "total": 62350,
+                    "fields": {
+                        "software": 13969,
+                        "its": 42224,
+                        "security": 909,
+                        "embed": 5247,
+                        "export": 254.6
+                    },
+                    "yoy": 0.115
+                },
+                "profit": {
+                    "total": 7347,
+                    "yoy": 0.157
+                }
+            },
+            {
+                "revenue": {
+                    "total": 73429,
+                    "fields": {
+                        "software": 16524,
+                        "its": 49501,
+                        "security": 1088,
+                        "embed": 6317,
+                        "export": 307.7
+                    },
+                    "yoy": 0.112
+                },
+                "profit": {
+                    "total": 8754,
+                    "yoy": 0.12
+                }
+            },
+            {
+                "revenue": {
+                    "total": 85492,
+                    "fields": {
+                        "software": 19115,
+                        "its": 57790,
+                        "security": 1273,
+                        "embed": 7314,
+                        "export": 362.5
+                    },
+                    "yoy": 0.112
+                },
+                "profit": {
+                    "total": 10226,
+                    "yoy": 0.098
+                }
+            },
+            {
+                "revenue": {
+                    "total": 98281,
+                    "fields": {
+                        "software": 22213,
+                        "its": 66164,
+                        "security": 1502,
+                        "embed": 8403,
+                        "export": 410.3
+                    },
+                    "yoy": 0.108
+                },
+                "profit": {
+                    "total": 11621,
+                    "yoy": 0.112
+                }
+            },
+            {
+                "revenue": {
+                    "total": 110623,
+                    "fields": {
+                        "software": 25133,
+                        "its": 74137,
+                        "security": 1738,
+                        "embed": 9616,
+                        "export": 463.4
+                    },
+                    "yoy": 0.11
+                },
+                "profit": {
+                    "total": 13357,
+                    "yoy": 0.089
+                }
+            },
+            {
+                "revenue": {
+                    "total": 122903,
+                    "fields": {
+                        "software": 27493,
+                        "its": 82674,
+                        "security": 1987,
+                        "embed": 10748,
+                        "export": 510.1
+                    },
+                    "yoy": 0.107
+                },
+                "profit": {
+                    "total": 14822,
+                    "yoy": 0.092
+                }
+            },
+            {
+                "revenue": {
+                    "total": 137276,
+                    "fields": {
+                        "software": 30417,
+                        "its": 92190,
+                        "security": 2290,
+                        "embed": 12379,
+                        "export": 569.5
+                    },
+                    "yoy": 0.1
+                },
+                "profit": {
+                    "total": 16953,
+                    "yoy": 0.087
+                }
+            }
+        ]
+    }, {
+        "year": 2025,
+        "items": [
+            {
+                "revenue": {
+                    "total": 18965,
+                    "fields": {
+                        "software": 4253,
+                        "its": 12585,
+                        "security": 393,
+                        "embed": 1735,
+                        "export": 80.3
+                    },
+                    "yoy": 0.099
+                },
+                "profit": {
+                    "total": 2328,
+                    "yoy": 0.107
+                }
+            },
+            {
+                "revenue": {
+                    "total": 31479,
+                    "fields": {
+                        "software": 7536,
+                        "its": 20820,
+                        "security": 481,
+                        "embed": 2642,
+                        "export": 131
+                    },
+                    "yoy": 0.106
+                },
+                "profit": {
+                    "total": 3726,
+                    "yoy": 0.116
+                }
+            },
+            {
+                "revenue": {
+                    "total": 42582,
+                    "fields": {
+                        "software": 9933,
+                        "its": 28415,
+                        "security": 601,
+                        "embed": 3634,
+                        "export": 172.6
+                    },
+                    "yoy": 0.108
+                },
+                "profit": {
+                    "total": 5075,
+                    "yoy": 0.142
+                }
+            },
+            {
+                "revenue": {
+                    "total": 55788,
+                    "fields": {
+                        "software": 12478,
+                        "its": 38096,
+                        "security": 787,
+                        "embed": 4428,
+                        "export": 227.1
+                    },
+                    "yoy": 0.128
+                },
+                "profit": {
+                    "total": 6721,
+                    "yoy": 0.112
+                }
+            },
+            {
+                "revenue": {
+                    "total": 70585,
+                    "fields": {
+                        "software": 15441,
+                        "its": 48362,
+                        "security": 1052,
+                        "embed": 5730,
+                        "export": 283
+                    },
+                    "yoy": 0.12
+                },
+                "profit": {
+                    "total": 8581,
+                    "yoy": 0.119
+                }
+            },
+            {
+                "revenue": {
+                    "total": 83246,
+                    "fields": {
+                        "software": 18011,
+                        "its": 57246,
+                        "security": 1181,
+                        "embed": 6809,
+                        "export": 339.8
+                    },
+                    "yoy": 0.123
+                },
+                "profit": {
+                    "total": 10890,
+                    "yoy": 0.124
+                }
+            },
+            {
+                "revenue": {
+                    "total": 96409,
+                    "fields": {
+                        "software": 21113,
+                        "its": 65916,
+                        "security": 1381,
+                        "embed": 7998,
+                        "export": 404.4
+                    },
+                    "yoy": 0.126
+                },
+                "profit": {
+                    "total": 13186,
+                    "yoy": 0.13
+                }
+            },
+            {
+                "revenue": {
+                    "total": 111126,
+                    "fields": {
+                        "software": 23854,
+                        "its": 76433,
+                        "security": 1627,
+                        "embed": 9212,
+                        "export": 459.4
+                    },
+                    "yoy": 0.13
+                },
+                "profit": {
+                    "total": 14352,
+                    "yoy": 0.087
+                }
+            },
+            {
+                "revenue": {
+                    "total": 125104,
+                    "fields": {
+                        "software": 26504,
+                        "its": 86053,
+                        "security": 1810,
+                        "embed": 10736,
+                        "export": 510.9
+                    },
+                    "yoy": 0.132
+                },
+                "profit": {
+                    "total": 15721,
+                    "yoy": 0.077
+                }
+            }
+        ]
+    }, {
+        "year": 2026,
+        "items": [
+        ]
+    }],
+    "cn-internet": [{
+        "year": 2018,
+        "total": {
+            "revenue": {
+                "total": 9562
+            },
+            "cost": {
+                "fields": {
+                    "rnd": 490
+                }
+            }
+        }
+    }, {
+        "year": 2019,
+        "total": {
+            "revenue": {
+                "total": 12061
+            },
+            "profit": {
+                "total": 1024
+            },
+            "cost": {
+                "fields": {
+                    "rnd": 535
+                }
+            }
+        }
+    }, {
+        "year": 2020,
+        "items": [
+            {
+                "revenue": {
+                    "total": 1311,
+                    "yoy": 0.045
+                },
+                "profit": {
+                    "total": 95,
+                    "yoy": -0.197
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 80
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.106
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 2153,
+                    "yoy": 0.015
+                },
+                "profit": {
+                    "total": 184,
+                    "yoy": -0.249
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 121
+                    },
+                    "fields-yoy": {
+                        "rnd": 0
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 3446,
+                    "yoy": 0.049
+                },
+                "profit": {
+                    "total": 327,
+                    "yoy": 0.048
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 173
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.053
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 4719,
+                    "yoy": 0.149
+                },
+                "profit": {
+                    "total": 533,
+                    "yoy": 0.031
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 237
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.1
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 5907,
+                    "yoy": 0.141
+                },
+                "profit": {
+                    "total": 522,
+                    "yoy": 0.028
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 313
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.107
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 6916,
+                    "yoy": 0.149
+                },
+                "profit": {
+                    "total": 657,
+                    "yoy": 0.059
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 369
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.099
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 7962,
+                    "yoy": 0.136
+                },
+                "profit": {
+                    "total": 736,
+                    "yoy": 0.237
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 429
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.129
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 8956,
+                    "yoy": 0.137
+                },
+                "profit": {
+                    "total": 867,
+                    "yoy": 0.136
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 497
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.112
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 10110,
+                    "yoy": 0.131
+                },
+                "profit": {
+                    "total": 987,
+                    "yoy": 0.088
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 620
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.156
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 11466,
+                    "yoy": 0.127
+                },
+                "profit": {
+                    "total": 1193,
+                    "yoy": 0.099
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 668
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.077
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 12838,
+                    "yoy": 0.125
+                },
+                "profit": {
+                    "total": 1187,
+                    "yoy": 0.132
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 788
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.06
+                    }
+                }
+            }
+        ]
+    }, {
+        "year": 2021,
+        "items": [
+            {
+                "revenue": {
+                    "total": 1990,
+                    "yoy": 0.29
+                },
+                "profit": {
+                    "total": 152,
+                    "yoy": 0.173
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 116
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.197
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 3249,
+                    "yoy": 0.287
+                },
+                "profit": {
+                    "total": 266,
+                    "yoy": -0.025
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 170
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.14
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 4676,
+                    "yoy": 0.278
+                },
+                "profit": {
+                    "total": 445,
+                    "yoy": 0.27
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 236
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.193
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 5981,
+                    "yoy": 0.244
+                },
+                "profit": {
+                    "total": 607,
+                    "yoy": 0.131
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 290
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.063
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 6951,
+                    "yoy": 0.256
+                },
+                "profit": {
+                    "total": 659,
+                    "yoy": 0.274
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 346
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.139
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 8869,
+                    "yoy": 0.263
+                },
+                "profit": {
+                    "total": 843,
+                    "yoy": 0.28
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 408
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.129
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 10068,
+                    "yoy": 0.254
+                },
+                "profit": {
+                    "total": 133,
+                    "yoy": 0.375
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 458
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.103
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 11633,
+                    "yoy": 0.254
+                },
+                "profit": {
+                    "total": 966,
+                    "yoy": 0.168
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 529
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.119
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 13102,
+                    "yoy": 0.234
+                },
+                "profit": {
+                    "total": 1174,
+                    "yoy": 0.213
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 588
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.026
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 14155,
+                    "yoy": 0.223
+                },
+                "profit": {
+                    "total": 1280,
+                    "yoy": 0.148
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 670
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.056
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 15500,
+                    "yoy": 0.212
+                },
+                "profit": {
+                    "total": 1320,
+                    "yoy": 0.133
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 754
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.05
+                    }
+                }
+            }
+        ]
+    }, {
+        "year": 2022,
+        "items": [
+            {
+                "revenue": {
+                    "total": 2223,
+                    "yoy": 0.051
+                },
+                "profit": {
+                    "total": 135,
+                    "yoy": -0.074
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 113
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.028
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 3236,
+                    "yoy": 0.014
+                },
+                "profit": {
+                    "total": 155,
+                    "yoy": -0.103
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 178
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.084
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 4337,
+                    "yoy": 0.027
+                },
+                "profit": {
+                    "total": 321,
+                    "yoy": -0.254
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 251
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.104
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 5850,
+                    "yoy": 0.018
+                },
+                "profit": {
+                    "total": 495,
+                    "yoy": -0.148
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 311
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.091
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 7170,
+                    "yoy": 0.001
+                },
+                "profit": {
+                    "total": 645,
+                    "yoy": -0.062
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 389
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.064
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 8531,
+                    "yoy": -0.006
+                },
+                "profit": {
+                    "total": 815,
+                    "yoy": -0.073
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 452
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.055
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 9881,
+                    "yoy": -0.008
+                },
+                "profit": {
+                    "total": 940,
+                    "yoy": -0.084
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 530
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.084
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 10998,
+                    "yoy": -0.009
+                },
+                "profit": {
+                    "total": 966,
+                    "yoy": -0.083
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 566
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.088
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 12235,
+                    "yoy": -0.008
+                },
+                "profit": {
+                    "total": 1119,
+                    "yoy": -0.111
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 637
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.104
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 13563,
+                    "yoy": -0.007
+                },
+                "profit": {
+                    "total": 1405,
+                    "yoy": 0.072
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 685
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.09
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 14590,
+                    "yoy": -0.011
+                },
+                "profit": {
+                    "total": 1415,
+                    "yoy": 0.033
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 772
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.077
+                    }
+                }
+            }
+        ]
+    }, {
+        "year": 2023,
+        "items": [
+            {
+                "revenue": {
+                    "total": 1781,
+                    "yoy": -0.039
+                },
+                "profit": {
+                    "total": 167,
+                    "yoy": -0.102
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 80
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.156
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 3020,
+                    "yoy": 0.016
+                },
+                "profit": {
+                    "total": 283,
+                    "yoy": 0.552
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 157
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.117
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 4083,
+                    "yoy": 0.033
+                },
+                "profit": {
+                    "total": 384,
+                    "yoy": 0.621
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 200
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.085
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 5310,
+                    "yoy": 0.028
+                },
+                "profit": {
+                    "total": 576,
+                    "yoy": 0.43
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 261
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.059
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 6433,
+                    "yoy": 0.026
+                },
+                "profit": {
+                    "total": 640,
+                    "yoy": 0.276
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 305
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.068
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 7666,
+                    "yoy": 0.028
+                },
+                "profit": {
+                    "total": 799,
+                    "yoy": 0.291
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 375
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.054
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 9067,
+                    "yoy": 0.026
+                },
+                "profit": {
+                    "total": 914,
+                    "yoy": 0.28
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 477
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.008
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 10294,
+                    "yoy": 0.034
+                },
+                "profit": {
+                    "total": 959,
+                    "yoy": 0.182
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 496
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.061
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 14039,
+                    "yoy": 0.059
+                },
+                "profit": {
+                    "total": 1074,
+                    "yoy": 0.1
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 755
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.026
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 15668,
+                    "yoy": 0.061
+                },
+                "profit": {
+                    "total": 1189,
+                    "yoy": 0.025
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 823
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.045
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 17483,
+                    "yoy": 0.068
+                },
+                "profit": {
+                    "total": 1295,
+                    "yoy": 0.005
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 943
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.037
+                    }
+                }
+            }
+        ]
+    }, {
+        "year": 2024,
+        "items": [
+            {
+                "revenue": {
+                    "total": 2463,
+                    "yoy": 0.076
+                },
+                "profit": {
+                    "total": 169.7,
+                    "yoy": 0.065
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 137.1
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.045
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 3840,
+                    "yoy": 0.084
+                },
+                "profit": {
+                    "total": 278.9,
+                    "yoy": -0.153
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 198.6
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.006
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 5547,
+                    "yoy": 0.037
+                },
+                "profit": {
+                    "total": 384.9,
+                    "yoy": -0.197
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 275.8
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.012
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 6861,
+                    "yoy": 0.05
+                },
+                "profit": {
+                    "total": 521.4,
+                    "yoy": -0.128
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 341.7
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.008
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 8676,
+                    "yoy": 0.056
+                },
+                "profit": {
+                    "total": 743.7,
+                    "yoy": 0.019
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 459.8
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.012
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 10125,
+                    "yoy": 0.05
+                },
+                "profit": {
+                    "total": 854,
+                    "yoy": -0.058
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 540.1
+                    },
+                    "fields-yoy": {
+                        "rnd": -0.003
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 11710,
+                    "yoy": 0.044
+                },
+                "profit": {
+                    "total": 1008,
+                    "yoy": -0.063
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 621.5
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.016
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 12703,
+                    "yoy": 0.027
+                },
+                "profit": {
+                    "total": 1151,
+                    "yoy": 0.048
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 702.8
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.003
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 14776,
+                    "yoy": 0.023
+                },
+                "profit": {
+                    "total": 1261,
+                    "yoy": -0.033
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 785.5
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.017
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 16186,
+                    "yoy": 0.001
+                },
+                "profit": {
+                    "total": 1434,
+                    "yoy": -0.003
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 855.7
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.018
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 18049,
+                    "yoy": -0.001
+                },
+                "profit": {
+                    "total": 1508,
+                    "yoy": -0.064
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 995.7
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.028
+                    }
+                }
+            }
+        ]
+    }, {
+        "year": 2025,
+        "items": [
+            {
+                "revenue": {
+                    "total": 2321,
+                    "yoy": -0.005
+                },
+                "profit": {
+                    "total": 193.4,
+                    "yoy": -0.062
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 124.5
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.028
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 4118,
+                    "yoy": 0.014
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 204.5
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.046
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 5970,
+                    "yoy": 0.015
+                },
+                "profit": {
+                    "total": 417.3,
+                    "yoy": -0.108
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 291.5
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.048
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 7735,
+                    "yoy": 0.031
+                },
+                "profit": {
+                    "total": 692,
+                    "yoy": -0.022
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 390.6
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.041
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 9613,
+                    "yoy": 0.031
+                },
+                "profit": {
+                    "total": 743.2,
+                    "yoy": -0.083
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 485.6
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.026
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 11352,
+                    "yoy": 0.035
+                },
+                "profit": {
+                    "total": 938.8,
+                    "yoy": -0.018
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 580.3
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.028
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 12859,
+                    "yoy": 0.022
+                },
+                "profit": {
+                    "total": 1063,
+                    "yoy": -0.038
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 668.6
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.034
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 14420,
+                    "yoy": 0.028
+                },
+                "profit": {
+                    "total": 1036,
+                    "yoy": -0.131
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 763.4
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.066
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 16189,
+                    "yoy": 0.011
+                },
+                "profit": {
+                    "total": 1237,
+                    "yoy": -0.109
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 861.7
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.071
+                    }
+                }
+            }
+        ]
+    }, {
+        "year": 2026,
+        "items": [
+        ]
+    }],
+    "indexes": {
+        "fields": [
+            { "name": "软件产品", "name#en": "Software Products", "value": "software", "currency": "CNY", "exp": 8 },
+            { "name": "信息技术服务收入", "name#en": "IT Service", "value": "its", "currency": "CNY", "exp": 8 },
+            { "name": "信息安全收入", "name#en": "Information Security", "value": "security", "currency": "CNY", "exp": 8 },
+            { "name": "嵌入式系统软件", "name#en": "Embedded System Software", "value": "embed", "currency": "CNY", "exp": 8 },
+            { "name": "出口", "name#en": "Export", "value": "export", "currency": "USD", "exp": 8 }
+        ]
+    }
+}
