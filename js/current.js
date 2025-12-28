@@ -1,10 +1,5 @@
 function initHome() {
-    const about = DeepX.MdBlogs.setElementText("topmenu-about", "about");
-    if (about === "关于") {
-        DeepX.MdBlogs.setElementProp("topmenu-stories", null, "故事");
-        DeepX.MdBlogs.setElementProp("topmenu-games", null, "小游戏");
-    }
-
+    updateMenuText();
     const title = {
         tagName: "h1",
         children: [{
@@ -111,8 +106,7 @@ function initBlog() {
             if (article.isKind("calendar-decade")) appendDecadeCalendar(model, article, insertion);
         }
     });
-    DeepX.MdBlogs.setElementText("topmenu-about", "about");
-    DeepX.MdBlogs.setElementText("topmenu-games", "games");
+    updateMenuText();
 }
 
 function appendDecadeCalendar(model, article, insertion) {
@@ -161,4 +155,11 @@ function appendDecadeCalendar(model, article, insertion) {
 function daysOfYear(date) {
     const first = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     return (first - new Date(date.getFullYear(), 0, 1)) / 86400000 + 1;
+}
+
+function updateMenuText() {
+    const about = DeepX.MdBlogs.setElementText("topmenu-about", "about");
+    if (about !== "关于") return;
+    DeepX.MdBlogs.setElementProp("topmenu-stories", null, "故事");
+    DeepX.MdBlogs.setElementProp("topmenu-games", null, "小游戏");
 }
