@@ -103,13 +103,15 @@ function initBlog() {
                 insertion++;
                 if (model[i] && model[i].tagName === "main") break;
             }
-            if (article.isKind("calendar-decade")) appendDecadeCalendar(model, article, insertion);
+            if (article.isKind("calendar-decade")) appendDecadeCalendar(ev);
         }
     });
     updateMenuText();
 }
 
-function appendDecadeCalendar(model, article, insertion) {
+function appendDecadeCalendar(ev) {
+    const article = ev.article;
+    const model = ev.children;
     const now = new Date();
     const doy = daysOfYear(now);
     const dcd = doy % 10;
@@ -136,7 +138,8 @@ function appendDecadeCalendar(model, article, insertion) {
         }
         s = `${s}, ${now.getFullYear().toString(10)} or short as ${now.getFullYear().toString(10)}/${ty.toString(10)}${dcd.toString(10)}`;
     }
-    model.splice(insertion, 0, {
+
+    ev.insertChildren("end", {
         tagName: "section",
         styleRefs: "x-part-blog-related",
         children: [{
