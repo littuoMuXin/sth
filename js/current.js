@@ -98,11 +98,6 @@ function initBlog() {
             const article = ev.article;
             const model = ev.children;
             if (!article || !model) return;
-            let insertion = 0;
-            for (let i = 0; i < model.length; i++) {
-                insertion++;
-                if (model[i] && model[i].tagName === "main") break;
-            }
             if (article.isKind("calendar-decade")) appendDecadeCalendar(ev);
         }
     });
@@ -110,8 +105,6 @@ function initBlog() {
 }
 
 function appendDecadeCalendar(ev) {
-    const article = ev.article;
-    const model = ev.children;
     const now = new Date();
     const doy = daysOfYear(now);
     const dcd = doy % 10;
