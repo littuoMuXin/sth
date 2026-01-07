@@ -1,0 +1,15 @@
+{
+    "private": true,
+    "homepage": "https://sth.violty.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/littuoMuXin/sth.git"
+    },
+    "author": "Kingcean Tuan",
+    "scripts": {
+        "build": "npm run build-current",
+        "build-current": "tsc --project ./js/src/ && terser ./js/current.js --source-map \"content='./js/current.js.map'\" --compress -o ./js/current.js"
+    },
+    "dependencies": {
+    }
+}
