@@ -1167,6 +1167,40 @@
                     "total": 15721,
                     "yoy": 0.077
                 }
+            },
+            {
+                "revenue": {
+                    "total": 139777,
+                    "fields": {
+                        "software": 29509,
+                        "its": 96104,
+                        "security": 2001,
+                        "embed": 12162,
+                        "export": 568.9
+                    },
+                    "yoy": 0.133
+                },
+                "profit": {
+                    "total": 16954,
+                    "yoy": 0.066
+                }
+            },
+            {
+                "revenue": {
+                    "total": 154831,
+                    "fields": {
+                        "software": 32361,
+                        "its": 106366,
+                        "security": 2235,
+                        "embed": 13869,
+                        "export": 627.3
+                    },
+                    "yoy": 0.132
+                },
+                "profit": {
+                    "total": 18848,
+                    "yoy": 0.073
+                }
             }
         ]
     }, {
@@ -2369,6 +2403,42 @@
                     },
                     "fields-yoy": {
                         "rnd": 0.071
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 18034,
+                    "yoy": 0.01
+                },
+                "profit": {
+                    "total": 1378,
+                    "yoy": -0.117
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 957.4
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.067
+                    }
+                }
+            },
+            {
+                "revenue": {
+                    "total": 20473,
+                    "yoy": 0.015
+                },
+                "profit": {
+                    "total": 1540,
+                    "yoy": -0.083
+                },
+                "cost": {
+                    "fields": {
+                        "rnd": 1126
+                    },
+                    "fields-yoy": {
+                        "rnd": 0.065
                     }
                 }
             }
