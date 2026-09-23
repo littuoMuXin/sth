@@ -201,6 +201,27 @@
                 "The Foundry Local, Azure, ONNX, Windows, and VS Code mentioned in the article are products or services of Microsoft, and the copyright belongs to Microsoft. Other products and services mentioned are copyrighted by their respective companies or organizations.",
                 "This article introduces a product, service or concept which is in preview so some of the content may become outdated."
             ]
+        },
+        {
+            "name": "Your Mind Skill",
+            "name#zh": "你的思想 Skill",
+            "dir": "your-mind-skill",
+            "file": true,
+            "file#zh": "chs.md",
+            "intro": "现如今，AI 贯穿我们生活之中，影响着我们的方方面面。然而如何让 AI 更为高效，这是一个值得大家去思考和学习的技能。虽然说现在的 AI 已经足够傻瓜化，让我们能用非常简单的语句，执行复杂的任务，但时代的发展并不意味着人类的弱化，我们始终会在站在新时代创新的基础上，应付更具有挑战的任务。",
+            "intro#en": "Today, AI permeates every aspect of our lives. However, learning how to use AI more efficiently—using fewer tokens and less time while achieving greater accuracy, reliability, and predictability—is a valuable skill that deserves our attention and effort.",
+            "keywords": ["ai"],
+            "date": "20260922",
+            "author": "Kingcean Tuan",
+            "location": "Shanghai",
+            "end": true,
+            "thumb": {
+            },
+            "related": [
+            ],
+            "notes": [
+                "(cc) Kingcean Tuan, 2026."
+            ]
         }
     ],
     "options": {
