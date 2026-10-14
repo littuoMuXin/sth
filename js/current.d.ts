@@ -37,7 +37,7 @@ declare namespace PageCtrl {
         items?: IAmountItem[];
     }
     class StatComponent extends Hje.BaseComponent {
-        constructor(element: any, options: Hje.ComponentOptionsContract);
+        constructor(args: Object);
     }
     function totals(data: IAccumulativeSet[], mode?: "accumulative"): (IAmountItem & {
         year: number;

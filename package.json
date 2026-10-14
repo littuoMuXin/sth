@@ -11,5 +11,9 @@
         "build-current": "tsc --project ./js/src/ && terser ./js/current.js --source-map \"content='./js/current.js.map'\" --compress -o ./js/current.js"
     },
     "dependencies": {
+    },
+    "devDependencies": {
+        "typescript": "^6.0.3",
+        "terser": "^5.51.2"
     }
 }

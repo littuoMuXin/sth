@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "strict": true,
+        "ignoreDeprecations": "6.0",
         "forceConsistentCasingInFileNames": true,
         "outFile": "../current.js",
         "noImplicitAny": true,

@@ -1,5 +1,5 @@
 {
-    "$schema": "https://cdn.jsdelivr.net/npm/hje@2.4.6/dist/mdblogs.schema.json",
+    "$schema": "https://cdn.jsdelivr.net/npm/hje@3.2.0/dist/mdblogs.schema.json",
     "name": "sth",
     "blog": [
         {
@@ -216,6 +216,8 @@
             "location": "Shanghai",
             "end": true,
             "thumb": {
+                "common": "https://sth.violty.com/articles/2026/your-mind-skill/images/thumb-tile.webp",
+                "wide": "https://sth.violty.com/articles/2026/your-mind-skill/images/thumb-wide.webp"
             },
             "related": [
             ],

@@ -27,23 +27,22 @@ const inner = {
 };
 
 export class StatComponent extends Hje.BaseComponent {
-    constructor(element: any, options: Hje.ComponentOptionsContract) {
-        super(element, options);
-        this.currentModel = {
-            children: [{
-            //     tagName: "section",
-            //     children: [lineChart(totals(options.data.cnSoftware, "accumulative").map(item => {
-            //         return item?.revenue?.total ?? NaN;
-            //     }), inner.size)]
-            // }, {
-                key: "render-part",
-                tagName: "canvas",
-            }]
-        };
-        super.refreshChild();
-        setTimeout(() => {
-            renderBar(super.childContext("render-part").element(), options.data.cnSoftware);
-        }, 100);
+    constructor(args: Object) {
+        super(args);
+        // super.currentModel = {
+        //     children: [{
+        //     //     tagName: "section",
+        //     //     children: [lineChart(totals(options.data.cnSoftware, "accumulative").map(item => {
+        //     //         return item?.revenue?.total ?? NaN;
+        //     //     }), inner.size)]
+        //     // }, {
+        //         key: "render-part",
+        //         tagName: "canvas",
+        //     }]
+        // };
+        // setTimeout(() => {
+        //     renderBar(super.childContext("render-part").element(), options.data.cnSoftware);
+        // }, 100);
     }
 }
 
@@ -84,7 +83,7 @@ export function totals(data: IAccumulativeSet[], mode?: "accumulative") {
 export async function initStat(element: string | HTMLElement) {
     const resp = await fetch("./revenue/data.json");
     const json = await resp.json();
-    Hje.render(element || "blog_content", { control: StatComponent, data: {
+    Hje.render(element || "blog_content", { component: StatComponent, data: {
         cnSoftware: json["cn-software"],
         cnInternet: json["cn-internet"]
     } });

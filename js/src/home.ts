@@ -17,9 +17,9 @@ export function initHome() {
             tagName: "div",
             children: DeepX.MdBlogs.getLocaleString("loading")
         }]
-    })!;
+    })! as Hje.ElementComponent;
     DeepX.MdBlogs.generateMenuPromise("./articles/config.json", "blogs", {
-        styleRefs: "link-item-blog",
+        className: "link-item-blog",
         deep: -2,
         path: "./articles/",
         render(model, article, options) {
@@ -42,7 +42,7 @@ export function initHome() {
                 children: [{
                     tagName: "time",
                     props: {
-                        datetime: `${publishDate.year.toString(10)}-${publishDate.month.toString(10)}-${publishDate.date.toString(10)}`
+                        datetime: !publishDate ? "N/A" : `${publishDate.year.toString(10)}-${publishDate.month.toString(10)}-${publishDate.date.toString(10)}`
                     },
                     children: article.dateString
                 }] as Hje.DescriptionContract[]
@@ -67,14 +67,12 @@ export function initHome() {
             if (model.children[0].props) delete model.children[0].props.title;
         }
     }).then(function (r) {
-        context.model().children = [title, r];
-        context.refresh();
+        context.setChildItems(title, r!);
     }, function (r) {
-        context.model().children = [title, {
+        context.setChildItems(title, {
             tagName: "div",
             children: DeepX.MdBlogs.getLocaleString("loadFailed")
-        }];
-        context.refresh();
+        });
     });
 }
 
@@ -83,7 +81,7 @@ export function initBlog() {
         title: true,
         banner: {
             tagName: "section",
-            styleRefs: "x-part-g-banner",
+            className: "x-part-g-banner",
             children: [{
                 tagName: "img",
                 props: {
@@ -104,7 +102,7 @@ export function initBlog() {
             if (article.isKind("calendar-decade")) appendDecadeCalendar(arr, article);
             if (arr.end.length > 0) ev.insertChildren("end", {
                 tagName: "section",
-                styleRefs: "x-part-blog-related",
+                className: "x-part-blog-related",
                 children: arr.end
             });
         }
